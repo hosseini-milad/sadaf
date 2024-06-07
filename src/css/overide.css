@@ -1,0 +1,11 @@
+.hsg-nav__wrapper{
+  position: relative;
+}
+.stickyHeader{
+  position: sticky;
+  top: 0;
+}
+#visibleMenu{
+  opacity: 100;
+  visibility: visible;
+}
