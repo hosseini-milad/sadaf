@@ -1,0 +1,85 @@
+.hsg-nav__wrapper{
+  position: relative;
+}
+.stickyHeader{
+  position: sticky;
+  top: 0;
+}
+#visibleMenu{
+  opacity: 100;
+  visibility: visible;
+}
+.twolineText{
+  display: block;
+  display: -webkit-box;
+  height: 2.8rem;
+  font-size: 1rem;
+  line-height: 1.3;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+.fourlineText{
+  display: block;
+  display: -webkit-box;
+  max-height: 5.2rem;
+  font-size: 1rem;
+  line-height: 1.3;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+.ideaIcon{
+  margin: auto 10px;
+}
+.socialIcon{
+  font-size: 30px;
+}
+.logo{
+  display: flex;
+  min-width: 170px;
+  align-items: center;
+}
+.logo img{
+  width: 80px !important;
+  object-fit: contain;
+  height: 60px !important;
+}
+.activeMenu{
+  opacity: 100;
+  visibility: visible;
+  width: auto;
+  height: auto;
+  overflow: clip;
+}
+.ReportMainHolder{
+  display: flex;
+  justify-content: space-between;
+  min-width: 100%;
+}
+.ReportFilter{
+  width: 25%;
+  padding: 0 1%;
+}
+.ReportHolder{
+  width: 75%;
+  background-color: var(--cl-color-background-03);
+  padding: 0 3%;
+}
+
+.accItem{
+  border-right: 2px solid #ff5c35;
+  margin-bottom: 5px;
+  padding: 0;
+  cursor: pointer;
+  transition: .1s all;
+}
+.accItem:hover{
+  border-right: 5px solid #ff5c35;
+  background-color: #eee;
+  transition: .1s all;
+}
