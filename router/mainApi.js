@@ -42,13 +42,32 @@ router.post('/add-data',jsonParser, async (req,res)=>{
     }
 })
 
-router.post('/fetch-data',jsonParser, async (req,res)=>{
+router.get('/fetch-data',jsonParser, async (req,res)=>{
+    const NAData = await dataSchema.find({title:{$exists:false}}).limit(50)
+    //console.log(NAData)
+    //var counter = 0
+    start(NAData,0)
+    //await myLoop(NAData,20)
+    res.status(200).json({message: "all Done"})
+    
+})
+function start(data,counter){
+    if(counter < data.length){
+      setTimeout(function(){
+        fetchUrl(data,counter);
+        console.log(counter)
+        counter++; 
+        start(data,counter);
+      }, 2000);
+    }
+  }
+const fetchUrl=async(mainURL,i)=>{
+    if(!mainURL[i])return
     try{
         const url = "https://ipm.ssaa.ir/"
-        const data = req.body.url
         const axiosResponse = await axios.request({
                 method: "GET",
-                url: url+data,
+                url: url+mainURL[i].url,
                 headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
                 }
@@ -73,14 +92,16 @@ router.post('/fetch-data',jsonParser, async (req,res)=>{
             judge:splitRegex(testData,"<td>گزارش داوری : </td><td><a target=\"_blank\" href=\"","\">"),
             etebar:credit?credit.includes('ندارد')?false:true:false
         }
-        const resultUpdate = await dataSchema.updateOne({url:req.body.url},
+        const resultUpdate = await dataSchema.updateOne({url:mainURL[i].url},
             {$set:parseData})
-        res.json({data:parseData,url:resultUpdate})
+        
+        setTimeout(()=>{},2000)
+        return({success:1})
     }
     catch(error){
-        res.status(500).json({message: error.message})
+        console.log({message: error})
     }
-})
+}
 const splitRegex=(value,fString,lString)=>{
     var newValue = value.split(fString)[1]
     newValue = newValue?newValue.split(lString)[0]:''
