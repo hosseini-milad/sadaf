@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
-  title: { type: String,unique:true},
-  malek: { type: String},
-  malekNo: { type: String},
+  title: { type: String},
+  malek: { type: Array},
+  malekNo: { type: Array},
   mahiat:{type:Boolean},
   inventor: { type: Array},
   inventorNo: { type: Array},
@@ -18,7 +18,7 @@ const dataSchema = new mongoose.Schema({
   edea: { type: String},
   plan: { type: String},
   judge: { type: String},
-  url: { type: String},
+  url: { type: String,unique:true},
   date:{type:Date}
 });
 
