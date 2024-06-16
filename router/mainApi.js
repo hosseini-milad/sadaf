@@ -34,8 +34,7 @@ router.post('/add-data',jsonParser, async (req,res)=>{
                 })
         }
         var errorCodes=[]
-        const dataAdd = await dataSchema.create(fData,{ continueOnError : true },
-            function(error, docs) { console.log(error?error.code:'error') })
+        const dataAdd = await dataSchema.create(fData)
         res.json({data:fData,addResult:dataAdd})
     }
     catch(error){
