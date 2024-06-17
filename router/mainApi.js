@@ -10,9 +10,17 @@ const authApi = require('./authApi');
 router.use('/auth', authApi)
 
 router.post('/data-list',jsonParser, async (req,res)=>{
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
+     
     try{
         const dataList = await dataSchema.find()
-        res.json({data:dataList})
+
+        const pageData = dataList.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+
+
+        res.json({data:pageData,size:dataList.length})
     }
     catch(error){
         res.status(500).json({message: error.message})
