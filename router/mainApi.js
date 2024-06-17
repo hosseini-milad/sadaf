@@ -18,7 +18,9 @@ router.post('/data-list',jsonParser, async (req,res)=>{
     }
     try{
         const dataList = await dataSchema.aggregate([
-            { $match:data.title?{title:new RegExp('.*' + data.title + '.*')}:{}},
+            { $match:data.title?{$or:[
+                {title:new RegExp('.*' + data.title + '.*')},
+                {abstract:new RegExp('.*' + data.title + '.*')}]}:{}},
         ])
 
         const pageData = dataList.slice(offset,
