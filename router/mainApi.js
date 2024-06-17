@@ -12,9 +12,14 @@ router.use('/auth', authApi)
 router.post('/data-list',jsonParser, async (req,res)=>{
     var pageSize = req.body.pageSize?req.body.pageSize:"10";
     var offset = req.body.offset?(parseInt(req.body.offset)):0;
-     
+    var data={
+        title:req.body.title,
+        malek:req.body.malek
+    }
     try{
-        const dataList = await dataSchema.find()
+        const dataList = await dataSchema.aggregate([
+            { $match:data.title?{title:new RegExp('.*' + data.title + '.*')}:{}},
+        ])
 
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
