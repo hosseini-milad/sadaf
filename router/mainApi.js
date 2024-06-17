@@ -64,23 +64,29 @@ router.get('/fetch-data',jsonParser, async (req,res)=>{
     res.status(200).json({message: "all Done"})
     
 })
+router.get('/fetch-url',jsonParser, async (req,res)=>{
+    const url = req.body.url
+    await fetchUrl({url:url});
+    res.status(200).json({message: url+" Done"})
+    
+})
 function start(data,counter){
     if(counter < data.length){
       setTimeout(function(){
-        fetchUrl(data,counter);
+        fetchUrl(data[counter]);
         console.log(counter)
         counter++; 
         start(data,counter);
       }, 2000);
     }
   }
-const fetchUrl=async(mainURL,i)=>{
-    if(!mainURL[i])return
+const fetchUrl=async(mainURL)=>{
+    if(!mainURL)return
     try{
         const url = "https://ipm.ssaa.ir/"
         const axiosResponse = await axios.request({
                 method: "GET",
-                url: url+mainURL[i].url,
+                url: url+mainURL.url,
                 headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
                 }
