@@ -92,7 +92,9 @@ const fetchUrl=async(mainURL)=>{
                 }
             })
         const testData = axiosResponse.data
-
+        
+        console.log(testData)
+        
         const inventorList =splitRegex(testData,"<td>نام مخترع/مخترعین : </td><td>","</td>")
         const malekList =splitRegex(testData,"<td>نام مالک/مالکین : </td><td>","</td>")
         const classInternation = splitRegex(testData,"<td>طبقه بندی بین المللی : </td><td style=\"padding-left:10px;font-family:tahoma;font-size:16px;text-align:left;direction:ltr;\">","</td>")
@@ -118,7 +120,7 @@ const fetchUrl=async(mainURL)=>{
         return({success:resultUpdate,data:testData})
     }
     catch(error){
-        console.log({message: error})
+        return({message: error})
     }
 }
 const splitRegex=(value,fString,lString)=>{
