@@ -56,7 +56,7 @@ router.post('/add-data',jsonParser, async (req,res)=>{
 })
 
 router.get('/fetch-data',jsonParser, async (req,res)=>{
-    const NAData = await dataSchema.find({title:{$exists:false}}).limit(50)
+    const NAData = await dataSchema.find({title:{$exists:false}}).limit(process.env.FETCH_LIMIT)
     //console.log(NAData)
     //var counter = 0
     start(NAData,0)
