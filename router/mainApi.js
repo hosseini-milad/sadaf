@@ -116,7 +116,7 @@ const fetchUrl=async(mainURL)=>{
         const resultUpdate = await dataSchema.updateOne({url:mainURL.url},
             {$set:parseData})
         
-        setTimeout(()=>{},2000)
+        setTimeout(()=>{},Math.floor(Math.random()*(5000-1000))+1000)
         return({success:resultUpdate,data:testData})
     }
     catch(error){
