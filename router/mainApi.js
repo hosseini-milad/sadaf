@@ -113,7 +113,7 @@ const fetchUrl=async(mainURL)=>{
             etebar:credit?credit.includes('ندارد')?false:true:false
         }
         console.log(parseData)
-        const resultUpdate = await dataSchema.updateOne({url:mainURL[i].url},
+        const resultUpdate = await dataSchema.updateOne({url:mainURL.url},
             {$set:parseData})
         
         setTimeout(()=>{},2000)
