@@ -66,8 +66,8 @@ router.get('/fetch-data',jsonParser, async (req,res)=>{
 })
 router.post('/fetch-url',jsonParser, async (req,res)=>{
     const url = req.body.url
-    await fetchUrl({url:url});
-    res.status(200).json({message: url+" Done"})
+    const result = await fetchUrl({url:url});
+    res.status(200).json({message: result})
     
 })
 function start(data,counter){
@@ -115,7 +115,7 @@ const fetchUrl=async(mainURL)=>{
             {$set:parseData})
         
         setTimeout(()=>{},2000)
-        return({success:1})
+        return({success:resultUpdate,data:testData})
     }
     catch(error){
         console.log({message: error})
