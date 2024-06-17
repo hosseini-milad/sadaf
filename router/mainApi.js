@@ -64,7 +64,7 @@ router.get('/fetch-data',jsonParser, async (req,res)=>{
     res.status(200).json({message: "all Done"})
     
 })
-router.get('/fetch-url',jsonParser, async (req,res)=>{
+router.post('/fetch-url',jsonParser, async (req,res)=>{
     const url = req.body.url
     await fetchUrl({url:url});
     res.status(200).json({message: url+" Done"})
