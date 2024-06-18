@@ -27,13 +27,16 @@ router.post('/data-list',jsonParser, async (req,res)=>{
             req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
             new Date().toISOString().slice(0, 10)+" 23:59",
     }
-    console.log(data)
     try{
         const dataList = await dataSchema.aggregate([
             { $match:data.title?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
                 {abstract:new RegExp('.*' + data.title + '.*')}]}:{}},
-            { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}}
+            { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}},
+            { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
+            { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
+            { $sort: {"date":-1}},
+     
         ])
 
         const pageData = dataList.slice(offset,
