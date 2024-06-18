@@ -164,7 +164,7 @@ const fetchUrl=async(mainURL)=>{
             {$set:parseData})
          
         setTimeout(()=>{},Math.floor(Math.random()*(5000-1000))+1000)
-        return({success:resultUpdate,data:testData})
+        return({success:parseData,data:testData})
     }
     catch(error){
         return({message: error})
