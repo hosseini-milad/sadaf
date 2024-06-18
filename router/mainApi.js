@@ -7,6 +7,7 @@ const axios = require("axios")
 const { default: fetch } = require("node-fetch");
 const dataSchema = require('../models/data')
 const authApi = require('./authApi');
+const jalali_to_gregorian = require('../middleware/DateConvert');
 router.use('/auth', authApi)
 
 router.post('/data-list',jsonParser, async (req,res)=>{
@@ -14,13 +15,25 @@ router.post('/data-list',jsonParser, async (req,res)=>{
     var offset = req.body.offset?(parseInt(req.body.offset)):0;
     var data={
         title:req.body.title,
-        malek:req.body.malek
+        malek:req.body.malek,
+        fill:req.body.fill,
+        dateFrom:
+            req.body.dateFrom?req.body.dateFrom[0]+"/"+
+            req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
+            new Date().toISOString().slice(0, 10)+" 00:00",
+            //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
+        dateTo:
+            req.body.dateTo?req.body.dateTo[0]+"/"+
+            req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
+            new Date().toISOString().slice(0, 10)+" 23:59",
     }
+    console.log(data)
     try{
         const dataList = await dataSchema.aggregate([
             { $match:data.title?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
                 {abstract:new RegExp('.*' + data.title + '.*')}]}:{}},
+            { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}}
         ])
 
         const pageData = dataList.slice(offset,
@@ -28,6 +41,39 @@ router.post('/data-list',jsonParser, async (req,res)=>{
 
 
         res.json({data:pageData,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.get('/date-update',jsonParser, async (req,res)=>{
+    const updateList = await dataSchema.find({date:{$exists:false}}).limit(200)
+    var convertDate = []
+    for(var i=0;i<updateList.length;i++){
+    if(!updateList[i].sabtDate) continue
+    var dateEn = updateList[i].sabtDate.split('/')
+    var convertToENDate = jalali_to_gregorian(
+        parseInt(dateEn[0]),
+        parseInt(dateEn[1]),
+        parseInt(dateEn[2]))
+        convertDate.push(updateList[i].sabtNo)
+        await dataSchema.updateOne({sabtNo:updateList[i].sabtNo},
+            {$set:{date:convertToENDate}}
+        )
+    }
+    res.json({result:convertDate.length})
+})
+router.post('/fill-front',jsonParser, async (req,res)=>{
+    const url = req.body.url
+    var data=req.body
+    console.log(data)
+    return
+    try{
+        const dataUpdate = await dataSchema.updateOne(
+            {url:req.body.url},{$set:data}) 
+
+
+        res.json({data:dataUpdate})
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -114,10 +160,9 @@ const fetchUrl=async(mainURL)=>{
             judge:splitRegex(testData,"<td>گزارش داوری : </td><td><a target=\"_blank\" href=\"","\">"),
             etebar:credit?credit.includes('ندارد')?false:true:false
         }
-        console.log(parseData)
         const resultUpdate = await dataSchema.updateOne({url:mainURL.url},
             {$set:parseData})
-        
+         
         setTimeout(()=>{},Math.floor(Math.random()*(5000-1000))+1000)
         return({success:resultUpdate,data:testData})
     }
