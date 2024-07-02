@@ -49,6 +49,30 @@ router.post('/data-list',jsonParser, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+
+router.post('/data-web-list',jsonParser, async (req,res)=>{
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
+    var search = req.body.search
+    try{
+        const dataList = await dataSchema.aggregate([
+            { $match:search?{$or:[
+                {title:new RegExp('.*' + search + '.*')},
+                {abstract:new RegExp('.*' + search + '.*')}]}:{}},
+            { $sort: {"date":-1}},
+     
+        ])
+
+        const pageData = dataList.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+
+
+        res.json({data:pageData,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 router.get('/date-update',jsonParser, async (req,res)=>{
     const updateList = await dataSchema.find({date:{$exists:false}}).limit(200)
     var convertDate = []
