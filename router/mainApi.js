@@ -7,12 +7,20 @@ const axios = require("axios")
 const { default: fetch } = require("node-fetch");
 const dataSchema = require('../models/data')
 const authApi = require('./authApi');
+const reportApi = require('./reportApi');
 const jalali_to_gregorian = require('../middleware/DateConvert');
 router.use('/auth', authApi)
+router.use('/report', reportApi)
+
 
 router.post('/data-list',jsonParser, async (req,res)=>{
     var pageSize = req.body.pageSize?req.body.pageSize:"10";
     var offset = req.body.offset?(parseInt(req.body.offset)):0;
+    var nowDate = new Date().toISOString().slice(0, 10).split('-')
+    var defaultDate = parseInt(nowDate[0])-1+"/"+
+    nowDate[1]+"/"+nowDate[2]
+    
+    //console.log("def: ",defaultDate)
     var data={
         title:req.body.title,
         malek:req.body.malek,
@@ -20,7 +28,7 @@ router.post('/data-list',jsonParser, async (req,res)=>{
         dateFrom:
             req.body.dateFrom?req.body.dateFrom[0]+"/"+
             req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
-            new Date().toISOString().slice(0, 10)+" 00:00",
+            defaultDate+" 00:00",
             //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
         dateTo:
             req.body.dateTo?req.body.dateTo[0]+"/"+
@@ -32,6 +40,9 @@ router.post('/data-list',jsonParser, async (req,res)=>{
             { $match:data.title?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
                 {abstract:new RegExp('.*' + data.title + '.*')}]}:{}},
+            { $match:data.malek?{$or:[
+                {malek:new RegExp('.*' + data.malek + '.*')},
+                {inventor:new RegExp('.*' + data.malek + '.*')}]}:{}},
             { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
