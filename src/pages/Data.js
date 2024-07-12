@@ -77,7 +77,7 @@ function Data(props) {
       },
       body: JSON.stringify(body),
     };
-    console.log(postOptions);
+    //console.log(postOptions);
     fetch(env.siteApi + "/data-list", postOptions)
       .then((res) => res.json())
       .then(

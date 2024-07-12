@@ -11,7 +11,6 @@ function DataTableRow(props){
   const data=props.data
   const lang=props.lang;
   const cart = props.cart
-console.log(data);
     return(<React.Fragment>
         <tr 
             className={activeAcc?"activeAccordion":"accordion"}>

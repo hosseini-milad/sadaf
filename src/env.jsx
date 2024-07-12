@@ -1,10 +1,10 @@
 
 const env={
-    //siteApi:'http://localhost:2030/api',
-    siteApi:'https://sadafadmin.sepehrai.ir/api',
+    siteApi:'http://localhost:2030/api',
+    //siteApi:'https://sadafadmin.sepehrai.ir/api',
     
-    //siteApiUrl:'http://localhost:2030',
-    siteApiUrl:'https://sadafadmin.sepehrai.ir',
+    siteApiUrl:'http://localhost:2030',
+    //siteApiUrl:'https://sadafadmin.sepehrai.ir',
     cookieName:'sadaf-login',
     //cookieName:'panel-login',
     //cookieName:'mehr-login',
@@ -57,5 +57,13 @@ export function normalPriceCount(priceText,count){
     )
 }
 
-
+export const CalcDataYear=(data)=>{
+  var resultArray=new Array(12).fill(0)
+  for(var i=0;i<data.length;i++){
+    var monthIndex = parseInt(data[i].month)-1
+    
+    resultArray[monthIndex] = data[i].data&&data[i].data.length
+  }
+  return(resultArray)
+}
 export default env
