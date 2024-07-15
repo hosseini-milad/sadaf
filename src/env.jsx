@@ -1,10 +1,10 @@
 
 const env={
-    //siteApi:'http://localhost:2030/api',
-    siteApi:'https://sadafadmin.sepehrai.ir/api',
+    siteApi:'http://localhost:2030/api',
+    //siteApi:'https://sadafadmin.sepehrai.ir/api',
     
-    //siteApiUrl:'http://localhost:2030',
-    siteApiUrl:'https://sadafadmin.sepehrai.ir',
+    siteApiUrl:'http://localhost:2030',
+    //siteApiUrl:'https://sadafadmin.sepehrai.ir',
     cookieName:'sadaf-login',
     //cookieName:'panel-login',
     //cookieName:'mehr-login',
