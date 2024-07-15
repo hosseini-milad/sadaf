@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import env from "../../env";
 import SingleIdea from "../FindIdea/SingleIdea";
 
-function ReportHolder(){
+function ReportHolder(props){
     const [content,setContent] = useState()
 useEffect(()=>{
   const body = {
@@ -13,7 +13,7 @@ useEffect(()=>{
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify({...props.filter,pageSize:12}),
   };
   fetch(env.siteApi + "/data-list", postOptions)
     .then((res) => res.json())
@@ -26,7 +26,7 @@ useEffect(()=>{
         console.log(error);
       }
     );
-},[])
+},[props.filter])
     return(
         <section className="wf-section wf-product-cards -neutral -padding-top-xs -padding-bottom-md">
             <div className="wf-section-wrapper">

@@ -2,7 +2,8 @@
 function Login(props){
     
    return(
-      <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
+      <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
+         style={{backgroundColor:"#ff5c35"}}>
          <div className="auth-box marketing-box">
             <div className="signup-link">
                <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">حساب کاربری ندارید؟</i18n-string>

@@ -743,7 +743,7 @@ button {
   font-weight:var(--wf-product-cards-feature-list-heading-font-weight);
   line-height:var(--wf-product-cards-feature-list-heading-line-height);
   margin-block:1rem;
-  
+  width: 80%;
   overflow: hidden;
   white-space: nowrap; /* Don't forget this one */
   text-overflow: ellipsis;
@@ -1078,4 +1078,42 @@ button {
   background-size:1rem;
   height:4rem;
   width:4rem
+}
+.wf-product-cards__features{
+  position: relative;
+}
+.wf-product-cards__features sub{
+  font-size: 11px;
+  position: absolute;
+  top:20px;
+  left: 0px;
+  cursor: pointer;
+  height: 30px;
+}
+.wf-product-cards__features sub:hover{
+  color: #005896;
+}
+.wf-product-cards__features small{
+  
+}
+.malekPopHolder{
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  background-color: #fff;
+  border: 1px solid silver;
+  padding: 10px 10px 10px 30px;
+  border-radius: 15px;
+  min-width: 230px;
+  z-index: 20;
+}
+.malekClose{
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.malekPop{
+  
 }

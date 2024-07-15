@@ -8,7 +8,7 @@ function Host(props){
       <div className="wf-company-story_grid - -medium-media" tabindex="-1">
         <div className="wf-company-story_media" data-cl-modal="wf-company-story_media-modal-homepage_company_story-1">
           <button className="cl-playButton -small wf-company-story_play-button -brand" aria-label="Play video: How HubSpot works" data-cl-modal="wf-company-story_media-modal-homepage_company_story-1" data-hs-event-72370834="1"></button>
-          <img src="/img/hub/HomepageVideo.webp" alt="How HubSpot works" height="620" width="1054" loading="lazy" />
+          <img src="/img/hub/thumbVideo.jpg" alt="How HubSpot works" height="620" width="1054" loading="lazy" />
         </div>
         <div className="wf-company-story_rich-text -light">
           <h2 className="wf-company-story_rich-text-heading  ">صدف ها چیست؟</h2>

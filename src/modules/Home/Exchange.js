@@ -9,7 +9,8 @@ function Exchange(props){
 const [content,setContent] = useState()
 useEffect(()=>{
   const body = {
-    access: "",
+    access: "site",
+    offset:"6"
   };
   const postOptions = {
     method: "post",
@@ -18,7 +19,7 @@ useEffect(()=>{
     },
     body: JSON.stringify(body),
   };
-  fetch(env.siteApi + "/data-list", postOptions)
+  fetch(env.siteApi + "/data-web-list", postOptions)
     .then((res) => res.json())
     .then(
       (result) => {

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function ReportFilter(){
+function ReportFilter(props){
     const [tab,setTab] = useState(-1)
     return(
         <div className="product-core-header__accordion-container">
@@ -13,7 +13,12 @@ function ReportFilter(){
                         </label>
                      </div>
                      <div className="private-form__input-wrapper">
-                        <input id="username" type="email" tabindex="1" aria-labelledby="UIFormControl-label-2" className="form-control private-form__control login-email" value=""/>
+                        <input id="username" tabindex="1" className="form-control private-form__control login-email"
+                        onChange={(e)=>e.target.value.length>3?
+                            props.setFilter((prevState) => ({
+                            ...prevState,
+                            title: e.target.value,
+                          })):{}}/>
                      </div>
                      <div className="private-form__meta">
                         <div className="private-form__messages"></div>

@@ -22,7 +22,7 @@ function Slider(props){
               <p class="wf-page-header__disclaimer -small">جامع ترین پایگاه داده در کل کشور</p>
             </div>
             <div class="wf-page-header__image-wrapper ">
-              <img src="/img/hub/homepage-hero-ai.webp"/>
+              <img src="/img/hub/sliderSide.jpg"/>
             </div>
           </div>
         </div>
