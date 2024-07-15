@@ -8,9 +8,11 @@ const { default: fetch } = require("node-fetch");
 const dataSchema = require('../models/data')
 const authApi = require('./authApi');
 const reportApi = require('./reportApi');
+const ideaApi = require('./ideaApi');
 const jalali_to_gregorian = require('../middleware/DateConvert');
 router.use('/auth', authApi)
 router.use('/report', reportApi)
+router.use('/data', ideaApi)
 
 
 router.post('/data-list',jsonParser, async (req,res)=>{
@@ -39,6 +41,8 @@ router.post('/data-list',jsonParser, async (req,res)=>{
         const dataList = await dataSchema.aggregate([
             { $match:data.title?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
+                {ezharname:new RegExp('.*' + data.title + '.*')},
+                {sabtNo:new RegExp('.*' + data.title + '.*')},
                 {abstract:new RegExp('.*' + data.title + '.*')}]}:{}},
             { $match:data.malek?{$or:[
                 {malek:new RegExp('.*' + data.malek + '.*')},
