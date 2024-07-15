@@ -12112,7 +12112,7 @@ ul.inline li {
   z-index:10
 }
 .hsg-breadcrumbs__item:not(:first-child)::before {
-  content:url("//cdn2.hubspot.net/hubfs/53/Partners%20Redesign%202019/Images/Icons/Caret-Right.svg");
+  content:url("//cdn2.hubspot.net/hubfs/53/Partners%20Redesign%202019/Images/Icons/Caret-Left.svg");
   padding:0 0.5em;
   position:relative;
   bottom:-2px

@@ -18,6 +18,7 @@ import reportWebVitals from './reportWebVitals';
 import Layout from './Components/Layout';
 import Login from './Pages/Login';
 import Report from './Pages/Report';
+import Idea from './Pages/Idea';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
           <Route path="/report" element={<Layout><Report /></Layout>}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Login />}/>
+          <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
         </Routes>
     </Router>
 );
