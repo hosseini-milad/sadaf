@@ -48,7 +48,8 @@ function SingleIdea(props){
                 </div>
                 <div className="wf-product-cards__cta-wrapper">
                   <a className="cl-button -primary -medium wf-product-cards__cta homepage-marketing" 
-                        href={data.url} target="_blank" rel="noreferrer "> اطلاعات بیشتر
+                        href={"/report/"+data._id} //target="_blank" rel="noreferrer "
+                        > اطلاعات بیشتر
                   </a>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import './css/index.css';
 import './css/fontAwesome.css';
 import './css/reyham.css';
 import './css/overide.css';
+import './css/card.css';
 import {
   BrowserRouter as Router,
   Routes,

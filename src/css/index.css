@@ -12588,9 +12588,19 @@ ul.inline li {
 @media(min-width:768px) {
   .product-core-header__text {
     padding:0 .5rem 0 0;
-    width:45%
+    width:49%
   }
 }
+.accField{
+  list-style: circle !important;
+  display: list-item;
+}
+.accField li {
+  list-style: disc outside none;
+  display: list-item;
+  margin-right: 2em;
+  padding-right: 5px;
+  }
 .product-core-header__text-intro {
   display:block;
   font-weight:500
