@@ -7,10 +7,12 @@ import IdeaTab from "../FindIdea/IdeaTab";
 function Exchange(props){
   //window.scrollTo(0, 270);},[pageNumber,filters,perPage,refreshTable])
 const [content,setContent] = useState()
+const [search,setSearch] = useState()
 useEffect(()=>{
   const body = {
     access: "site",
-    offset:"6"
+    pageSize:"6",
+    search:search
   };
   const postOptions = {
     method: "post",
@@ -30,11 +32,12 @@ useEffect(()=>{
         console.log(error);
       }
     );
-},[])
+},[search])
+console.log(search)
    return(
 
     <div id="hs_cos_wrapper_homepage_product_overview" className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module">
-      <IdeaTab />
+      <IdeaTab setSearch={setSearch} search={search}/>
       <section className="wf-section wf-product-cards -neutral -padding-top-xs -padding-bottom-md">
         <div className="wf-section-wrapper">
           {/*<ReactCardSlider slides={slides}/>*/}

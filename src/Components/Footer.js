@@ -12,20 +12,20 @@ const Footer = (props)=>{
                 </h2>
                 <ul>
                   <li className="hsg-footer__nav-item" data-order="0">
-                    <a className="ga_nav_link " href="https://www.sadaf.ir/products?hubs_content=www.sadaf.ir/products/crm&amp;hubs_content-cta=%0A%20%20%20%20%20%20%20%20All%20Products%20and%20Features" data-order="0" data-linkorder="0" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="Popular Features > All Products and Features"> تمامی دسته بندی ها</a>
+                    <a className="ga_nav_link " href="#"> تمامی دسته بندی ها</a>
                   </li>
                   <li className="hsg-footer__nav-item" data-order="1">
-                    <a className="ga_nav_link " href="https://www.sadaf.ir/products/sales/schedule-meeting?hubs_content=www.sadaf.ir/products/crm&amp;hubs_content-cta=%0A%20%20%20%20%20%20%20%20Free%20Meeting%20Scheduler%20App" data-order="1" data-linkorder="1" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="Popular Features > Free Meeting Scheduler App"> فنی مهندسی</a>
+                    <a className="ga_nav_link " href="#"> فنی مهندسی</a>
                   </li>
                   <li className="hsg-footer__nav-item" data-order="2">
-                    <a className="ga_nav_link " href="https://www.sadaf.ir/products/artificial-intelligence?hubs_content=www.sadaf.ir/products/crm&amp;hubs_content-cta=%0A%20%20%20%20%20%20%20%20sadaf%20AI%20Tools" data-order="2" data-linkorder="2" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="Popular Features > sadaf AI Tools"> علوم انسانی</a>
+                    <a className="ga_nav_link " href="#"> علوم انسانی</a>
                   </li>
                   
                   <li className="hsg-footer__nav-item" data-order="16">
-                    <a className="ga_nav_link " href="https://www.sadaf.ir/products/marketing/landing-pages?hubs_content=www.sadaf.ir/products/crm&amp;hubs_content-cta=%0A%20%20%20%20%20%20%20%20Free%20Landing%20Page%20Builder" data-order="16" data-linkorder="15" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="Popular Features > Free Landing Page Builder"> صنایع نظامی</a>
+                    <a className="ga_nav_link " href="#"> صنایع نظامی</a>
                   </li>
                   <li className="hsg-footer__nav-item" data-order="17">
-                    <a className="ga_nav_link " href="https://www.sadaf.ir/products/cms/web-hosting?hubs_content=www.sadaf.ir/products/crm&amp;hubs_content-cta=%0A%20%20%20%20%20%20%20%20Free%20Web%20Hosting" data-order="17" data-linkorder="16" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="Popular Features > Free Web Hosting"> لجستیک</a>
+                    <a className="ga_nav_link " href="#"> لجستیک</a>
                   </li>
                 </ul>
               </section>

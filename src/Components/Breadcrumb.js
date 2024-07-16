@@ -1,5 +1,6 @@
 
 const BreadCrumb = (props)=>{
+  const content = props.content
     return(
       <div id="hs_cos_wrapper_all_hubs_breadcrumbs" 
         className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
@@ -16,7 +17,7 @@ const BreadCrumb = (props)=>{
               </li>
               <li className="hsg-breadcrumbs__item">
                 <a className="hsg-breadcrumbs__link current-link" 
-                  href="/report/123"> نام اختراع </a>
+                  href="#"> {content.title} </a>
               </li>
             </ul>
           </div>

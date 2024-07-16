@@ -1117,3 +1117,28 @@ button {
 .malekPop{
   
 }
+.hsg-accordion__label sup{
+  font-size: 12px;
+  margin: 0;
+  position: absolute;
+  right: 50px;
+  color: orangered;
+}
+
+.activeAcc{
+  background-color: #b3361d;
+  color: #fff;
+}
+.activeAcc:hover{
+  color: #b3361d;
+}
+.ideaDate{
+  float:left;
+  padding: 10px;
+}
+.activeIcon{
+ border-right: 14px solid green;
+}
+.deactiveIcon{
+  border-right: 14px solid silver;
+}

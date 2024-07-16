@@ -7,7 +7,7 @@ function ExtraInfo(props){
     <div class="wf-section-wrapper wf-link-to-content">
         <div class="wf-link-to-content-header -center">
             <h2 id="all_hubs_resources_heading" class="wf-link-to-content-header-heading h2">
-                ضمایم</h2>
+                دریافت ضمایم</h2>
             <p class="wf-link-to-content-header-subheading"> (شرح و توصیف،ادعانامه،نقشه)</p>
         </div>
         <div class="wf-link-to-content-body">

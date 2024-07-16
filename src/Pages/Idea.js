@@ -23,7 +23,7 @@ function Idea(props){
       <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
          {content?
             <div className="IdeaMainHolder">
-               <BreadCrumb />
+               <BreadCrumb content={content}/>
                <IdeaHeader content={content}/>
                <ExtraInfo content = {content}/>
             </div>:

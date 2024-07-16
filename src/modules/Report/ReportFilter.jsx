@@ -1,7 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function ReportFilter(props){
+    const [search,setSearch] = useState('')
+    
+    const [year,setYear] = useState('')
     const [tab,setTab] = useState(-1)
+    useEffect(()=>{
+        if(search.length<3) return
+        const timeOutId = setTimeout(() => 
+            props.setFilter((prevState) => ({
+                ...prevState,
+                title: search,
+              })), 1000);
+        return () => clearTimeout(timeOutId);
+    },[search])
+    useEffect(()=>{
+        props.setFilter((prevState) => ({
+            ...prevState,
+            year: year,
+            }))
+        
+    },[year])
     return(
         <div className="product-core-header__accordion-container">
             <div className="private-form__control-wrapper">
@@ -14,11 +33,9 @@ function ReportFilter(props){
                      </div>
                      <div className="private-form__input-wrapper">
                         <input id="username" tabindex="1" className="form-control private-form__control login-email"
-                        onChange={(e)=>e.target.value.length>3?
-                            props.setFilter((prevState) => ({
-                            ...prevState,
-                            title: e.target.value,
-                          })):{}}/>
+                        placeholder="عبارت، شماره ثبت یا ..." value={search}
+                        onChange={(e)=>
+                            setSearch(e.target.value)}/>
                      </div>
                      <div className="private-form__meta">
                         <div className="private-form__messages"></div>
@@ -39,15 +56,24 @@ function ReportFilter(props){
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-0" aria-hidden="true">
                     <div className="accHolder">
-                        <div className="accItem">فنی مهندسی</div>
-                        <div className="accItem">علوم انسانی</div>
-                        <div className="accItem">صنایع نظامی</div>
+                        <div className={search=="مهندسي"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("مهندسي")}>
+                                فنی مهندسی</div>
+                        <div className={search=="پزشكي"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("پزشكي")}>
+                                پزشكي</div>
+                        <div className={search=="نانو"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("نانو")}>
+                                نانو تکنولوژی</div>
+                        <div className={search=="نظامي"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("نظامي")}>
+                            صنایع نظامی</div>
                     </div>
                 </div>
                 </li>
-                <li className={tab==1?"hsg-accordion__item active" :"hsg-accordion__item"} 
-                onClick={()=>setTab(tab==1?-1:1)}>
-                <button className="hsg-accordion__label" aria-controls="hsg-accordion__content-1" aria-expanded="false" data-hs-event-72370834="1">
+                <li className={tab==1?"hsg-accordion__item active" :"hsg-accordion__item"} >
+                <button className="hsg-accordion__label" 
+                    onClick={()=>setTab(tab==1?-1:1)}>
                     <h3 className="hsg-accordion__label-text marketing-hero-pricing">سال ثبت <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
                         <span className="hsg-accordion__icon -expand">+</span>
                         <span className="hsg-accordion__icon -collapse">_</span>
@@ -56,20 +82,27 @@ function ReportFilter(props){
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-1" aria-hidden="true">
                     <div className="accHolder">
-                        <div className="accItem">1403</div>
-                        <div className="accItem">1402</div>
-                        <div className="accItem">1401</div>
-                        <div className="accItem">1400</div>
+                        <div className={year=="1403"?"accItem activeAcc" :"accItem"}
+                        onClick={()=>setYear("1403")}>1403</div>
+                        <div className={year=="1402"?"accItem activeAcc" :"accItem"}
+                        onClick={()=>setYear("1402")}>1402</div>
+                        <div className={year=="1401"?"accItem activeAcc" :"accItem"}
+                        onClick={()=>setYear("1401")}>1401</div>
+                        <div className={year=="1400"?"accItem activeAcc" :"accItem"}
+                        onClick={()=>setYear("1400")}>1400</div>
+                        <div className={year=="old"?"accItem activeAcc" :"accItem"}
+                        onClick={()=>setYear("old")}>قبل از 1400</div>
                     </div>
                 </div>
                 </li>
-                <li className={tab==2?"hsg-accordion__item active" :"hsg-accordion__item"} 
+                <li className={tab==2?"hsg-accordion__item active" :"hsg-accordion__item"}>
+                <button className="hsg-accordion__label" 
                     onClick={()=>setTab(tab==2?-1:2)}>
-                <button className="hsg-accordion__label" aria-controls="hsg-accordion__content-2" aria-expanded="false" data-hs-event-72370834="1">
-                    <h3 className="hsg-accordion__label-text marketing-hero-features">مکان <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
-                        <span className="hsg-accordion__icon -expand">+</span>
-                        <span className="hsg-accordion__icon -collapse">_</span>
-                    </span>
+                    <h3 className="hsg-accordion__label-text marketing-hero-features">مکان <sup>به زودی</sup>
+                        <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
+                            <span className="hsg-accordion__icon -expand">+</span>
+                            <span className="hsg-accordion__icon -collapse">_</span>
+                        </span>
                     </h3>
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-2" aria-hidden="true">

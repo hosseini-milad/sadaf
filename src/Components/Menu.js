@@ -40,7 +40,7 @@ const Menu = (props)=>{
                     </button>
                   </div>
                   
-                  <SoftWareMenu tab={tab}/>
+                  {/*<SoftWareMenu tab={tab}/>*/}
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
                   <div className="hsg-nav__link-wrapper">
@@ -56,7 +56,7 @@ const Menu = (props)=>{
                       <span className="hsg-nav__link-label"> راهنمای ثبت </span>
                     </button>
                   </div>
-                  <ResourceMenu tab={tab} />
+                  {/*<ResourceMenu tab={tab} />*/}
                 </li>
                 <li className="hsg-nav__group-item  hsg-nav__group-item--has-dropdown  hsg-nav__group-item--about-mobile">
                   <div className="hsg-nav__link-wrapper">

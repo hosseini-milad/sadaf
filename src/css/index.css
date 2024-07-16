@@ -12540,9 +12540,6 @@ ul.inline li {
   padding:0 1rem
 }
 @media(min-width:768px) {
-  .product-core-header__container.right {
-    flex-direction:row-reverse
-  }
   .product-core-header__container.right__image {
     padding-right:0;
     text-align:right;
@@ -12869,4 +12866,6 @@ ul.inline li {
 .product-core-header__image.hidden {
   display:none
 }
-
+.product-core-header__text p{
+  text-align: justify;
+}
