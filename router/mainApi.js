@@ -12,7 +12,7 @@ const ideaApi = require('./ideaApi');
 const jalali_to_gregorian = require('../middleware/DateConvert');
 router.use('/auth', authApi)
 router.use('/report', reportApi)
-router.use('/data', ideaApi)
+router.use('/data', ideaApi) 
 
 
 router.post('/data-list',jsonParser, async (req,res)=>{
@@ -26,6 +26,7 @@ router.post('/data-list',jsonParser, async (req,res)=>{
     var data={
         title:req.body.title,
         malek:req.body.malek,
+        year:req.body.year,
         fill:req.body.fill,
         dateFrom:
             req.body.dateFrom?req.body.dateFrom[0]+"/"+
@@ -48,6 +49,8 @@ router.post('/data-list',jsonParser, async (req,res)=>{
                 {malek:new RegExp('.*' + data.malek + '.*')},
                 {inventor:new RegExp('.*' + data.malek + '.*')}]}:{}},
             { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}},
+            { $match:data.year?data.year=="old"?{sabtDate:new RegExp('.*13.*')}:
+                {sabtDate:new RegExp('.*' + data.year + '.*')}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
             { $sort: {"date":-1}},
