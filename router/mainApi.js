@@ -49,7 +49,7 @@ router.post('/data-list',jsonParser, async (req,res)=>{
                 {malek:new RegExp('.*' + data.malek + '.*')},
                 {inventor:new RegExp('.*' + data.malek + '.*')}]}:{}},
             { $match:data.fill?{title:{$exists:data.fill=="فعال"?true:false}}:{}},
-            { $match:data.year?data.year=="old"?{sabtDate:new RegExp('.*13.*')}:
+            { $match:data.year?data.year=="old"?{sabtDate:new RegExp('13.*')}:
                 {sabtDate:new RegExp('.*' + data.year + '.*')}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
