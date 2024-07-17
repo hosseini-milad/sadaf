@@ -24,7 +24,7 @@ router.post('/data-list',jsonParser, async (req,res)=>{
     
     //console.log("def: ",defaultDate)
     var data={
-        title:req.body.title,
+        title:StandardInput(req.body.title),
         malek:req.body.malek,
         year:req.body.year,
         fill:req.body.fill,
@@ -228,6 +228,12 @@ const notNull = (array)=>{
             tempArray.push(array[i])
     }
     return(tempArray)
+}
+const StandardInput =(text)=>{
+    if(!text) return ""
+    var newText = text.replace( /ی/g, 'ي')
+    newText = newText.replace( /ک/g, 'ك')
+    return(newText)
 }
 
 module.exports = router;
