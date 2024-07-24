@@ -52,7 +52,7 @@ router.post('/get-data',jsonParser,auth, async (req,res)=>{
             { $match:data.ezharname?{ezharname:new RegExp('.*' + data.ezharname + '.*')}:{}},
             { $match:data.sabtNo?{sabtNo:new RegExp('.*' + data.sabtNo + '.*')}:{}},
             { $sort: {"date":-1}},
-     
+            { $limit: 10},
         ])
 
 
