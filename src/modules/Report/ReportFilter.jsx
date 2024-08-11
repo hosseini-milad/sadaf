@@ -56,18 +56,21 @@ function ReportFilter(props){
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-0" aria-hidden="true">
                     <div className="accHolder">
-                        <div className={search=="مهندسي"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("مهندسي")}>
-                                فنی مهندسی</div>
-                        <div className={search=="پزشكي"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("پزشكي")}>
-                                پزشكي</div>
-                        <div className={search=="نانو"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("نانو")}>
-                                نانو تکنولوژی</div>
-                        <div className={search=="نظامي"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("نظامي")}>
-                            صنایع نظامی</div>
+                        <div className={search=="ایده"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("ایده")}>
+                                ایده‌پردازی و برنامه‌ریزی </div>
+                        <div className={search=="تحقیق"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("تحقیق")}>
+                                تحقیق و توسعه محتوا </div>
+                        <div className={search=="محتوا"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("محتوا")}>
+                                تولید محتوا </div>
+                        <div className={search=="ویرایش"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("ویرایش")}>
+                            ویرایش و بهینه‌سازی </div>
+                        <div className={search=="انتشار"?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setSearch("انتشار")}>
+                            توزیع و انتشار</div>
                     </div>
                 </div>
                 </li>
@@ -98,7 +101,7 @@ function ReportFilter(props){
                 <li className={tab==2?"hsg-accordion__item active" :"hsg-accordion__item"}>
                 <button className="hsg-accordion__label" 
                     onClick={()=>setTab(tab==2?-1:2)}>
-                    <h3 className="hsg-accordion__label-text marketing-hero-features">مکان <sup>به زودی</sup>
+                    <h3 className="hsg-accordion__label-text marketing-hero-features">موقعیت جغرافیایی <sup>به زودی</sup>
                         <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
                             <span className="hsg-accordion__icon -expand">+</span>
                             <span className="hsg-accordion__icon -collapse">_</span>

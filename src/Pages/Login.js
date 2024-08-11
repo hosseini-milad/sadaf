@@ -3,12 +3,12 @@ function Login(props){
     
    return(
       <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module"
-         style={{backgroundColor:"#ff5c35"}}>
+         style={{backgroundColor:"var(--main-color)"}}>
          <div className="auth-box marketing-box">
             <div className="signup-link">
                <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">حساب کاربری ندارید؟</i18n-string>
                <a className="private-link uiLinkWithoutUnderline m-left-1 uiLinkDark" href="https://app.hubspot.com/signup-hubspot/crm?hubs_signup-cta=login-signup-cta&amp;hubs_signup-url=app.hubspot.com%2Flogin" tabindex="0" aria-disabled="false">
-                  <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.ctaVariantB">به راحتی به ما ملحق شوید</i18n-string>
+                  <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.ctaVariantB">ایجاد حساب کاربری</i18n-string>
                </a>
             </div>
             <form style={{backgroundColor: "white;"}} id="hs-login">
@@ -73,26 +73,6 @@ function Login(props){
                </button>
                <hr/>
                <div className="LoginOptionsstyles__ThirdPartyLoginWrapper-mv5y1z-0 AOjGZ">
-                  <button data-test-id="apple-sign-in" aria-disabled="false" className="apple-sign-in width-100 m-left-0 private-button--unstyled" data-button-use="unstyled" tabindex="0" type="button">
-                  <div className="AppleLoginButtonstyles__AppleSignInDiv-fw8yvo-0 kkLsIR">
-                     <span className="AppleLoginButtonstyles__ImageWrapper-fw8yvo-2 dULhvu">
-                        <img alt="" className="private-image img-responsive private-image--responsive" src="//static.hsappstatic.net/LoginUI/static-1.9163/img/apple-logo.png"/>
-                     </span>
-                     <span className="AppleLoginButtonstyles__ButtonText-fw8yvo-1 ejUfmv">
-                        <span className="private-truncated-string width-100" data-content="true">
-                        <span className="private-truncated-string__inner">
-                           <span className="private-truncated-string__reverse">
-                              <span className="private-truncated-string__reverse__tail">
-                              <span className="private-truncated-string__reverse__content">
-                                 <i18n-string data-locale-at-render="en-us" data-key="login.form.apple">ورود با دولت من</i18n-string>
-                              </span>
-                              </span>
-                           </span>
-                        </span>
-                        </span>
-                     </span>
-                  </div>
-                  </button>
                   <button data-test-id="sso-login-button" id="ssoBtn" aria-disabled="false" className="uiButton private-button private-button--tertiary private-button--default width-100 private-button--non-link" data-button-use="tertiary" tabindex="0" type="button">
                   <span className="private-truncated-string width-100" data-content="true">
                      <span className="private-truncated-string__inner">

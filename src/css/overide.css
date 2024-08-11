@@ -67,7 +67,7 @@
 }
 .ReportHolder{
   width: 75%;
-  background-color: var(--cl-color-background-03);
+  background-color: var(--main-color);
   padding: 0 3%;
 }
 

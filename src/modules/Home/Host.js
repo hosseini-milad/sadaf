@@ -11,12 +11,12 @@ function Host(props){
           <img src="/img/hub/thumbVideo.jpg" alt="How HubSpot works" height="620" width="1054" loading="lazy" />
         </div>
         <div className="wf-company-story_rich-text -light">
-          <h2 className="wf-company-story_rich-text-heading  ">صدف ها چیست؟</h2>
+          <h2 className="wf-company-story_rich-text-heading  ">رویداد تانا چیست؟</h2>
           <div className="cl-rich-text">
             <p>
-              <span>سامانه جامع صدف مخفف عبارت زیر است، این سامانه به منظور یکپارچه سازی
-                و راهنمای دانشجویان و اساتید برای ثبت ایده های علمی، پژوهشی است. این سامانه 
-                با قابلیت جستجو در میان تمامی اختراعات ثبت شده، می تواند راهنمای بسیار خوبی برای ثبت اختراع باشد
+              <span>
+              فرصتی برای رفع نیازهای اساسی نهادها، دستگاهها و بنگاه‌های اقتصادی استان،
+               با استفاده از ظرفیت‌های زیست بوم نوآوری و فناوری، از طریق انتقال و تبادل فناوری با حمایت‌های ملی و استانی.
               </span>
             </p>
             <p>

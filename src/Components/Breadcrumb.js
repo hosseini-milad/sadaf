@@ -13,7 +13,7 @@ const BreadCrumb = (props)=>{
               </li>
               <li className="hsg-breadcrumbs__item">
                 <a className="hsg-breadcrumbs__link " 
-                  href="/report"> مالکیت فکری </a>
+                  href="/report"> تقاضای فناوری </a>
               </li>
               <li className="hsg-breadcrumbs__item">
                 <a className="hsg-breadcrumbs__link current-link" 

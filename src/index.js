@@ -6,6 +6,7 @@ import './css/fontAwesome.css';
 import './css/reyham.css';
 import './css/overide.css';
 import './css/card.css';
+import './css/form.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,6 +21,7 @@ import Layout from './Components/Layout';
 import Login from './Pages/Login';
 import Report from './Pages/Report';
 import Idea from './Pages/Idea';
+import RegReq from './Pages/RegReq';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +33,9 @@ root.render(
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Login />}/>
           <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
+
+          
+          <Route path="/reg-request" element={<Layout><RegReq /></Layout>}/>
         </Routes>
     </Router>
 );

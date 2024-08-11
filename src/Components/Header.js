@@ -5,7 +5,7 @@ const Header = (props)=>{
   
     return(
       <header className="hsg-nav__wrapper ">
-        <HeaderTop />
+        {/*<HeaderTop />*/}
         <Menu />
         <div id="hsg-main-content" tabIndex="-1"></div>
       </header>
