@@ -77,6 +77,96 @@ router.post('/reg-req',jsonParser, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+router.post('/req-list',jsonParser, async (req,res)=>{
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
+    var nowDate = new Date().toISOString().slice(0, 10).split('-')
+    var defaultDate = parseInt(nowDate[0])-1+"/"+
+    nowDate[1]+"/"+nowDate[2]
+    
+    //console.log("def: ",defaultDate)
+    var data={
+        title:StandardInput(req.body.title),
+        nahad:req.body.nahad,
+        year:req.body.year,
+        category:req.body.category,
+        dateFrom:
+            req.body.dateFrom?req.body.dateFrom[0]+"/"+
+            req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
+            defaultDate+" 00:00",
+            //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
+        dateTo:
+            req.body.dateTo?req.body.dateTo[0]+"/"+
+            req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
+            new Date().toISOString().slice(0, 10)+" 23:59",
+    }
+    try{
+        const dataList = await ReqSchema.aggregate([
+            { $match:data.title?{$or:[
+                {title:new RegExp('.*' + data.title + '.*')},
+                {proofUsage:new RegExp('.*' + data.title + '.*')},
+                {nahad:new RegExp('.*' + data.title + '.*')},
+                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
+            
+            { $match:data.category?{category:data.category}:{}},
+            { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
+            { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
+            { $sort: {"date":-1}},
+     
+        ])
+
+        const pageData = dataList.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+
+
+        res.json({data:pageData,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/data-req-list',jsonParser, async (req,res)=>{
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
+    var search = req.body.search
+    try{
+        const dataList = await ReqSchema.aggregate([
+            { $match:search?{$or:[
+                {title:new RegExp('.*' + data.title + '.*')},
+                {proofUsage:new RegExp('.*' + data.title + '.*')},
+                {nahad:new RegExp('.*' + data.title + '.*')},
+                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
+            { $sort: {"date":-1}},
+     
+        ])
+
+        const pageData = dataList.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+
+
+        res.json({data:pageData,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.get('/get-req/:id',jsonParser, async (req,res)=>{
+    const url = req.url.split('/').pop()
+    console.log(url)
+    try{
+        const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)})
+        if(dataDetail)
+            res.status(200).json({data:dataDetail,message:"اطلاعات پیدا شد"})
+        else
+            res.status(400).json({error:"اطلاعات پیدا نشد"})
+        
+    }
+    catch(error){
+        res.status(400).json({error:error})
+    }
+})
+
 const StandardInput =(text)=>{
     if(!text) return ""
     var newText = text.replace( /ی/g, 'ي')

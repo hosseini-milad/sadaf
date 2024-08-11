@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ReqSchema = new mongoose.Schema({
-  title: { type: String,unique:true},
+  title: { type: String,unique:true,require:true},
   nahad: { type: String},
   category: { type: String},
   categoryId:{type:String},
