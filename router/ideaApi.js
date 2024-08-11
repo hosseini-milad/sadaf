@@ -8,6 +8,7 @@ const dataSchema = require('../models/data')
 const jalali_to_gregorian = require('../middleware/DateConvert');
 const DateCat = require('../middleware/DateCat');
 const data = require('../models/data');
+const ReqSchema = require('../models/request')
 
 const auth = require("../middleware/auth");
 
@@ -57,6 +58,20 @@ router.post('/get-data',jsonParser,auth, async (req,res)=>{
 
 
         res.json({data:dataList,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/reg-req',jsonParser, async (req,res)=>{
+    
+    var req=req.body
+    try{
+        const reqList = await ReqSchema.create(req)
+
+
+        res.json({data:reqList,message:"اطلاعات ثبت شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
