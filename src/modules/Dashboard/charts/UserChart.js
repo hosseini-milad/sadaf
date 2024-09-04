@@ -1,31 +1,34 @@
 
 import { Bar ,Line} from 'react-chartjs-2';
+import { CalcDataYear } from '../../../env';
 
 
 function UserChart(props){
   const data = props.data
+  console.log(data)
     const labels = props.label
-    const creditMehr = ["12","11","13","10","5","12","11","13","10","5","14","22"]
-    const creditSahand =["13","11","12","0","0","0","0","0","0","0","0","0"]
-    const fobMehr = data?data.fob.mehr:["130","100","80","50","20","120","130","80","50","120","110","82"]
-    const fobSahand = data?data.fob.sahand:["140","130","120","0","0","0","0","0","0","0","0","0"]
+    const thisYear = ["12","11","13","10","5","12","11","13","10","5","14","22"]
+    const lastYear =["13","11","12","0","0","0","0","0","0","0","0","0"]
+    //const fobMehr = ["130","100","80","50","20","120","130","80","50","120","110","82"]
+    //const fobSahand =["140","130","120","0","0","0","0","0","0","0","0","0"]
     
     const chartData = {
         labels,
         color:'rgb(255, 255, 2555)',
-        datasets: [
+        datasets: data.map((year,i)=>(
           {
-            label: "حقیقی" ,
-            data: creditMehr,
+            label: year.year ,
+            data: CalcDataYear(year.data),
             barPercentage: 0.5,
             barThickness: 16,
             maxBarThickness: 18,
             minBarLength: 2,
-            backgroundColor: ["#EC1616"],
+            backgroundColor: year.color,
             color:['rgb(255, 255, 255)'],
-            stack: 'Stack 0',
-          },
-          {
+            stack: 'Stack '+i,
+          }))
+        }
+        /*  {
             label: '1402/حقوقی',
             data: fobMehr,
             barPercentage: 0.5,
@@ -61,7 +64,7 @@ function UserChart(props){
             stack: 'Stack 1',
           }
         ],
-      };
+      };*/
     const options = {
       responsive: true,
       plugins: {

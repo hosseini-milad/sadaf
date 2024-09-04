@@ -39,7 +39,7 @@ function Dashboard(props){
       ChartJS.defaults.color = '#eee'
     if(token&&token.access==="manager")
       return(
-    <div class="container-fluid py-4" style={{direction:direction}}>
+    <div className="container-fluid py-4" style={{direction:direction}}>
         <DashBoardDaily direction={direction} lang={lang}/>
         <DashboardChart />
         {/*<DashBoardState direction={direction} lang={lang}/>
@@ -50,7 +50,7 @@ function Dashboard(props){
     </div>
     )
     else return(
-      <div class="container-fluid py-4" style={{direction:direction}}>
+      <div className="container-fluid py-4" style={{direction:direction}}>
          به صدف خوش آمدید
       </div>
     )

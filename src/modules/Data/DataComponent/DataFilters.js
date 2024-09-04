@@ -2,7 +2,7 @@ import StyleInput from "../../../components/Button/Input";
 import StyleSelect from "../../../components/Button/AutoComplete";
 import StyleDatePicker from "../../../components/Button/DatePicker";
 import tabletrans from "../../../translate/tables";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function DataFilters(props) {
   const category = props.filters && props.filters.category;
@@ -19,7 +19,12 @@ function DataFilters(props) {
       [property]: newValue,
     });
   };
-
+  const [query,setQuery] = useState('')
+  useEffect(() => {
+      const timeOutId = setTimeout(() => handleFilterChange(query.prop,query.value), 1000);
+      return () => clearTimeout(timeOutId);
+      //props.setSearch
+    }, [query]);
   // Define the conditional action
   const createConditionalAction = (property, minLength) => {
     return (e) => {
@@ -35,13 +40,14 @@ function DataFilters(props) {
         <StyleInput
           title="عنوان"
           direction={props.lang.dir}
-          action={createConditionalAction("title", 4)} // Remove the parentheses here
+          action={(e)=>setQuery({prop:"title",value:e})}
+          //action={createConditionalAction("title", 4)} // Remove the parentheses here
 
         />
         <StyleInput
           title="مخترع" class="hiddenMobile"
           direction={props.lang.dir}
-          action={(e) => handleFilterChange("malek", e)}
+          action={(e) => setQuery({prop:"malek", value:e})}
         />
         <StyleSelect
           title="ماهیت" class="hiddenMobile"
