@@ -9,10 +9,14 @@ const dataSchema = require('../models/data')
 const authApi = require('./authApi');
 const reportApi = require('./reportApi');
 const ideaApi = require('./ideaApi');
+const userApi = require('./userApi');
+const reserveApi = require('./reserveApi');
 const jalali_to_gregorian = require('../middleware/DateConvert');
 router.use('/auth', authApi)
 router.use('/report', reportApi)
 router.use('/data', ideaApi) 
+router.use('/user', userApi) 
+router.use('/reserve', reserveApi) 
 
 
 router.post('/data-list',jsonParser, async (req,res)=>{

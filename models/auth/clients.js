@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
-  cName: { type: String, required : true},
-  sName:{ type: String, required : true},
-  phone: { type: String , required : true},
+const clientSchema = new mongoose.Schema({
+  cName: { type: String},
+  sName:{ type: String},
+  phone: { type: String , required : true, unique:true},
   password: { type: String },
   email: { type: String},
-  oldEmail: { type: String},
-  access:{
-    type:String
-  },
+  access:{ type:String },
   group: { type:String },
   credit: { type: String },
   token: { type: String },
@@ -21,8 +17,8 @@ const userSchema = new mongoose.Schema({
   address:{ type: String },
   meliCode:{ type: String },
 
-  StockId:{type:String},
+  work:{type:String},
   date:{type:Date}
 });
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("client", clientSchema);
