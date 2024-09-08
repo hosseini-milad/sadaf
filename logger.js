@@ -28,7 +28,7 @@ app.use(express.urlencoded({limit: '50mb'}))
 app.use(router);
 app.use('/uploads', express.static('uploads'));
 // Optionally you can include your custom error handler after the logging.
-global.publicDir = __dirname + "/api/payment/";
+global.publicDir = __dirname + "/payment/";
 app.use(express.static(path.join(__dirname, 'publicPay')));
 app.set('views', path.join(__dirname, 'publicPay'));
 app.set('view engine', 'ejs'); 
