@@ -7,7 +7,7 @@ router.get('/zibal', zibal.pay);
 router.get('/test/:credit',(req, res) => {
     res.render('index.ejs');
 });
-router.post('/callback', zibal.callBack);
+router.get('/callback', zibal.callBack);
 
 
 
