@@ -15,6 +15,10 @@ exports.pay = async (req, res) => {
         res.status(400).json({message:"سفارش پیدا نشد",error:true})
         return
     }
+    if(reserveData.isPaid){
+        res.status(400).json({message:"سفارش پرداخت شده است",error:true})
+        return
+    }
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
     
     try{    
