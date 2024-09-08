@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>پرداخت ناموفق</title>
+    
+</head>
+<body>
+
+<div class="ContentWrapper">
+    <div class="header">
+        <div class="logo"></div>
+    </div>
+    <% if(error !== null) { %>
+    <div class="TextDescriptionError">
+        <%= error %>
+    </div>
+    <% }%>
+
+    <% if(msg !== null) { %>
+    <div class="TextDescriptionMsg">
+        <%= msg %>
+    </div>
+    <% }%>
+</div> 
+<div>
+    <h1>پرداخت ناموفق</h1>
+    <a href="https://reserve.qomstp.ir/panel">پنل کاربری</a>
+</div>
+</body>
+</html>
+
+
+
+

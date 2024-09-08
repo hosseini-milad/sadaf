@@ -24,11 +24,14 @@ router.use('/api', mainApi)
 // Now we can tell the app to use our routing code:
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}))
-app.use('/upload', express.static('upload'));
 
 app.use(router);
 app.use('/uploads', express.static('uploads'));
 // Optionally you can include your custom error handler after the logging.
+global.publicDir = __dirname + "/payment/";
+app.use(express.static(path.join(__dirname, 'publicPay')));
+app.set('views', path.join(__dirname, 'publicPay'));
+app.set('view engine', 'ejs'); 
 
 app.listen(port, function(){
   console.log("logger listening on port %d in %s mode", this.address().port, app.settings.env);

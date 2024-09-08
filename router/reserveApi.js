@@ -10,6 +10,7 @@ const cowork = require('../models/cowork');
 const jalali_to_gregorian = require('../middleware/DateConvert');
 const CheckActive = require('../middleware/CheckActive');
 const CanReserve = require('../middleware/CanReserve');
+const CreateReserveID = require('../middleware/CreateReserveID');
 
 
 
@@ -30,8 +31,11 @@ router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
 })
 router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
-    var changes = req.body
+    var changes = req.body 
     changes.userId = userId
+    changes.reserveid = await CreateReserveID("co")
+    changes.price = 1500//5000000
+    
     try{
         const userData = await clients.findOne({_id:ObjectID(userId)})
         if(!changes.sDate){
@@ -42,14 +46,28 @@ router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
             changes.sDate.month,changes.sDate.day)
         var enDate = myDate[0]+"/"+myDate[1]+"/"+myDate[2]
 
-        console.log(enDate)
         changes.sDate = enDate
         const coWorkData = await cowork.create(changes)
+        res.json({data:userData,coWorkData,
+            reserveid:changes.reserveid})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        const userData = await clients.findOne({_id:ObjectID(userId)})
+        if(!userData){
+            res.status(400).json({message:"زمان وارد نشده است",error:true})
+            return
+        }
+        const coWorkData = await cowork.find({userId:userId})
         res.json({data:userData,coWorkData})
     }
     catch(error){
         res.status(500).json({message: error.message})
     }
 })
-
 module.exports = router;
