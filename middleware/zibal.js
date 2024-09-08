@@ -13,6 +13,7 @@ exports.pay = async (req, res) => {
     
     if(!reserveData){
         res.status(400).json({message:"سفارش پیدا نشد",error:true})
+        return
     }
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
     console.log("step02")
