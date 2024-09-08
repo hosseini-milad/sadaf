@@ -13,6 +13,7 @@ exports.pay = async (req, res) => {
     if(!reserveData){
         res.status(400).json({message:"سفارش پیدا نشد",error:true})
     }
+    console.log(ZIBAL_Merchant)
     try{    
         response = await fetch(ZIBAL_URL,
         {method: 'POST' , 
@@ -30,12 +31,12 @@ exports.pay = async (req, res) => {
     const result = await response.json();
     trackId = result.trackId
     var requestZibal = `https://gateway.zibal.ir/start/`+trackId
-    //document.location.open(requestZibal)
+    console.log(requestZibal)
    
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
-        
+
     console.log(requestZibal)
     return(res.render(`zibal_payment.ejs`,{url:requestZibal}))
     }
