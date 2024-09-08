@@ -54,10 +54,10 @@ exports.callBack=async (req,res)=>{
         {$set:{payMessage,payCode}}
     )
     if(success){
-        return(res.render(`zibal_correct.ejs`,{url:requestZibal}))
+        return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))
     }
     else{
-        return(res.render(`zibal_error.ejs`,{url:requestZibal}))
+        return(res.render(`zibal_error.ejs`,{url:"requestZibal"}))
     }
 }
 const findError=(code)=>{
