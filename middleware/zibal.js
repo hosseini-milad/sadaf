@@ -34,8 +34,9 @@ exports.pay = async (req, res) => {
    
 
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{trackId:trackId}}
-    )
+        {$set:{trackId:trackId}})
+        
+    console.log(requestZibal)
     return(res.render(`zibal_payment.ejs`,{url:requestZibal}))
     }
     catch{}
