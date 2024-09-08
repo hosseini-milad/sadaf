@@ -31,13 +31,11 @@ exports.pay = async (req, res) => {
     const result = await response.json();
     trackId = result.trackId
     var requestZibal = `https://gateway.zibal.ir/start/`+trackId
-    console.log(requestZibal)
-   
+    
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
 
-    console.log(requestZibal)
     return(res.render(`zibal_payment.ejs`,{url:requestZibal}))
     }
     catch{}
