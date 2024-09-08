@@ -18,19 +18,19 @@ exports.pay = async (req, res) => {
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
     console.log("step02")
     try{    
+        const body= {
+            "merchant": ZIBAL_Merchant,
+            "amount": reserveData.price,
+            "callbackUrl": RETURN_URL,
+            "description": "OrderTest",
+            "orderId": reserveId,
+            "mobile": userData&&userData.phone
+        }
+        console.log(body)
         response = await fetch(ZIBAL_URL,
         {method: 'POST' , 
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(
-            {
-                "merchant": ZIBAL_Merchant,
-                "amount": reserveData.price,
-                "callbackUrl": RETURN_URL,
-                "description": "OrderTest",
-                "orderId": reserveId,
-                "mobile": userData&&userData.phone
-            }
-        )});
+        body:JSON.stringify(body)});
         console.log("step03")
     const result = await response.json();
     trackId = result.trackId
