@@ -9,7 +9,6 @@ const {ZIBAL_URL,ZIBAL_Merchant,RETURN_URL} = process.env
 exports.pay = async (req, res) => {
     const reserveId = req.query.reserveid
     var trackId=''
-    console.log("step01")
     const reserveData=await cowork.findOne({reserveid:reserveId})
     
     if(!reserveData){
@@ -17,7 +16,7 @@ exports.pay = async (req, res) => {
         return
     }
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
-    console.log("step02")
+    
     try{    
         const body= {
             "merchant": ZIBAL_Merchant,
@@ -27,16 +26,15 @@ exports.pay = async (req, res) => {
             "orderId": reserveId,
             "mobile": userData&&userData.phone
         }
-        console.log(body)
         response = await fetch(ZIBAL_URL,
         {method: 'POST' , 
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(body)});
-        console.log("step03")
     const result = await response.json();
+    console.log(result)
     trackId = result.trackId
     var requestZibal = `https://gateway.zibal.ir/start/`+trackId
-    console.log("step04")
+    
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
