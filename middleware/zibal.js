@@ -10,10 +10,11 @@ exports.pay = async (req, res) => {
     var trackId=''
     console.log("step01")
     const reserveData=await cowork.findOne({reserveid:reserveId})
-    const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
+    
     if(!reserveData){
         res.status(400).json({message:"سفارش پیدا نشد",error:true})
     }
+    const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
     console.log("step02")
     try{    
         response = await fetch(ZIBAL_URL,
