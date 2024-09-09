@@ -122,7 +122,7 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
         res.status(400).json({error:"شماره تماس وارد نشده است"});
         return;
       }
-      const user = await clients.findOne({phone: phone })
+      const user = await clients.findOne({phone: phone }).lean()
       
       var otpValue = Math.floor(Math.random() * 8999)+1000 ;
       if(user){
@@ -134,7 +134,7 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
           {expiresIn: "72h",}
         );
         user.token = token;
-        0&&await SMSSend(phone,`کد ورود: ${otpValue}\n\r
+        await SMSSend(phone,`کد ورود: ${otpValue}\n\r
           سامانه رزرو پارک علم و فناوری استان قم`)
         res.status(200).json({...user,otp:otpValue});
         return;
