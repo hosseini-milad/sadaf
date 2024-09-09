@@ -9,6 +9,7 @@ const auth = require("../middleware/auth");
 const User = require("../models/auth/users");
 var Kavenegar = require('kavenegar');
 const clients = require('../models/auth/clients');
+const SMSSend = require('../middleware/SMSSend');
 var api = Kavenegar.KavenegarApi({
   apikey: process.env.SMS_API
 });
@@ -133,6 +134,8 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
           {expiresIn: "72h",}
         );
         user.token = token;
+        0&&await SMSSend(phone,`کد ورود: ${otpValue}\n\r
+          سامانه رزرو پارک علم و فناوری استان قم`)
         res.status(200).json({...user,otp:otpValue});
         return;
       }

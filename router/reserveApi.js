@@ -34,7 +34,7 @@ router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
     var changes = req.body 
     changes.userId = userId
     changes.reserveid = await CreateReserveID("co")
-    changes.price = 1500//5000000
+    changes.price = 15000//5000000
     
     try{
         const userData = await clients.findOne({_id:ObjectID(userId)})
