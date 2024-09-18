@@ -23,10 +23,8 @@ function Paging(props) {
       <div className="per-page">
         <p>{tabletrans.rowsPerPage[props.lang.lang]}</p>
         <select
-          name="page"
-          id=""
-          onChange={(e) =>
-            setOffset(props.filters.offset, e.target.value)
+          name="page" onChange={(e) =>
+            setOffset(props.filters&&props.filters.offset, e.target.value)
           }
         >
           <option value="5">5</option>
@@ -39,8 +37,8 @@ function Paging(props) {
       {pageInfo ? (
         <div className="page-counter">
           <Pagination
-            limit={parseInt(props.filters.pageSize) || 10}
-            offset={parseInt(props.filters.offset) || 0}
+            limit={parseInt(props.filters&&props.filters.pageSize) || 10}
+            offset={parseInt(props.filters&&props.filters.offset) || 0}
             otherPageColor={"default"}
             currentPageColor={"primary"}
             total={props.size?props.size:pageInfo.totalItem}
@@ -49,10 +47,6 @@ function Paging(props) {
                 ...prevState,
                 offset: offset.toString(),
               }));
-              props.updateUrlWithFilters({
-                ...props.filters,
-                offset: offset.toString(),
-              });
             }}
           />
         </div>

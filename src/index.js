@@ -25,6 +25,10 @@ import env, { findFPage } from './env';
 
 import Data from './pages/Data';
 import NewData from './pages/NewData';
+import CategoryTable from './modules/Company/CategoryTable';
+import UnitTable from './modules/Company/UnitTable';
+import LicenceTable from './modules/Company/licenceTable';
+import CompanyHolder from './pages/Company';
 
 const cookies = new Cookies();
 var lang = JSON.parse(localStorage.getItem(env.cookieLang));
@@ -48,6 +52,11 @@ root.render(
         <Route path="/dashboard" element={<Layout><Dashboard lang={lang}/></Layout>}/>
         <Route path="/data" element={<Layout><Data lang={lang}/></Layout>}/>
         <Route path="/new-data" element={<Layout><NewData lang={lang}/></Layout>}/>
+
+        <Route path="/company" element={<Layout><CompanyHolder lang={lang}/></Layout>}/>
+        <Route path="/category" element={<Layout><CategoryTable lang={lang}/></Layout>}/>
+        <Route path="/unit" element={<Layout><UnitTable lang={lang}/></Layout>}/>
+        <Route path="/licence" element={<Layout><LicenceTable lang={lang}/></Layout>}/>
         
         
       </Routes>:

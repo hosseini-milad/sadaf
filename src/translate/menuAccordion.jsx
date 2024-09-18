@@ -1,9 +1,9 @@
 const menutrans ={
     title:{
         english:"SadafHa",
-        persian:"سامانه صدف ها",
+        persian:"سامانه پارک",
         icon:"fa-eercast",
-        href:"https://sadaf.ac.ir"
+        href:"https://qomstp.ir"
         
     },
     menu:[
@@ -37,10 +37,50 @@ const menutrans ={
                 icon:"fa-bar-chart",
                 href:"/new-data",
                 url:"new-data"
+            }],
+        },
+        {
+            english: "Company",
+            persian: "شرکت ها",
+            index:0,
+            icon:"fa-dashboard",
+            href:"#",
+            children:[
+            {
+                english: "Company Lists",
+                persian: "لیست شرکت ها",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/company",
+                url:"company"
             },
-            ]
-        }
-    ],
+            {
+                english: "Category",
+                persian: "دسته بندی ها",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/category",
+                url:"category"
+            },
+            {
+                english: "Unit Lists",
+                persian: "لیست واحدها",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/unit",
+                url:"unit"
+            },
+            {
+                english: "Licence Lists",
+                persian: "مجوزها",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/licence",
+                url:"licence"
+            }
+            ]}
+            ],
+        
     setting:[
         {
             english: "Access",

@@ -5,6 +5,7 @@ import env from "../env";
 import errortrans from "../translate/error";
 import Configuration from "./Configuration";
 import Setting from "./Setting";
+import { PostReq } from "./PostReq";
 
 const Header = (props) => {
   const cookies = new Cookies();
@@ -12,10 +13,7 @@ const Header = (props) => {
   const [setting, setSetting] = useState(0);
   const token = cookies.get(env.cookieName) || 1;
   const lang = props.lang ? props.lang.lang : errortrans.defaultLang;
-  const logOff = () => {
-    cookies.remove(env.cookieName, { path: "/" });
-    setTimeout(() => (document.location.reload(), 500));
-  };
+
   return (
     <nav
       className="navbar topMenu navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -43,12 +41,7 @@ const Header = (props) => {
           className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
           id="navbar"
         >
-          <div className="d-flex align-items-center hideMobile">
-            <div className="input-group input-group-outline">
-              <label className="form-label">{errortrans.typeHere[lang]}</label>
-              <input type="text" className="form-control" />
-            </div>
-          </div>
+          
           <ul
             className={`${
               props.lang.dir === "ltr" ? "ms-md-auto" : "ms-md-right"
