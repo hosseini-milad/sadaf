@@ -32,7 +32,7 @@ router.post('/login',jsonParser, async (req,res)=>{
           res.status(400).json({error:"password not set"});
           return;
         }
-        if(user.active==="false"){
+        if(0&&user.active==="false"){
           res.status(400).json({error:"user not active"});
           return;
         }
@@ -66,13 +66,13 @@ router.post('/login',jsonParser, async (req,res)=>{
 })
 router.post('/login-customer',jsonParser, async (req,res)=>{
     try {
-        const { username, password } = req.body;
-        if (!(username && password)) {
+        const { phone, password } = req.body;
+        if (!(phone && password)) {
           res.status(400).json({error:"All input is required"});
           return;
         }
         // Validate if user exist in our database
-        const user = await User.findOne({username: username });
+        const user = await clients.findOne({phone: phone });
         //console.log(user)
         if(!user){
           res.status(400).json({error:"user not found"});
@@ -82,25 +82,15 @@ router.post('/login-customer',jsonParser, async (req,res)=>{
           res.status(400).json({error:"password not set"});
           return;
         }
-        if(user.active==="false"){
+        if(0&&user.active==="false"){
           res.status(400).json({error:"user not active"});
           return;
         }
         if (user && (await bcrypt.compare(password, user.password))) {
           const token = jwt.sign(
-            { user_id: user._id, username },
+            { user_id: user._id, username:user.cName },
             process.env.TOKEN_KEY,
-            {expiresIn: "72h",}
-          );
-          user.token = token;
-          res.status(200).json(user);
-          return;
-        }
-        if (user && password===user.password){
-          const token = jwt.sign(
-            { user_id: user._id, username },
-            process.env.TOKEN_KEY,
-            {expiresIn: "12h",}
+            {expiresIn: "92h",}
           );
           user.token = token;
           res.status(200).json(user);
@@ -111,7 +101,7 @@ router.post('/login-customer',jsonParser, async (req,res)=>{
         }
         } 
     catch(error){
-        res.status(500).json({message: error.message})
+        res.status(500).json({error:true,message: error.message})
     }
 })
 
@@ -194,6 +184,30 @@ router.post('/login-OTP',jsonParser, async (req,res)=>{
         "error":"wrong otp"
       });
     }
+    //res.status().send("Invalid Credentials");
+  } catch (err) {
+    //console.log((err);
+  }
+})
+router.post('/change-password',jsonParser,auth, async (req,res)=>{
+  const userId = req.headers['userid']
+  const password = req.body.password
+  try {
+    // Validate user input
+    if (!(password && userId)) {
+      res.status(400).send("All input is required");
+      return;
+    }
+    // Validate if user exist in our database
+    
+    const pass = password&&await bcrypt.hash(password, 10);
+    console.log(pass)
+    
+    await clients.updateOne({_id: ObjectID(userId) },
+  {$set:{password:pass}})
+      res.status(200).json({message:"رمز عبور بروز شد"});
+      return;
+    
     //res.status().send("Invalid Credentials");
   } catch (err) {
     //console.log((err);

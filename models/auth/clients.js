@@ -17,6 +17,8 @@ const clientSchema = new mongoose.Schema({
   address:{ type: String },
   meliCode:{ type: String },
 
+  active:{type:String},
+  inPark:{type:String},
   work:{type:String},
   date:{type:Date}
 });

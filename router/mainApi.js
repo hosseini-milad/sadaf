@@ -11,6 +11,7 @@ const reportApi = require('./reportApi');
 const ideaApi = require('./ideaApi');
 const userApi = require('./userApi');
 const reserveApi = require('./reserveApi');
+const companyApi = require('./companyApi');
 const paymentApi = require('./paymentApi');
 
 const jalali_to_gregorian = require('../middleware/DateConvert');
@@ -19,6 +20,7 @@ router.use('/report', reportApi)
 router.use('/data', ideaApi) 
 router.use('/user', userApi) 
 router.use('/reserve', reserveApi) 
+router.use('/company', companyApi) 
 router.use('/payment',paymentApi)
 
 
