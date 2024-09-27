@@ -11,7 +11,7 @@ const jalali_to_gregorian = require('../middleware/DateConvert');
 const CheckActive = require('../middleware/CheckActive');
 const CanReserve = require('../middleware/CanReserve');
 const CreateReserveID = require('../middleware/CreateReserveID');
-
+const {COWORK_PRICE} = env.process
 
 
 router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
@@ -34,7 +34,7 @@ router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
     var changes = req.body 
     changes.userId = userId
     changes.reserveid = await CreateReserveID("co")
-    changes.price = 5000000
+    changes.price = COWORK_PRICE
     
     try{
         const userData = await clients.findOne({_id:ObjectID(userId)})
