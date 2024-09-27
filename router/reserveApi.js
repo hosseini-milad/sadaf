@@ -64,7 +64,11 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
             res.status(400).json({message:"زمان وارد نشده است",error:true})
             return
         }
-        const coWorkData = await cowork.find({userId:userId})
+        const coWorkData = await cowork.find({userId:userId}).lean()
+        for(var i=0;i<coWorkData.length;i++){
+            const active = CheckActive(coWorkData[i])
+            coWorkData[i].active = active
+        }
         res.json({data:userData,coWorkData})
     }
     catch(error){
