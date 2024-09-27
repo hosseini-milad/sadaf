@@ -36,7 +36,7 @@ router.post('/update-client',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-router.get('/list-client',jsonParser,auth, async (req,res)=>{
+router.post('/list-client',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
     try{
         
