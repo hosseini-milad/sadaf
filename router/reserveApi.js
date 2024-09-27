@@ -11,7 +11,7 @@ const jalali_to_gregorian = require('../middleware/DateConvert');
 const CheckActive = require('../middleware/CheckActive');
 const CanReserve = require('../middleware/CanReserve');
 const CreateReserveID = require('../middleware/CreateReserveID');
-const {COWORK_PRICE} = env.process
+const {COWORK_PRICE} = process.env
 
 
 router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
