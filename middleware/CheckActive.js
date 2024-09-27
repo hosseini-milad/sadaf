@@ -9,8 +9,9 @@ async function CheckActive(coWorkData) {
     var sDate = new Date(coWorkData.sDate)
     var defDate = nowDate - sDate
 
-    if(defDate<30*24*60*60*1000)
-      return(1)
-    return(1)
+    var defDay = defDate/(24*60*60*1000)
+    if(defDay<30)
+      return(defDay)
+    return(0)
 }
 module.exports =CheckActive
