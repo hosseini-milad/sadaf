@@ -67,7 +67,8 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
         const coWorkData = await cowork.find({userId:userId}).lean()
         for(var i=0;i<coWorkData.length;i++){
             const active = CheckActive(coWorkData[i])
-            coWorkData[i].active = "active"
+            console.log(active)
+            coWorkData[i].active = active
         }
         res.json({data:userData,coWorkData})
     }
