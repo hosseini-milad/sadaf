@@ -55,7 +55,7 @@ exports.callBack=async (req,res)=>{
     const success = req.query.success
     const payCode = req.query.status
     const payMessage = findError(payCode)
-    const orderData = await cowork.findOne(reserveId)
+    const orderData = await cowork.findOne({reserveId})
 
     await transactions.create({
         reserveId: reserveId,
