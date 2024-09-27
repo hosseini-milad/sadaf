@@ -70,7 +70,7 @@ exports.callBack=async (req,res)=>{
         {$set:{payCode,payMessage,
             isPaid:success,trackId,date:Date.now()}}
     )
-    if(success){
+    if(success=="1"){
         return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))
     }
     else{
