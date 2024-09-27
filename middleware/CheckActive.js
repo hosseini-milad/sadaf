@@ -9,8 +9,7 @@ async function CheckActive(coWorkData) {
     var sDate = new Date(coWorkData.sDate)
     var defDate = nowDate - sDate
 
-    var defDay = defDate/(24*60*60*1000)
-    console.log(defDay)
+    var defDay = parseInt(defDate/(24*60*60*1000))
     if(defDay<30)
       return(defDay)
     return(0)
