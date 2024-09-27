@@ -1,6 +1,7 @@
 const { default: fetch } = require("node-fetch");
 const clients = require('../models/auth/clients');
 const cowork = require('../models/cowork');
+const transactions = require("../models/transactions");
 
 var ObjectID = require('mongodb').ObjectID;
 
@@ -50,12 +51,18 @@ exports.pay = async (req, res) => {
 };
 exports.callBack=async (req,res)=>{
     const reserveId = req.query.orderId
-    const trackId = req.body.trackId
-    const success = req.query.reserveid
+    const trackId = req.query.trackId
+    const success = req.query.success
     const payCode = req.query.status
     const payMessage = findError(payCode)
+    await transactions.create({
+        reserveId: reserveId,
+        trackId:trackId,
+        status:payCode,
+        success:success
+    })
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{payMessage,payCode,trackId}}
+        {$set:{payCode,isPaid:success,trackId}}
     )
     if(success){
         return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))
