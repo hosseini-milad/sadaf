@@ -36,6 +36,17 @@ router.post('/update-client',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+router.get('/list-client',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        
+        const userData = await clients.find({})
+        res.json({data:userData})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
 var storage = multer.diskStorage(
     {
