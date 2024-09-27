@@ -55,15 +55,20 @@ exports.callBack=async (req,res)=>{
     const success = req.query.success
     const payCode = req.query.status
     const payMessage = findError(payCode)
+    const orderData = await cowork.findOne(reserveId)
+
     await transactions.create({
         reserveId: reserveId,
+        userId: orderData&&orderData.userId,
+        payMessage:payMessage,
         trackId:trackId,
         status:payCode,
         success:success,
         date:Date.now()
     })
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{payCode,isPaid:success,trackId,date:Date.now()}}
+        {$set:{payCode,payMessage,
+            isPaid:success,trackId,date:Date.now()}}
     )
     if(success){
         return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))
