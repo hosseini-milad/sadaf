@@ -55,7 +55,7 @@ exports.callBack=async (req,res)=>{
     const payCode = req.query.status
     const payMessage = findError(payCode)
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{payMessage,payCode}}
+        {$set:{payMessage,payCode,trackId}}
     )
     if(success){
         return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))

@@ -40,7 +40,7 @@ router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
         const userData = await clients.findOne({_id:ObjectID(userId)})
         if(!changes.sDate){
             res.status(400).json({message:"زمان وارد نشده است",error:true})
-            return
+            return 
         }
         var myDate = jalali_to_gregorian(changes.sDate.year,
             changes.sDate.month,changes.sDate.day)
@@ -70,4 +70,25 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+
+router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        const data ={
+            customer:req.body.customer
+        }
+        const coWorkData = await cowork.aggregate([
+        {$match:data?{customer:data.customer}:{}},
+        {$addFields: { "userId": { $convert: {input:"$userId" ,
+            to:'objectId', onError:'',onNull:''}}}},
+                {$lookup:{from : "clients", 
+                    localField: "userId", foreignField: "_id", as : "userInfo"}},
+        ])
+        res.json({data:coWorkData})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
 module.exports = router;

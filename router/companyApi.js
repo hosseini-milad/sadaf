@@ -521,7 +521,7 @@ router.post('/company-filter',jsonParser, async (req,res)=>{
     try{
         const companyList = await company.aggregate([
             {$match:catFilter?
-            {category:catFilter}:{}},
+            {category:catFilter}:{}}, 
             {$match:{publish:true}}
         ])
         
