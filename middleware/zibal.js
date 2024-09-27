@@ -59,10 +59,11 @@ exports.callBack=async (req,res)=>{
         reserveId: reserveId,
         trackId:trackId,
         status:payCode,
-        success:success
+        success:success,
+        date:Date.now()
     })
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{payCode,isPaid:success,trackId}}
+        {$set:{payCode,isPaid:success,trackId,date:Date.now()}}
     )
     if(success){
         return(res.render(`zibal_correct.ejs`,{url:"requestZibal"}))

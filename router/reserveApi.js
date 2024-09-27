@@ -11,6 +11,7 @@ const jalali_to_gregorian = require('../middleware/DateConvert');
 const CheckActive = require('../middleware/CheckActive');
 const CanReserve = require('../middleware/CanReserve');
 const CreateReserveID = require('../middleware/CreateReserveID');
+const transactions = require('../models/transactions');
 const {COWORK_PRICE} = process.env
 
 
@@ -70,6 +71,21 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+router.post('/my-transactions',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        const userData = await clients.findOne({_id:ObjectID(userId)})
+        if(!userData){
+            res.status(400).json({message:"کاربر پیدا نشده است",error:true})
+            return
+        }
+        const transData = await transactions.find({userId:userId})
+        res.json({data:userData,transData})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
 router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
@@ -90,5 +106,20 @@ router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-
+router.post('/list-transactions',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        
+        const transData = await transactions.aggregate([
+            {$addFields: { "userId": { $convert: {input:"$userId" ,
+                to:'objectId', onError:'',onNull:''}}}},
+                    {$lookup:{from : "clients", 
+                        localField: "userId", foreignField: "_id", as : "userInfo"}},
+        ])
+        res.json({data:transData})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 module.exports = router;
