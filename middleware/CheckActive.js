@@ -1,6 +1,5 @@
-const color = require("../models/color")
 
-async function CheckActive(coWorkData) {
+function CheckActive(coWorkData) {
     var isActive = 0
     var nowDate = new Date()
     if(!coWorkData||!coWorkData.isPaid){
