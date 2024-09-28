@@ -121,3 +121,30 @@ a{
 .MuiMenuItem-root, .MuiSelect-selectMenu{
   font-family: vazir !important;
 }
+.private-form__inlinehelp{
+  float:left;
+}
+
+.createPageHolder{
+  margin: 200px auto;
+  width: 500px;
+  text-align: center;
+  
+}
+.createBtn{
+ padding: 5px 30px;
+ border-radius: 5px;
+ border: none;
+ background-color:#003eee;
+ color: #fff;
+ font-size: 18px;
+ margin: auto;
+}
+.createBtn:hover{
+  background-color: #007aff;
+}
+.changeAlert{
+  color:orangered;
+  display: block;
+  margin-top: 20px;
+}

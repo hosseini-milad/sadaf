@@ -6,6 +6,7 @@ import CompanyHolder from "../modules/Company/CompanyHolder"
 function MyPage(props){
     const token = props.token
     const [data,setMyData] = useState('')
+    const [change,setChange] = useState('')
     const lang = props.lang?props.lang.lang:errortrans.defaultLang
     const dir = props.lang?props.lang.dir:errortrans.defaultDir
     useEffect(()=>{
@@ -23,15 +24,31 @@ function MyPage(props){
             }
             else{
                 setMyData(result.data)
+                setChange(result.change)
             }
         },
         (error) => {
             console.log(error)
         })
     },[])
+    console.log(data)
     return(
         <main className={dir=="rtl"?"rtlDir":""}>
-            {data?<CompanyHolder data={data} edit={true} />:<></>}
+            {(data&&data.managerPhone)?
+            <CompanyHolder data={data} edit={true} />:
+            <div className="createPageHolder">
+                <button className="createBtn" onClick={()=>
+                    document.location.href="/my-page-edit"
+                }>
+                ایجاد/ویرایش صفحه شرکت
+                </button>
+                
+                {change?
+                
+                <span className="changeAlert" >
+                    صفحه شما ویرایش شده است. در انتظار تایید مدیریت
+                </span>:<></>}
+            </div>}
         </main>
     )
 }

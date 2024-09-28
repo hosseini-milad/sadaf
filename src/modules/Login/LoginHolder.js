@@ -12,6 +12,7 @@ function LoginHolder(props){
     const lang = props.lang?props.lang.lang:errortrans.defaultLang;
     const direction = props.lang?props.lang.dir:errortrans.defaultDir;
     const [showOtp,setOTP] = useState(0)
+    const [showPass,setShowPass] = useState(0)
     //console.log(user)
     const checkLogin=()=>{
       const postOptions={
@@ -88,21 +89,23 @@ function LoginHolder(props){
                     <i18n-string data-locale-at-render="en-us" data-key="login.form.password">کلمه عبور</i18n-string>
                  </span>
                  </label>
-                 <small id="password-help" className="private-microcopy private-form__inlinehelp is--text--help">
-                 <button aria-disabled="false" className="uiButton private-button private-button__link private-button--default" type="button">
-                    <span>نمایش کلمه عبور</span>
-                 </button>
-                 </small>
               </div>
               <div className="private-form__input-wrapper">
-                 <input id="password" type="password" className="form-control private-form__control login-password m-bottom-3" 
+                 <input id="password" type={showPass?"text":"password"} 
+                 className="form-control private-form__control login-password m-bottom-3" 
                  onChange={(e)=>setPass(e.target.value)}/>
               </div>
+               <small id="password-help" className="private-microcopy private-form__inlinehelp is--text--help">
+                 <button onClick={()=>setShowPass(showPass?0:1)}
+                     className="uiButton private-button private-button__link private-button--default" type="button">
+                    <span>نمایش کلمه عبور</span>
+                 </button>
+               </small>
               <div className="private-form__meta">
                  <div className="private-form__messages"></div>
               </div>
               <small id="password-description" className="private-microcopy private-form__description is--text--help">
-                 <a href="/login/forgot?email=&amp;useDark=">
+                 <a href="#">
                  <i18n-string data-locale-at-render="en-us" data-key="login.form.forgotPassword">فراموشی کلمه عبور</i18n-string>
                  </a>
               </small>

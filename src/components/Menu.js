@@ -26,22 +26,22 @@ const Menu = (props)=>{
               <ul className="hsg-nav__group hsg-nav__group--primary">
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
-                    <a href="/session" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                    {/*<a href="/session" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
                       <span className="hsg-nav__link-label"> سالن جلسات </span>
-                    </a>
+                    </a>*/}
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
                   <div className="hsg-nav__link-wrapper">
-                    <a href="/suit" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                    {/*<a href="/suit" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
                       <span className="hsg-nav__link-label"> سوییت ها </span>
-                    </a>
+                    </a>*/}
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
-                    <a href="/cowork" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> فضای کار اشتراکی </span>
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> لیست شرکت های پارک </span>
                     </a>
                   </div>
                 </li>
@@ -53,7 +53,7 @@ const Menu = (props)=>{
                     href="/login" > ورود 
                     </a>
                     <a className="cl-button -secondary -small -light ga_nav_link homepage-hp-nav2 " 
-                    href="/register">ثبت نام
+                    href="/profile">ثبت نام
                     </a>
                   </div>
                 </li>:

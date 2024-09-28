@@ -10,41 +10,28 @@ const Footer = (props)=>{
     <div className="row">
       <div className="col-sm-3">
         <p>
-          <strong>رزرواسیون</strong>
+          <strong>معرفی شرکت ها</strong>
         </p>
-        <a href="/cowork">رزرو صندلی اشتراکی</a>
+        <a href="/">شرکت های پارک علم و فناوری استان قم</a>
         <br />
         
       </div>
       <div className="col-sm-3">
         <hr className="visible-xs-block" />
         <p>
-          <strong>منوی2</strong>
+          <strong></strong>
         </p>
-        <a href="/ambassador">منوی ما</a>
+        <a href="/"> </a>
         <br />
       </div>
       <div className="col-sm-3">
         <hr className="visible-xs-block" />
         <p>
-          <strong>اطلاعات</strong>
+          <strong> </strong>
         </p>
         
       </div>
       <div className="col-sm-3">
-        <hr className="visible-xs-block" />
-        <p>
-          <strong>{errortrans.language[props.lang]}</strong>
-        </p>
-        <a href="/de" title="deutsch" className="languageSelector" data-lang="de" data-href="/de">
-          <img src="/img/gfx/de.png" />
-        </a>&nbsp; <a href="/fr" title="français" className="languageSelector" data-lang="fr" data-href="/fr">
-          <img src="/img/gfx/fr.png" />
-        </a>&nbsp; <a href="/es" title="español" className="languageSelector" data-lang="es" data-href="/es">
-          <img src="/img/gfx/es.png" />
-        </a>&nbsp; <a href="/pt" title="brazil" className="languageSelector" data-lang="pt" data-href="/pt">
-          <img src="/img/gfx/br.png" />
-        </a>&nbsp;
       </div>
     </div>
     <div className="clear20"></div>
