@@ -98,3 +98,13 @@
     width:100%;
   }
 }
+.inputStyle {
+  width: 3rem !important;
+  height: 3rem;
+  margin: 0 1rem;
+  direction: ltr !important;
+  font-size: 2rem;
+  border-radius: 4px;
+  color: #333;
+  border: 1px solid rgba(0,0,0,.3);
+}

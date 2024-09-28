@@ -30,8 +30,8 @@ root.render(
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>}/>
           <Route path="/report" element={<Layout><Report /></Layout>}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Login />}/>
+          <Route path="/login" element={<Layout><Login /></Layout>}/>
+          <Route path="/register" element={<Layout><Login /></Layout>}/>
           <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
 
           
