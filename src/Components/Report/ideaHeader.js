@@ -11,7 +11,7 @@ function IdeaHeader(props){
                     <strong className="product-core-header__text-intro h4">
                     <span className={content.etebar?"sales-hub-icon activeIcon":"sales-hub-icon deactiveIcon"} 
                     title={content.etebar?"اعتبار دارد":"اعتبار ندارد"}>
-                        </span> عنوان اختراع </strong>
+                        </span> عنوان تقاضا </strong>
                     <h1 className="product-core-header__text-title">{content.title}</h1>
                     <sub className="ideaDate">
                         {content.date?
@@ -22,18 +22,17 @@ function IdeaHeader(props){
                         className="cl-button -primary -medium  product-core-header__text-multi-cta marketing-hero"> اطلاعات مرجع
                     </a>
                     <a href="/login" className="cl-button -secondary -medium  product-core-header__text-multi-cta marketing-hero2" > 
-                        تماس با مخترع
+                        تماس با تقاضا دهنده
                     </a>
                     </div>
                     <div className="product-core-header__accordion-container">
                     <ul className="hsg-accordion" data-size="small" data-display-option="card">
-                        <IdeaAcc title="اطلاعات اختراع" data={[
+                        <IdeaAcc title="اطلاعات تقاضا" data={[
                             "شماره اظهارنامه: "+content.ezharname,
                             "شماره ثبت :"+ content.sabtNo
                         ]}/>
-                        <IdeaAcc title="مخترعین" data={content.inventor}/>
-                        <IdeaAcc title="مالکین" data={content.malek}/>
-                        <IdeaAcc title="طبقه بندی بین المللی" data={content.classInternation}/>
+                        <IdeaAcc title="تقاضا دهنده" data={content.inventor}/>
+                        <IdeaAcc title="طبقه بندی" data={content.classInternation}/>
                         
                     </ul>
                     </div>

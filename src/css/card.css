@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 .cl-card.-light:hover {
-  box-shadow: 2px 2px 8px silver,-2px -2px 8px silver;
+  box-shadow: 2px 2px 4px var(--second-color),-2px -2px 4px var(--second-color);
 }
 .cl-card.-dark {
   background-color:#2e475d

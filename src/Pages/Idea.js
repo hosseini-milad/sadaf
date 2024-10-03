@@ -8,7 +8,7 @@ function Idea(props){
    const url = document.location.pathname.split('/')[2]
    const [content,setContent] = useState()
    useEffect(()=>{
-      fetch(env.siteApi + "/data/get-idea/"+url)
+      fetch(env.siteApi + "/data/get-req/"+url)
         .then((res) => res.json())
         .then(
           (result) => {

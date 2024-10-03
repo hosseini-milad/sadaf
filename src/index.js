@@ -6,6 +6,7 @@ import './css/fontAwesome.css';
 import './css/reyham.css';
 import './css/overide.css';
 import './css/card.css';
+import './css/form.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,7 +21,12 @@ import Layout from './Components/Layout';
 import Login from './Pages/Login';
 import Report from './Pages/Report';
 import Idea from './Pages/Idea';
-
+import RegReq from './Pages/RegReq';
+import Cookies from 'universal-cookie';
+import env from './env';
+import Profile from './Pages/Profile';
+const cookies = new Cookies();
+const token = cookies.get(env.cookieName)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
@@ -28,9 +34,13 @@ root.render(
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>}/>
           <Route path="/report" element={<Layout><Report /></Layout>}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Login />}/>
+          <Route path="/login" element={<Layout><Login /></Layout>}/>
+          <Route path="/register" element={<Layout><Login /></Layout>}/>
           <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
+
+          <Route path="/profile" element={<Layout><Profile token={token}/></Layout>}/>
+          
+          <Route path="/reg-request" element={<Layout><RegReq token={token}/></Layout>}/>
         </Routes>
     </Router>
 );

@@ -5,9 +5,7 @@ import SingleIdea from "../FindIdea/SingleIdea";
 function ReportHolder(props){
     const [content,setContent] = useState()
 useEffect(()=>{
-  const body = {
-    access: "",
-  };
+  setContent("");
   const postOptions = {
     method: "post",
     headers: {
@@ -15,11 +13,10 @@ useEffect(()=>{
     },
     body: JSON.stringify({...props.filter,pageSize:12}),
   };
-  fetch(env.siteApi + "/data-list", postOptions)
+  fetch(env.siteApi + "/data/req-list", postOptions)
     .then((res) => res.json())
     .then(
       (result) => {
-        setContent("");
         setTimeout(() => setContent(result.data), 200);
       },
       (error) => {
@@ -33,7 +30,7 @@ useEffect(()=>{
             <div className="wf-product-cards__container">
                 {content?content.map((idea,i)=>(
                 <SingleIdea  data={idea} key={i}/>
-                )):<></>}
+                )):env.loader}
                 </div>
             </div>
         </section>

@@ -7,19 +7,21 @@ function SingleIdea(props){
         <div className="wf-product-cards__card cl-card -light -container-01 -hoverable ">
               <div className="wf-product-cards__content">
                 <div className="wf-product-cards__heading--wrapper">
-                  <img src="/img/hub/MarketingHub_Icon_2023_Gradient_RGB_24px.svg" alt="" width="30" height="30" loading="lazy" className="wf-product-cards__heading--image"/>
+                  <img src="/img/hub/MarketingHub_Icon_2023_Gradient_RGB_24px.svg" width="30" height="30" 
+                    className="wf-product-cards__heading--image"/>
                   <h3 className="wf-product-cards__heading twolineText" title={data.title}>
-                    {data.title} 
+                    {data.title} <br/>
+                    <sub className="subNahad">{data.category} </sub>
                   </h3>
                 </div>
-                <p className="wf-product-cards__description fourlineText">{data.abstract}</p>
+                <p className="wf-product-cards__description fourlineText">{data.description}</p>
                 <div className="wf-product-cards__features">
                   <h4 className="wf-product-cards__feature-list--heading ">
                     <i className="fa fa-user ideaIcon" ></i>
-                    <small>{data.malek?data.malek[0]:''}
+                    <small>{"کاربر میهمان"}
                     </small>
-                    <sub onClick={()=>setMore(1)}> 
-                      ({data.malek.length} مخترع) </sub>
+                    {/*<sub onClick={()=>setMore(1)}> 
+                      ({2} ایده) </sub>
                     {showMore?<div className="malekPopHolder">
                       <div className="malekPop">
                         <i className="fa fa-close malekClose"
@@ -29,19 +31,19 @@ function SingleIdea(props){
                         <small key={i}>{malek}</small><br/></>
                       ))}
                     </div>
-                  </div>:<></>}
+                  </div>:<></>}*/}
                   </h4>
                  
                   <div className="wf-product-cards__feature-list--items">
                     <ul>
                       <li className="wf-product-cards__feature-list--item">
                         <i className="fa fa-calendar ideaIcon" ></i>
-                        <span>{data.sabtDate}</span>
+                        <span>{(new Date(data.date)).toLocaleDateString('fa')}</span>
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         
                         <i className="fa fa-certificate ideaIcon" ></i>
-                        {data.sabtNo}
+                        {data.proofUsage?data.proofUsage.length:0} ایده ثبت شده
                       </li>
                     </ul>
                   </div>

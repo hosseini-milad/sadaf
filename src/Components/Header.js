@@ -5,8 +5,8 @@ const Header = (props)=>{
   
     return(
       <header className="hsg-nav__wrapper ">
-        <HeaderTop />
-        <Menu />
+        {/*<HeaderTop />*/}
+        <Menu token={props.token}/>
         <div id="hsg-main-content" tabIndex="-1"></div>
       </header>
     )

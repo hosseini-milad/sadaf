@@ -21,7 +21,7 @@ useEffect(()=>{
     },
     body: JSON.stringify(body),
   };
-  fetch(env.siteApi + "/data-web-list", postOptions)
+  fetch(env.siteApi + "/data/data-req-list", postOptions)
     .then((res) => res.json())
     .then(
       (result) => {

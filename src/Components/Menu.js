@@ -5,6 +5,7 @@ import ResourceMenu from "./MegaMenu/PlanMenu";
 
 const Menu = (props)=>{
     const [tab,setTab] = useState(-1)
+    const token = props.token
     return(
       <div data-fixed-element="placeholder">
       <nav className="hsg-nav-menu stickyHeader" >
@@ -21,7 +22,7 @@ const Menu = (props)=>{
               <span id="hsg-nav__logo-caret-home">Home</span>
             </button>
             <div className="hsg-nav__group-item--search-container">
-              <input type="search" className="" data-id="hsg-nav__search-input" placeholder="Search sadaf.com" data-config="{&quot;contexts&quot;:[{&quot;cx&quot;:&quot;009219321729865762236:z9gsnksfc30&quot;,&quot;id&quot;:&quot;website&quot;,&quot;label&quot;:&quot;Search sadaf.com&quot;,&quot;selected&quot;:true},{&quot;cx&quot;:&quot;009219321729865762236:fzizmixjdmi&quot;,&quot;id&quot;:&quot;blog&quot;,&quot;label&quot;:&quot;Search the blog&quot;,&quot;selected&quot;:null}],&quot;loadMoreButton&quot;:&quot;Load More Results&quot;,&quot;noResults&quot;:[&quot;That's odd...&quot;,&quot;couldn't find quite the right match.&quot;,&quot;Don't worry, try searching again up top.&quot;]}" aria-label="Search"/>
+              <input type="search" className="" data-id="hsg-nav__search-input" placeholder="Search sadaf.com" aria-label="Search"/>
             </div>
             <div className="hsg-nav__burger-wrapper">
               <button className="hsg-nav__burger" aria-expanded="false" aria-controls="burger-submenu" data-hs-event-72370834="1">
@@ -35,8 +36,8 @@ const Menu = (props)=>{
                 onMouseOver={()=>setTab(1)} onMouseOut={()=>setTab(-1)}>
                   <div className="hsg-nav__link-wrapper">
                     <button className="hsg-nav__link" aria-expanded="false" 
-                    onClick={()=>window.location.href="/report"}>
-                      <span className="hsg-nav__link-label"> استعلام اختراع </span>
+                    onClick={()=>window.location.href="/"}>
+                      <span className="hsg-nav__link-label"> صفحه اصلی </span>
                     </button>
                   </div>
                   
@@ -44,63 +45,38 @@ const Menu = (props)=>{
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
                   <div className="hsg-nav__link-wrapper">
-                    <a href="/reg-idea" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> ثبت اختراع </span>
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> محورها </span>
                     </a>
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-3 hsg-nav__group-item--has-dropdown"
                   onMouseOver={()=>setTab(2)} onMouseOut={()=>setTab(-1)}>
-                  <div className="hsg-nav__link-wrapper">
-                    <button className="hsg-nav__link" aria-expanded="false" aria-controls="hsg-nav-submenu-3" data-hs-event-72370834="1">
-                      <span className="hsg-nav__link-label"> راهنمای ثبت </span>
+                  <div className="hsg-nav__link-wrapper"
+                  onClick={()=>window.location.href="/report"}>
+                    <button className="hsg-nav__link">
+                      <span className="hsg-nav__link-label"> ثبت ایده </span>
                     </button>
                   </div>
                   {/*<ResourceMenu tab={tab} />*/}
                 </li>
-                <li className="hsg-nav__group-item  hsg-nav__group-item--has-dropdown  hsg-nav__group-item--about-mobile">
-                  <div className="hsg-nav__link-wrapper">
-                    <button className="hsg-nav__link homepage-nav-about-mobile" aria-expanded="false" aria-controls="hsg-nav-about-submenu-mobile" data-hs-event-72370834="1">
-                      <span className="hsg-nav__link-label"> درباره </span>
+                <li className="hsg-nav__group-item hsg-nav__group-item--order-3 hsg-nav__group-item--has-dropdown"
+                  onMouseOver={()=>setTab(3)} onMouseOut={()=>setTab(-1)}>
+                  <div className="hsg-nav__link-wrapper"
+                  onClick={()=>window.location.href="/reg-request"}>
+                    <button className="hsg-nav__link homepage-nav-about-mobile" >
+                      <span className="hsg-nav__link-label"> تقاضای فناوری </span>
                     </button>
                   </div>
-                  <ul id="hsg-nav-about-submenu-mobile" className="hsg-nav__dropdown-list hsg-nav__dropdown-cards">
-                    <li className="hsg-nav__dropdown-list-title">
-                      <h2 className="hsg-nav__dropdown-list-title-text">درباره</h2>
-                    </li>
-                    <li className="hsg-nav__dropdown-row hsg-nav__dropdown-row--links">
-                      <a href="https://www.sadaf.com/our-story?hubs_content=www.sadaf.com%2F&amp;hubs_content-cta=nav-utility-about&amp;hubs_post=blog.sadaf.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." className="ga_nav_link hsg-nav__box-link  nav-utility-about " data-ga_nav_type="header_nav" data-ga_nav_tree_text="About > About Us">
-                        <div className="hsg-nav__header">درباره ما</div>
-                      </a>
-                    </li>
-                    <li className="hsg-nav__dropdown-row hsg-nav__dropdown-row--links">
-                      <a href="https://www.sadaf.com/careers?hubs_content=www.sadaf.com%2F&amp;hubs_content-cta=nav-utility-careers&amp;hubs_post=blog.sadaf.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." className="ga_nav_link hsg-nav__box-link  nav-utility-careers " data-ga_nav_type="header_nav" data-ga_nav_tree_text="About > Careers">
-                        <div className="hsg-nav__header">Careers</div>
-                      </a>
-                    </li>
-                    <li className="hsg-nav__dropdown-row hsg-nav__dropdown-row--links">
-                      <a href="https://www.sadaf.com/company/contact?hubs_content=www.sadaf.com%2F&amp;hubs_content-cta=nav-utility-contact&amp;hubs_post=blog.sadaf.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." className="ga_nav_link hsg-nav__box-link  nav-utility-contact " data-ga_nav_type="header_nav" data-ga_nav_tree_text="About > Contact Us">
-                        <div className="hsg-nav__header">Contact Us</div>
-                      </a>
-                    </li>
-                    <li className="hsg-nav__dropdown-row hsg-nav__dropdown-row--links">
-                      <a href="https://ir.sadaf.com/?hubs_content=www.sadaf.com%2F&amp;hubs_content-cta=nav-utility-investors&amp;hubs_post=blog.sadaf.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." className="ga_nav_link hsg-nav__box-link  nav-utility-investors " data-ga_nav_type="header_nav" data-ga_nav_tree_text="About > Investor Relations">
-                        <div className="hsg-nav__header">Investor Relations</div>
-                      </a>
-                    </li>
-                    <li className="hsg-nav__dropdown-row hsg-nav__dropdown-row--links">
-                      <a href="https://www.sadaf.com/company/management?hubs_content=www.sadaf.com%2F&amp;hubs_content-cta=nav-utility-management&amp;hubs_post=blog.sadaf.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." className="ga_nav_link hsg-nav__box-link  nav-utility-management " data-ga_nav_type="header_nav" data-ga_nav_tree_text="About > Management Team">
-                        <div className="hsg-nav__header">Management Team</div>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
               <ul className="hsg-nav__group hsg-nav__group--cta" role="none">
                 <li className="hsg-nav__group-item hsg-nav__group-item--cta" role="none">
                   <div className="header-nav__ctas ">
+                    {token?<a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " href="/profile"> پروفایل کاربری
+                    </a>:
                     <a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " href="/login"> ورود به سامانه
-                    </a>
+                    </a>}
                     <a className="cl-button -secondary -small -light ga_nav_link homepage-hp-nav2 " href="/contact"> تماس با ما
                     </a>
                   </div>

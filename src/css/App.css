@@ -1,10 +1,16 @@
+:root{
+  --main-color:#0d1633;
+  --second-color:#09b3e4;
+  --green-color:#37cc01;
+  --green-second-color:#8be200;
+}
 :root,
 .-light,
 .-white,
 .-dark {
   --cl-anchor-text-decoration: underline;
   --cl-anchor-color-dark: #5fa3d4;
-  --cl-anchor-hover-color-dark: #88bde3
+  --cl-anchor-hover-color-dark: #88bde3;
 }
 :root,
 [data-background=white],
@@ -196,10 +202,10 @@
     padding-bottom:var(--wf-section-padding-s)
   }
   .wf-section.-padding-top-md .wf-section-wrapper {
-    padding-top:var(--wf-section-padding-md)
+    padding-top:0
   }
   .wf-section.-padding-bottom-md .wf-section-wrapper {
-    padding-bottom:var(--wf-section-padding-md)
+    padding-bottom:0
   }
   .wf-section.-padding-top-lg .wf-section-wrapper {
     padding-top:var(--wf-section-padding-lg)
@@ -215,7 +221,7 @@
   background-color:var(--cl-color-background-02,var(--light-theme-background-02))
 }
 .wf-section.-neutral {
-  background-color:var(--cl-color-background-03,var(--light-theme-background-03))
+  background-color:var(--main-color)
 }
 .wf-section.-dark {
   background-color:var(--cl-color-background-01,var(--dark-theme-background-01))
@@ -3085,7 +3091,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
   }
 }
 .hsg-footer__nav-column:first-child {
-  padding-left:0
+  padding-left:20px;
 }
 .hsg-footer__nav-column:last-child {
   padding-right:0
