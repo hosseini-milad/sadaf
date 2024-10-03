@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react"
-import BreadCrumb from "../Components/Breadcrumb"
-import ExtraInfo from "../Components/Report/ExtraInfo"
-import IdeaHeader from "../Components/Report/ideaHeader"
 import env from "../env"
+import LoginHolder from "../modules/Login/LoginHolder";
 
 function RegReq(props){
-   const url = document.location.pathname.split('/')[2]
-   const [content,setContent] = useState()
+  const token = props.token
    const [formData, setFormData] = useState();
    const [error, setError] = useState({message:"",color:""});
    const regNow=()=>{
@@ -34,7 +31,6 @@ function RegReq(props){
           }
         );
     }
-    console.log(formData)
    return(
       <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
          <section className="offers-demo-section -neutral">
@@ -92,7 +88,7 @@ function RegReq(props){
     </div>
     <div className="offers-demo-section-right -">
       <div id="hs_cos_wrapper_csol_bam" className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" >
-        <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
+        {token?<section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
           <div className="csol-section-wrapper">
             <div className="csol-book-a-meeting-wrapper">
               <div id="csol-book-a-meeting-form-container-csol_bam" className="csol-book-a-meeting-form-container" data-query-string="" data-locale="en" data-form-id="95c7a26e-eb03-4da7-bb69-4ca3c029983b" data-portal-id="53" data-custom-submit-text="Get your free demo" data-hs-forms-root="true">
@@ -278,7 +274,10 @@ function RegReq(props){
               </div>
             </div>
           </div>
-        </section>
+        </section>:
+        <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
+          <LoginHolder />
+          </section>}
       </div>
     </div>
   </div>

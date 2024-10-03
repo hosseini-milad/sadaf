@@ -22,7 +22,11 @@ import Login from './Pages/Login';
 import Report from './Pages/Report';
 import Idea from './Pages/Idea';
 import RegReq from './Pages/RegReq';
-
+import Cookies from 'universal-cookie';
+import env from './env';
+import Profile from './Pages/Profile';
+const cookies = new Cookies();
+const token = cookies.get(env.cookieName)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
@@ -34,8 +38,9 @@ root.render(
           <Route path="/register" element={<Layout><Login /></Layout>}/>
           <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
 
+          <Route path="/profile" element={<Layout><Profile token={token}/></Layout>}/>
           
-          <Route path="/reg-request" element={<Layout><RegReq /></Layout>}/>
+          <Route path="/reg-request" element={<Layout><RegReq token={token}/></Layout>}/>
         </Routes>
     </Router>
 );

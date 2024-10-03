@@ -19,6 +19,17 @@ const env={
     defaultProduct:"/img/avatar/defaultProduct.png",
 
 }
+export const searchUrl=(url,menu,setTab)=>{
+    const tabString = url.split('#')
+    if(!tabString) return('')
+    if(tabString.length==2){
+        var cTab = tabString[1]
+        const cMenu = menu.find(item=>item.enTitle==cTab)
+        setTab(cMenu&&cMenu.index)
+        return(tabString[1])
+    }
+    
+}
 
 
 export default env

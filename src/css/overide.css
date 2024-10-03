@@ -98,6 +98,96 @@
     width:100%;
   }
 }
+.colSpan{
+  display: flex;
+  gap:15px;
+  justify-content: space-between;
+}
+.col90{
+  width: 90%;
+  margin: auto;
+}
+.col50{
+  width: 90%;
+  margin: 10px auto;
+}
+.liCircle{
+  list-style: circle;
+}
+.activeMenu{
+  border-right: 15px solid #003eee !important;
+}
+.imgInline{
+  display: flex;
+  justify-content: space-evenly;
+}
+.fullWidth{
+  width: 95%;
+  margin: 10px auto;
+}
+.profileHolder{
+  display: flex;
+}
+.SideBar{
+  width: 20%;
+  min-width:180px;
+}
+.MenuSideBar{
+  padding: 15px;
+  margin-top: 50px;
+}
+.MenuItem{
+  border-right: 5px solid #007aff;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  transition: .3s all;
+  cursor: pointer;
+}
+.MenuItem:hover{
+  background-color: #007aff;
+  color:#fff;
+  transition: .3s all;
+}
+
+.profileForm{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.profileInput{
+  width: 40%;
+}
+.buttonHolder{
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+.cancelBtn{
+  border-color: orangered;
+}
+.cancelBtn:hover{
+  background-color: orangered;
+}
+.checkSeat{
+  margin: auto;
+}
+.seatPanel{
+  text-align: center;
+}
+.seatTabHolder{
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.disableBtn{
+  background-color: silver;
+  cursor:not-allowed;
+}
+.Calendar{
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
 .inputStyle {
   width: 3rem !important;
   height: 3rem;

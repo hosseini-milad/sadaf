@@ -5,6 +5,7 @@ import ResourceMenu from "./MegaMenu/PlanMenu";
 
 const Menu = (props)=>{
     const [tab,setTab] = useState(-1)
+    const token = props.token
     return(
       <div data-fixed-element="placeholder">
       <nav className="hsg-nav-menu stickyHeader" >
@@ -21,7 +22,7 @@ const Menu = (props)=>{
               <span id="hsg-nav__logo-caret-home">Home</span>
             </button>
             <div className="hsg-nav__group-item--search-container">
-              <input type="search" className="" data-id="hsg-nav__search-input" placeholder="Search sadaf.com" data-config="{&quot;contexts&quot;:[{&quot;cx&quot;:&quot;009219321729865762236:z9gsnksfc30&quot;,&quot;id&quot;:&quot;website&quot;,&quot;label&quot;:&quot;Search sadaf.com&quot;,&quot;selected&quot;:true},{&quot;cx&quot;:&quot;009219321729865762236:fzizmixjdmi&quot;,&quot;id&quot;:&quot;blog&quot;,&quot;label&quot;:&quot;Search the blog&quot;,&quot;selected&quot;:null}],&quot;loadMoreButton&quot;:&quot;Load More Results&quot;,&quot;noResults&quot;:[&quot;That's odd...&quot;,&quot;couldn't find quite the right match.&quot;,&quot;Don't worry, try searching again up top.&quot;]}" aria-label="Search"/>
+              <input type="search" className="" data-id="hsg-nav__search-input" placeholder="Search sadaf.com" aria-label="Search"/>
             </div>
             <div className="hsg-nav__burger-wrapper">
               <button className="hsg-nav__burger" aria-expanded="false" aria-controls="burger-submenu" data-hs-event-72370834="1">
@@ -72,8 +73,10 @@ const Menu = (props)=>{
               <ul className="hsg-nav__group hsg-nav__group--cta" role="none">
                 <li className="hsg-nav__group-item hsg-nav__group-item--cta" role="none">
                   <div className="header-nav__ctas ">
+                    {token?<a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " href="/profile"> پروفایل کاربری
+                    </a>:
                     <a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " href="/login"> ورود به سامانه
-                    </a>
+                    </a>}
                     <a className="cl-button -secondary -small -light ga_nav_link homepage-hp-nav2 " href="/contact"> تماس با ما
                     </a>
                   </div>
