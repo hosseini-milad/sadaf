@@ -16,6 +16,7 @@
   justify-content: space-between;
   width: 100%;
   gap: 20px;
+  margin-bottom: 40px;
   text-align: right;
 }
 .showPass{
@@ -1059,4 +1060,50 @@
   position: absolute;
   left: 20px;
   top: 30px;
+}
+.textHolder{
+  position: relative;
+}
+.oldChange{
+  color:brown;
+  position:absolute;
+  top: 57px;
+  font-size: small;
+  right: 20px;
+}
+.inRow{
+  display: flex;
+  flex-wrap: wrap;
+}
+.imageEdit{
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  border: 5px solid#002A54;
+}
+.switchBtn{
+  width:150px;
+  border-radius: 5px;
+  background-color: orangered;
+  color: #fff;
+  padding: 3px 20px;
+  border:none;
+}
+.altBtn{
+  background-color: #002A54;
+}
+.greenIcon{
+  color:springgreen;
+}
+.sub-num{
+  width: 250px;
+}
+.sub-num{
+  min-width: 350px;
+}
+.sub-num li{
+  background-color: #fff;
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  margin-bottom: 4px;
 }

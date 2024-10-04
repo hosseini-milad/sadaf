@@ -1,7 +1,7 @@
 import { useState } from "react"
-import DataTableRow from "./DataTableRow"
+import CoworkTableRow from "./CoworkTableRow";
 
-function DataTable(props){
+function CoworkTable(props){
   const data = props.data
   const lang=props.lang;
   const [detail,showDetail] = useState(-1)
@@ -11,24 +11,26 @@ function DataTable(props){
         <thead>
         <tr>
           <th className="checkBoxStyle">
-               ___</th>
+               #</th>
             <th>
-              <p>عنوان</p>
+              <p>نام و نام خانوادگی</p>
               <i></i>
             </th>
             <th>
-              <p>کاربر</p>
-              <i></i>
-            </th>
-            <th>
-              <p>تاریخ</p>
+              <p>اطلاعات کاربر</p>
               <i></i>
             </th>
 
             <th>
-            <p>اعتبار</p>
+            <p>حوزه فعالیت</p>
               <i></i>
             </th>
+
+            <th>
+            <p>پرداخت</p>
+              <i></i>
+            </th>
+            
             <th>
             <p>وضعیت</p>
               <i></i>
@@ -39,9 +41,9 @@ function DataTable(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
-            <DataTableRow detail={detail} showDetail={showDetail} 
-              cart={props.cart}
-              data={data} index={i} key={i} lang={lang}/>
+            <CoworkTableRow detail={detail} showDetail={showDetail} 
+              data={data} index={i} key={i} lang={lang}
+              setRefresh={props.setRefresh} kind={props.kind}/>
           )):''}
           
         </tbody>
@@ -49,4 +51,4 @@ function DataTable(props){
 
     )
 }
-export default DataTable
+export default CoworkTable

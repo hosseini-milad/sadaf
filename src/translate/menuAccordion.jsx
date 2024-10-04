@@ -40,6 +40,46 @@ const menutrans ={
             }],
         },
         {
+            english: "Request",
+            persian: "تقاضای فناوری",
+            index:0,
+            icon:"fa-dashboard",
+            href:"#",
+            children:[
+            {
+                english: "Requests",
+                persian: "لیست تقاضای فناوری",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/request",
+                url:"request"
+            },
+            {
+                english: "Request Cat",
+                persian: "دسته بندی تقاضا",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/req-cat",
+                url:"req-cat"
+            }
+        ]},
+        {
+            english: "Clients",
+            persian: "کاربران",
+            index:0,
+            icon:"fa-dashboard",
+            href:"#",
+            children:[
+            {
+                english: "Client Lists",
+                persian: "لیست کاربران",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/clients",
+                url:"clients"
+            }
+            ]},
+        {
             english: "Company",
             persian: "شرکت ها",
             index:0,
@@ -78,6 +118,38 @@ const menutrans ={
                 href:"/licence",
                 url:"licence"
             }
+            ]},
+        {
+            english: "Reserve",
+            persian: "رزروها",
+            index:0,
+            icon:"fa-dashboard",
+            href:"#",
+            children:[
+            {
+                english: "CoWork Seat",
+                persian: "صندلی های اشتراکی",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/cowork",
+                url:"cowork"
+            },
+            {
+                english: "Share Room",
+                persian: "سالن جلسات",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/share-room",
+                url:"share-room"
+            },
+            {
+                english: "Transactions",
+                persian: "تراکنش ها",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/transactions",
+                url:"transactions"
+            }
             ]}
             ],
         
@@ -89,14 +161,6 @@ const menutrans ={
             icon:"fa-key",
             href:"/access",
             url:"access"
-        },
-        {
-            english: "Filters",
-            persian: "فیلترها",
-            index:1,
-            icon:"fa-key",
-            href:"/filter",
-            url:"filter"
         },
         {       
             english: "User Management",

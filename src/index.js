@@ -29,6 +29,12 @@ import CategoryTable from './modules/Company/CategoryTable';
 import UnitTable from './modules/Company/UnitTable';
 import LicenceTable from './modules/Company/licenceTable';
 import CompanyHolder from './pages/Company';
+import CompanyEdit from './pages/CompanyEdit';
+import CoWork from './pages/CoWork';
+import Transactions from './pages/Transactions';
+import ClientHolder from './pages/Clients';
+import Requests from './pages/Request';
+import ReqCategory from './modules/Request/ReqComponent/ReqCategory';
 
 const cookies = new Cookies();
 var lang = JSON.parse(localStorage.getItem(env.cookieLang));
@@ -53,11 +59,19 @@ root.render(
         <Route path="/data" element={<Layout><Data lang={lang}/></Layout>}/>
         <Route path="/new-data" element={<Layout><NewData lang={lang}/></Layout>}/>
 
+        <Route path="/clients" element={<Layout><ClientHolder lang={lang}/></Layout>}/>
         <Route path="/company" element={<Layout><CompanyHolder lang={lang}/></Layout>}/>
+        <Route path="/company-edit/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
         <Route path="/category" element={<Layout><CategoryTable lang={lang}/></Layout>}/>
         <Route path="/unit" element={<Layout><UnitTable lang={lang}/></Layout>}/>
         <Route path="/licence" element={<Layout><LicenceTable lang={lang}/></Layout>}/>
         
+        <Route path="/request" element={<Layout><Requests lang={lang}/></Layout>}/>
+        <Route path="/request/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
+        <Route path="/req-cat" element={<Layout><ReqCategory lang={lang}/></Layout>}/>
+        
+        <Route path="/cowork" element={<Layout><CoWork lang={lang}/></Layout>}/>
+        <Route path="/transactions" element={<Layout><Transactions lang={lang}/></Layout>}/>
         
       </Routes>:
         <Routes>

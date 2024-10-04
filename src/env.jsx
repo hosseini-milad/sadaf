@@ -1,15 +1,15 @@
 
 const env={
     siteApi:'http://localhost:2020/api',
-    //siteApi:'https://sadafadmin.sepehrai.ir/api',
+    //siteApi:'https://reserveadmin.qomstp.ir/api',
     
     siteApiUrl:'http://localhost:2020',
-    //siteApiUrl:'https://sadafadmin.sepehrai.ir',
-    cookieName:'sadaf-login',
+    //siteApiUrl:'https://reserveadmin.qomstp.ir',
+    cookieName:'sadaf-admin-login',
     //cookieName:'panel-login',
     //cookieName:'mehr-login',
     
-    cookieLang:'sadaf-lang',
+    cookieLang:'sadaf-admin-lang',
     //cookieLang:'panel-lang',
     //cookieLang:'mehr-lang',
 

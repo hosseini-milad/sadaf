@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { PostReq } from "../components/PostReq"
 import Paging from "../modules/Components/Paging"
 import env from "../env"
-import CompanyTable from "../modules/Company/Modules/CompanyTable"
-import CompanyFilters from "../modules/Company/Modules/CompanyFilters"
+import ClientTable from "../modules/Clients/ClientTable"
+import ClientFilters from "../modules/Clients/Modules/ClientFilters"
 
-function CompanyHolder(props){
+function ClientHolder(props){
     const [data,setData] = useState()
     const [filters,setFilters] = useState()
     const [refresh,setRefresh] = useState()
@@ -15,9 +15,7 @@ function CompanyHolder(props){
     useEffect(()=>{initial()},[kind,refresh])
     const initial=async()=>{
         var result = await PostReq(
-        {method:"POST",url:kind?
-          "/company/list-company-admin":
-          "/company/list-change-admin",
+        {method:"POST",url:"/user/list-client",
             body:{}
         })
         setData(result.data)
@@ -27,17 +25,12 @@ function CompanyHolder(props){
       <div className="od-header">
         <div className="od-header-info">
           <div className="od-header-name">
-            {kind?<p>صفحه شرکت ها</p>:
-            <p>تغییرات شرکت ها</p>}
+            <p>لیست کاربران</p>
           </div>
         </div>
-        {kind?<button className="switchBtn" 
-          onClick={()=>{setKind(0)}}>لیست تغییرات</button>:
-        <button className="switchBtn altBtn" 
-         onClick={()=>{setKind(1)}}>لیست شرکت ها</button>}
       </div>
       <div className="list-container">
-        <CompanyFilters
+        <ClientFilters
           lang={props.lang}
           setFilters={setFilters}
           filters={filters}
@@ -46,7 +39,7 @@ function CompanyHolder(props){
             {loading ? (
               env.loader
             ) : (
-              <CompanyTable data={data} lang={'fa'} 
+              <ClientTable data={data} lang={'fa'} 
               kind={kind} setRefresh={setRefresh}/>
             )}
         </div>
@@ -60,4 +53,4 @@ function CompanyHolder(props){
     </div>
     )
 }
-export default CompanyHolder
+export default ClientHolder

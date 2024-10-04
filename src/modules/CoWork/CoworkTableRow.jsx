@@ -1,10 +1,10 @@
 import React ,{ useState } from "react"
-import CompanyQuickCart from "./CompanyQuickCart"
-import env from "../../../env"
-import { PostReq } from "../../../components/PostReq"
+import env from "../../env"
+import { PostReq } from "../../components/PostReq"
+import CoworkQuick from "./Modules/CoworkQuick"
 
 
-function CompanyTableRow(props){
+function CoworkTableRow(props){
   const [openOption,setOpenOption] = useState(0)
   const [checkState,setCheckState] = useState(false)
   const activeAcc = props.index===props.detail
@@ -38,7 +38,9 @@ function CompanyTableRow(props){
             </td>
             <td>
                 <div className="cu-avatar rightAlign">
-                    <p>{data.title}</p>
+                    <p>{data.userInfo[0]&&data.userInfo[0].cName} 
+                    {data.userInfo[0]&&data.userInfo[0].sName}
+                    </p>
                 </div>
             </td>
             <td>
@@ -46,38 +48,33 @@ function CompanyTableRow(props){
                   {data.mahiat?<img src="/img/avatar/business.png" alt="avatar"/>:
                   <img src="/img/avatar/person.png" alt="avatar"/>}
                   <div className="cu-name">
-                    <p className="name">{data.managerName}<br/>
-                    <small>شماره تماس: {data.managerPhone}</small></p>
+                    <p className="name">
+                    {data.userInfo[0]&&data.userInfo[0].meliCode}<br/>
+                    <small>شماره تماس: 
+                    {data.userInfo[0]&&data.userInfo[0].phone}</small></p>
                   </div>
                   
                 </div>
               </td>
               <td>
                 <div className="order-num">
-                  <img src={env.siteApiUrl+ data.bannerThumb}/>
+                  <p>{data.userInfo[0]&&data.userInfo[0].work}</p>
+                </div>
+              </td>
+              <td>
+                <div className="order-price">
+                  {data.isPaid?
+                    <i className="fa fa-check greenIcon"></i>:
+                    <i className="fa fa-remove redIcon"></i>}
                 </div>
               </td>
               <td>
                 <div className="order-price" 
                 onClick={()=>publishItem(data.managerPhone,data.publish)}>
-                  {data.publish?
-                    <i className="fa fa-check"></i>:
+                  {data.active?
+                    <i className="fa fa-check greenIcon"></i>:
                     <i className="fa fa-remove redIcon"></i>}
                 </div>
-              </td>
-              <td>
-                {props.kind?<div className="order-price">
-                  {data.change?
-                    <i className="fa fa-check"></i>
-                    :<></>}
-                </div>:<div className="order-price">
-                <button type="button" 
-                  onClick={()=>document.location.href=("/company-edit/"+data._id)}>
-                    مشاهده ویرایش</button>
-                  <button type="button" 
-                  onClick={()=>acceptEdit(data.managerPhone)}>
-                    تایید ویرایش</button>
-                </div>}
               </td>
             <td>
               <div className="more-btn">
@@ -89,10 +86,10 @@ function CompanyTableRow(props){
           </tr>
           {activeAcc?<tr className="sub-order">
         <td colSpan="10">{
-          <CompanyQuickCart data={data}/>}
+          <CoworkQuick data={data}/>}
           </td></tr>
           :<React.Fragment></React.Fragment>}
           </React.Fragment>
     )
 }
-export default CompanyTableRow
+export default CoworkTableRow

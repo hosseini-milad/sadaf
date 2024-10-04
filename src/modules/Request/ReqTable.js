@@ -1,7 +1,7 @@
 import { useState } from "react"
-import DataTableRow from "./DataTableRow"
+import ReqTableRow from "./ReqTableRow";
 
-function DataTable(props){
+function ReqTable(props){
   const data = props.data
   const lang=props.lang;
   const [detail,showDetail] = useState(-1)
@@ -21,16 +21,16 @@ function DataTable(props){
               <i></i>
             </th>
             <th>
+              <p>تعداد ایده</p>
+              <i></i>
+            </th>
+            <th>
               <p>تاریخ</p>
               <i></i>
             </th>
 
             <th>
-            <p>اعتبار</p>
-              <i></i>
-            </th>
-            <th>
-            <p>وضعیت</p>
+            <p>انتشار</p>
               <i></i>
             </th>
             <th>
@@ -39,7 +39,7 @@ function DataTable(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
-            <DataTableRow detail={detail} showDetail={showDetail} 
+            <ReqTableRow detail={detail} showDetail={showDetail} 
               cart={props.cart}
               data={data} index={i} key={i} lang={lang}/>
           )):''}
@@ -49,4 +49,4 @@ function DataTable(props){
 
     )
 }
-export default DataTable
+export default ReqTable
