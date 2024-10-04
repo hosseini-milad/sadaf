@@ -17,8 +17,8 @@ function SingleIdea(props){
                 <p className="wf-product-cards__description fourlineText">{data.description}</p>
                 <div className="wf-product-cards__features">
                   <h4 className="wf-product-cards__feature-list--heading ">
-                    <i className="fa fa-user ideaIcon" ></i>
-                    <small>{"کاربر میهمان"}
+                    <i className="fa fa-building ideaIcon" ></i>
+                    <small>{data.nahad}
                     </small>
                     {/*<sub onClick={()=>setMore(1)}> 
                       ({2} ایده) </sub>
@@ -43,7 +43,7 @@ function SingleIdea(props){
                       <li className="wf-product-cards__feature-list--item">
                         
                         <i className="fa fa-certificate ideaIcon" ></i>
-                        {data.proofUsage?data.proofUsage.length:0} ایده ثبت شده
+                        {data.ideaCount} ایده ثبت شده
                       </li>
                     </ul>
                   </div>

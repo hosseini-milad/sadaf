@@ -216,8 +216,12 @@
   margin-bottom: 15px;
   
 }
+.colPad{
+  padding: 0 5%;
+}
 .fullWidth{
   width: 100%;
+  
 }
 .fullWidth input{
   width: 100%;

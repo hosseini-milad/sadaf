@@ -32,7 +32,7 @@ function ReportFilter(props){
                         </label>
                      </div>
                      <div className="private-form__input-wrapper">
-                        <input id="username" tabindex="1" className="form-control private-form__control login-email"
+                        <input id="username" tabIndex="1" className="form-control private-form__control login-email"
                         placeholder="عبارت، شماره ثبت یا ..." value={search}
                         onChange={(e)=>
                             setSearch(e.target.value)}/>

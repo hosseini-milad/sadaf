@@ -4,7 +4,7 @@ import env from "../../env"
 function IdeaAcc(props){
     const data = props.data
     const [open,setOpen] = useState(0)
-    if(data)
+    if(data&&data.length)
     return(
         <li className="hsg-accordion__item" data-hsg-mounted="">
             <button className="hsg-accordion__label" onClick={()=>setOpen(open?0:1)}>

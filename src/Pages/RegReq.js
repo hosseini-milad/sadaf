@@ -11,6 +11,7 @@ function RegReq(props){
          method: "POST",
          headers: {
            "Content-Type": "application/json",
+           'x-access-token':token&&token.token,'userid':token&&token.userId
          },
          body: JSON.stringify(formData),
        }
