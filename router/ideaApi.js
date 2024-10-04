@@ -11,6 +11,9 @@ const data = require('../models/data');
 const ReqSchema = require('../models/request')
 
 const auth = require("../middleware/auth");
+const idea = require('../models/idea');
+const clients = require('../models/auth/clients');
+const reqcat = require('../models/reqcat');
 
 router.get('/get-idea/:id',jsonParser, async (req,res)=>{
     const url = req.url.split('/').pop()
@@ -64,9 +67,10 @@ router.post('/get-data',jsonParser,auth, async (req,res)=>{
     }
 })
 
-router.post('/reg-req',jsonParser, async (req,res)=>{
-    
+router.post('/reg-req',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
     var req=req.body
+    req.userId = userId
     try{
         const reqList = await ReqSchema.create(req)
 
@@ -86,7 +90,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
     
     //console.log("def: ",defaultDate)
     var data={
-        title:StandardInput(req.body.title),
+        title:req.body.title,
         nahad:req.body.nahad,
         year:req.body.year,
         category:req.body.category,
@@ -117,9 +121,46 @@ router.post('/req-list',jsonParser, async (req,res)=>{
 
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
-
+        for(var i=0;i<pageData.length;i++){
+            const userData = await clients.findOne({_id:ObjectID(pageData[i].userId)})
+            const ideaData = await idea.find({reqCode:pageData[i]._id})
+            pageData[i].userData = userData
+            pageData[i].ideaData = ideaData
+            pageData[i].ideaCount = ideaData&&ideaData.length
+        }
 
         res.json({data:pageData,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/reg-idea',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
+    var req=req.body
+    req.userId = userId
+    
+    try{
+        const ideaStatus = await idea.create(req)
+
+
+        res.json({data:ideaStatus,message:"ایده ثبت شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/list-idea',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
+    var req=req.body
+    req.userId = userId
+    
+    try{
+        const ideaStatus = await idea.create(req)
+
+
+        res.json({data:ideaStatus,message:"ایده ثبت شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -153,9 +194,11 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
 })
 router.get('/get-req/:id',jsonParser, async (req,res)=>{
     const url = req.url.split('/').pop()
-    console.log(url)
     try{
-        const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)})
+        const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)}).lean()
+        const ideaData = await idea.find({reqCode:url})
+        dataDetail.ideaData = ideaData
+        dataDetail.ideaCount = ideaData&&ideaData.length
         if(dataDetail)
             res.status(200).json({data:dataDetail,message:"اطلاعات پیدا شد"})
         else
@@ -173,4 +216,53 @@ const StandardInput =(text)=>{
     newText = newText.replace( /ک/g, 'ك')
     return(newText)
 }
+
+
+router.post('/list-category',jsonParser, async (req,res)=>{
+    
+    var data={
+        search:req.body.search,
+        title:req.body.title,
+    }
+    try{
+        const dataList = await reqcat.aggregate([
+            { $match:data.search?{$or:[
+                {title:new RegExp('.*' + data.search + '.*')},
+                {managerName:new RegExp('.*' + data.search + '.*')},
+                {regCode:new RegExp('.*' + data.search + '.*')},
+                {productTitle:new RegExp('.*' + data.search + '.*')}]}:{}},
+            
+            { $sort: {"date":-1}},
+            { $limit: 10},
+        ])
+
+
+        res.json({data:dataList,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/set-category',jsonParser,auth, async (req,res)=>{
+    
+    var req=req.body
+    try{
+        const reqList = await reqcat.create(req)
+
+
+        res.json({data:reqList,message:"اطلاعات ثبت شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/update-category',jsonParser, async (req,res)=>{
+    try{
+        res.json({data:"data"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 module.exports = router;

@@ -11,7 +11,7 @@ const ReqSchema = new mongoose.Schema({
   description: { type: String},
   action: { type: String},
   support: { type: String},
-
+  active:{type:Boolean, default:false},
   userId: { type: String},
   phone: { type: String},
   
