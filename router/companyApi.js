@@ -528,8 +528,8 @@ router.post('/company-filter',jsonParser, async (req,res)=>{
         for(var i=0;i<companyList.length;i++){
             var unitData = await unit.findOne({_id:ObjectID(companyList[i].unit)})
             var catData = await category.findOne({_id:ObjectID(companyList[i].category)})
-            companyList.unitData = unitData
-            companyList.catData = catData
+            companyList[i].unitData = unitData
+            companyList[i].catData = catData
 
         }
         res.json({data:companyList})
