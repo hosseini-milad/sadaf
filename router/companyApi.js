@@ -59,8 +59,8 @@ router.get('/fetch-company/:id',jsonParser, async (req,res)=>{
         const companyDetail = await company.findOne({_id:ObjectID(url)}).lean()
         if(companyDetail){
             
-            var unitData = await unit.findOne({_id:ObjectID(companyList[i].unit)})
-            var catData = await category.findOne({_id:ObjectID(companyList[i].category)})
+            var unitData = await unit.findOne({_id:ObjectID(companyDetail.unit)})
+            var catData = await category.findOne({_id:ObjectID(companyDetail.category)})
             companyDetail.unitData = unitData
             companyDetail.catData = catData
             res.status(200).json({data:companyDetail,message:"اطلاعات پیدا شد"})
