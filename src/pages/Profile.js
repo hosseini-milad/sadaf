@@ -12,8 +12,6 @@ import ChangePass from "../modules/Profile/ProfileModules/ChangePass"
 const cookies = new Cookies();
 const menu=[
     {title:"پروفایل کاربری",enTitle:"userprofile",index:0},
-    {title:"رزروهای من",enTitle:"myreserve",index:1},
-    {title:"پرداختی های",enTitle:"payment",index:2},
     {title:"تغییر رمزعبور",enTitle:"password",index:3},
 ]
 

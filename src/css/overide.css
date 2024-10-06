@@ -148,3 +148,106 @@ a{
   display: block;
   margin-top: 20px;
 }
+.fourlineText, .twolineText {
+  -webkit-box-orient: vertical;
+  display: block;
+  display: -webkit-box;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fourlineText {
+  -webkit-line-clamp: 4;
+  max-height: 5.2rem;
+  min-height: 5.2rem;
+}
+.twolineText {
+  -webkit-line-clamp: 2;
+  height: 2.7rem;
+}
+
+.onelineText {
+  -webkit-line-clamp: 2;
+  height: 1.4rem;
+}
+.boxTextPlace{
+  float:left;
+}
+.boxTextPlace{
+  background-color: #fef4ea;
+  padding: 5px 10px;
+  border:1px solid #e1e1e1;
+  width: 150px;
+  -webkit-line-clamp: 2;
+  height: 2rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  white-space: nowrap;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+.img-responsive{
+  margin: auto;
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+.infoTable{
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+.infoTable tr{
+  line-height: 2;
+}
+.infoTable th{
+  text-align: right;
+  border: 1px solid #eee;
+  padding: 0 8px;
+  border-radius: 2px;
+}
+.mySliderHolder{
+  padding: 50px 0;
+  position: relative;
+}
+.mySlider{
+  padding: 120px 70px;
+  overflow: hidden;
+}
+.topSquare{
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  background-color: #f39200;
+  position: absolute;
+}
+.bottomSquare{
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  background-color: #0d6efd;
+  position: absolute;
+}
+@media(min-width: 800px) {
+.topSquare{
+  top:25px;
+  right:25px;
+}
+.bottomSquare{
+  bottom:25px;
+  left:25px;
+}
+}
+@media(min-width: 1200px) {
+.topSquare{
+  top:25px;
+  right:10%;
+}
+.bottomSquare{
+  bottom:25px;
+  left:10%;
+}
+}

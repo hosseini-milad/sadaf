@@ -452,7 +452,7 @@ button {
 }
 @media(min-width: 1080px) {
   .wf-page-header__content-wrapper {
-    --wf-page-header-content-wrapper-margin-right: 50%;
+    --wf-page-header-content-wrapper-margin-right: 46%;
     --wf-page-header-content-wrapper-padding: 2rem 1rem 2rem 0;
     
   }
@@ -734,7 +734,7 @@ button {
 .wf-product-cards__heading--image {
   display:inline-block;
   height:var(--wf-product-cards-heading-image-size);
-  margin-right:.625rem;
+  margin-left:.625rem;
   width:var(--wf-product-cards-heading-image-size)
 }
 .wf-product-cards__heading {
@@ -1105,7 +1105,7 @@ button {
   list-style: none;
   margin: 0;
   overflow-x: scroll;
-  padding: 2px 2px 0;
+  padding: 2px 10% 0;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }

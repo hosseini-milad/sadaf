@@ -25,8 +25,9 @@ function Slider(props){
         })
     },[])
     return(
-      <section className="wf-section wf-page-header -neutral -padding-top-md -padding-bottom-md">
-        {(slider&&slider[0])?<div className="wf-section-wrapper">
+      <section className="wf-section wf-page-header -neutral -padding-top-md -padding-bottom-md mySliderHolder">
+        <div className="topSquare"></div>
+        {(slider&&slider[0])?<div className="wf-section-wrapper mySlider">
           <div className="wf-page-header__wrapper">
             <div className="wf-page-header__content-wrapper">
               <p className="wf-page-header__tagline -microheading">شرکت های پارک علم و فناوی استان قم</p>
@@ -52,6 +53,7 @@ function Slider(props){
               <img src={env.siteApiUrl+slider[0].bannerUrl}/>
             </div>
           </div>
+          <div className="bottomSquare"></div>
         </div>:<></>}
       </section>
     )

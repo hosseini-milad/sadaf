@@ -15,29 +15,52 @@ function CompanyHolder(props){
                 
                 <div className="alert alert-grey noborder">
                     <div className="row">
-                    <div className="col-sm-2">
+                    <div className="col-sm-4">
                         <img className="img-responsive" 
                         src={data.logo?env.siteApiUrl+data.logo:''}/>
+                        <table className="infoTable">
+                            <tbody>
+                                <tr>
+                                    <td>حوزه فعالیت</td>
+                                    <th>{data.work}</th>
+                                </tr>
+                                <tr>
+                                    <td>واحد</td>
+                                    <th>{data.unitData?data.unitData.title:'-'}</th>
+                                </tr>
+                                <tr>
+                                    <td>دسته بندی</td>
+                                    <th>{data.catData?data.catData.title:'-'}</th>
+                                </tr>
+                                <tr>
+                                    <td>مدیرعامل</td>
+                                    <th>{data.managerName}</th>
+                                </tr>
+                                <tr>
+                                    <td>شماره تماس</td>
+                                    <th>{data.phone}</th>
+                                </tr>
+                                <tr>
+                                    <td>آدرس ایمیل</td>
+                                    <th>{data.email}</th>
+                                </tr>
+                                <tr>
+                                    <td>ایتا</td>
+                                    <th>@qomstp.ir</th>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div className="col-sm-10">
+                    <div className="col-sm-8">
                         <p>{data.description}</p>
-                    </div>
-                    </div>
-                </div>
-                <div className="clear20">&nbsp;</div>
-                <div className="alert">
-                    <div className="row">
-                    <div className="col-sm-3">
-                        <ul>مدیرعامل: {data.managerName}</ul>
-                        <ul>شماره ثبت: {data.regCode}</ul>
+                        <hr/>
 
-                    </div>
-                    <div className="col-sm-9">
                         <h4>{data.productTitle}</h4>
                         <p>{data.productDescription}</p>
                     </div>
                     </div>
                 </div>
+                <div className="clear20">&nbsp;</div>
                 <div className="alert">
                     <div className="row imageFrame" >
                         <div className="col-sm-4">

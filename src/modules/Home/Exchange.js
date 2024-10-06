@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import env from "../../env"
+import CompanyFilter from "../Company/CompanyFilter"
 
 function Exchange(props){
   const [catList,setCatList] = useState()
@@ -74,7 +75,8 @@ function Exchange(props){
           </div>
       </section>
       <section className="wf-section wf-product-cards -neutral -padding-top-xs -padding-bottom-md">
-        <div className="wf-section-wrapper">
+        <div className="wf-section-wrapper" style={{display: "flex", gap: "15px"}}>
+          <CompanyFilter setFilter={()=>{}} />
           <div className="wf-product-cards__container">
             {companyList?companyList.map((co,i)=>(
               <div className="wf-product-cards__card cl-card -light -container-01 -hoverable "
@@ -83,33 +85,39 @@ function Exchange(props){
                 <div className="wf-product-cards__heading--wrapper">
                   <img src={co.logo?env.siteApiUrl+co.logo:env.loader} alt={co.title} 
                     width="30" height="30" className="wf-product-cards__heading--image"/>
-                  <h3 className="wf-product-cards__heading ">
+                  <h3 className="wf-product-cards__heading twolineText">
                     {co.title}
                   </h3>
                 </div>
-                <p className="wf-product-cards__description">
-                  {co.description}</p>
-                <div className="wf-product-cards__features">
-                  <h4 className="wf-product-cards__feature-list--heading ">
+                <h4 className="wf-product-cards__feature-list--heading twolineText">
+                    <i className="fa fa-truck fa5"></i>
                     {co.productTitle}</h4>
+                <p className="wf-product-cards__description fourlineText">
+                {co.description}</p>
+                <div className="wf-product-cards__features">
                   <div className="wf-product-cards__feature-list--items">
-                    {/*<ul>
+                    <ul>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> AI-powered lead generation
+                        </svg> حوزه فعالیت: 
+                        <div className="boxTextPlace">{co.work}</div>
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Marketing automation
+                        </svg> واحد: 
+                        <div className="boxTextPlace">{co.unitData?
+                        co.unitData.title:'-'}</div>
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Analytics
+                        </svg> دسته بندی: 
+                        <div className="boxTextPlace">{co.catData?
+                        co.catData.title:'-'}</div>
                       </li>
-                    </ul>*/}
+                    </ul>
                   </div>
                 </div>
                 <div className="wf-product-cards__cta-wrapper">
