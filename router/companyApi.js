@@ -522,9 +522,16 @@ router.post('/company-filter',jsonParser, async (req,res)=>{
         const companyList = await company.aggregate([
             {$match:catFilter?
             {category:catFilter}:{}}, 
-            {$match:{publish:true}}
+            {$match:{publish:true}},
+            {$limit:9}
         ])
-        
+        for(var i=0;i<companyList.length;i++){
+            var unitData = await unit.findOne({_id:ObjectID(companyList[i].unit)})
+            var catData = await category.findOne({_id:ObjectID(companyList[i].category)})
+            companyList.unitData = unitData
+            companyList.catData = catData
+
+        }
         res.json({data:companyList})
     }
     catch(error){
