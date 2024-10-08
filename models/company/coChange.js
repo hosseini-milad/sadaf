@@ -10,6 +10,7 @@ const coChangeSchema = new mongoose.Schema({
   abstract: { type: String},
   description: { type: String},
   work: { type: String},
+  catalogue: { type: String},
 
   category:{ type: String },
   categoryId: { type: String},
@@ -22,8 +23,11 @@ const coChangeSchema = new mongoose.Schema({
   email:{ type: String},
   website:{ type: String},
   instagram:{ type: String},
+  telegram:{ type: String},
   eita:{ type: String},
   aparat:{ type: String},
+  youtube:{ type: String},
+  linkedin:{ type: String},
   
   address:{type:String},
   postalCode:{ type: String},
@@ -31,6 +35,8 @@ const coChangeSchema = new mongoose.Schema({
 
   bannerUrl:{type:String},
   bannerThumb:{type:String},
+  videoUrl:{type:String},
+  videoThumb:{type:String},
   logo:{type:String},
 
   image1:{type:String},

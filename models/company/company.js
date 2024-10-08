@@ -24,11 +24,11 @@ const companySchema = new mongoose.Schema({
   email:{ type: String},
   website:{ type: String},
   instagram:{ type: String},
-  linkedin:{ type: String},
   telegram:{ type: String},
   eita:{ type: String},
   aparat:{ type: String},
   youtube:{ type: String},
+  linkedin:{ type: String},
   
   address:{type:String},
   postalCode:{ type: String},
@@ -36,6 +36,8 @@ const companySchema = new mongoose.Schema({
 
   bannerUrl:{type:String},
   bannerThumb:{type:String},
+  videoUrl:{type:String},
+  videoThumb:{type:String},
   logo:{type:String},
 
   image1:{type:String},
