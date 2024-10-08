@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './css/App.css';
+import './css/index.css';
 import './css/fontAwesome.css';
 import './css/reyham.css';
 import './css/overide.css';
-import './css/index.css';
 
 import {
   BrowserRouter as Router,

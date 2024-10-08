@@ -179,7 +179,7 @@ a{
   background-color: #fef4ea;
   padding: 5px 10px;
   border:1px solid #e1e1e1;
-  width: 150px;
+  width: 120px;
   -webkit-line-clamp: 2;
   height: 2rem;
   line-height: 1.2;
@@ -193,7 +193,7 @@ a{
 .img-responsive{
   margin: auto;
   width: 100%;
-  height: 100px;
+  height: 80px;
   object-fit: contain;
 }
 .infoTable{
@@ -244,10 +244,25 @@ a{
 @media(min-width: 1200px) {
 .topSquare{
   top:25px;
-  right:10%;
+  right:3%;
 }
 .bottomSquare{
   bottom:25px;
-  left:10%;
+  left:3%;
 }
+}
+.productIcon{
+  width: 35px;
+  height: 35px;
+  margin-left:5px;
+}
+p{
+  text-align: justify;
+}
+.width50{
+  width: 50% !important;
+}
+.max1280{
+  max-width: 1280px;
+  margin: auto;
 }

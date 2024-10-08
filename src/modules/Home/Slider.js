@@ -25,8 +25,10 @@ function Slider(props){
         })
     },[])
     return(
-      <section className="wf-section wf-page-header -neutral -padding-top-md -padding-bottom-md mySliderHolder">
+      <section className="wf-section wf-page-header -padding-top-md -padding-bottom-md">
+        <div className="wf-section-wrapper mySliderHolder">
         <div className="topSquare"></div>
+        <div className="bottomSquare"></div>
         {(slider&&slider[0])?<div className="wf-section-wrapper mySlider">
           <div className="wf-page-header__wrapper">
             <div className="wf-page-header__content-wrapper">
@@ -53,8 +55,8 @@ function Slider(props){
               <img src={env.siteApiUrl+slider[0].bannerUrl}/>
             </div>
           </div>
-          <div className="bottomSquare"></div>
         </div>:<></>}
+        </div>
       </section>
     )
 }

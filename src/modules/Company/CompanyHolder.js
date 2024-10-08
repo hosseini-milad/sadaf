@@ -22,15 +22,11 @@ function CompanyHolder(props){
                             <tbody>
                                 <tr>
                                     <td>حوزه فعالیت</td>
-                                    <th>{data.work}</th>
+                                    <th>{data.catData?data.catData.title:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>واحد</td>
                                     <th>{data.unitData?data.unitData.title:'-'}</th>
-                                </tr>
-                                <tr>
-                                    <td>دسته بندی</td>
-                                    <th>{data.catData?data.catData.title:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>مدیرعامل</td>
@@ -57,11 +53,6 @@ function CompanyHolder(props){
 
                         <h4>{data.productTitle}</h4>
                         <p>{data.productDescription}</p>
-                    </div>
-                    </div>
-                </div>
-                <div className="clear20">&nbsp;</div>
-                <div className="alert">
                     <div className="row imageFrame" >
                         <div className="col-sm-4">
                             <img className="img-responsive" 
@@ -77,6 +68,11 @@ function CompanyHolder(props){
                         
                         </div>
                     </div>
+                    </div>
+                    </div>
+                </div>
+                <div className="clear20">&nbsp;</div>
+                <div className="alert">
                 </div>
                 <div className="clear20">&nbsp;</div>
                 </div>

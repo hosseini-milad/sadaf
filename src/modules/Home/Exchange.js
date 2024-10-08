@@ -50,7 +50,8 @@ function Exchange(props){
           })
       },[tab])
    return(
-    <div id="hs_cos_wrapper_homepage_product_overview" className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    <div id="hs_cos_wrapper_homepage_product_overview " 
+      className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module max1280">
       <section id="free-crm-tabs-section" 
         className="free-crm-tabs-section -dark -background-01">
           <div className="free-crm-tabs-section-wrapper">
@@ -74,12 +75,12 @@ function Exchange(props){
             </div>
           </div>
       </section>
-      <section className="wf-section wf-product-cards -neutral -padding-top-xs -padding-bottom-md">
-        <div className="wf-section-wrapper" style={{display: "flex", gap: "15px"}}>
-          <CompanyFilter setFilter={()=>{}} />
-          <div className="wf-product-cards__container">
+      <section className="wf-section wf-product-cards -padding-top-xs -padding-bottom-md">
+        <div className="wf-section-wrapper" style={{display: "flex", gap: "10px"}}>
+          <CompanyFilter setFilter={()=>{}} unitList={unitList} catList={catList}/>
+          <div className="wf-product-cards__container col8">
             {companyList?companyList.map((co,i)=>(
-              <div className="wf-product-cards__card cl-card -light -container-01 -hoverable "
+              <div className="wf-product-cards__card cl-card cartHolder -light -container-01 -hoverable "
               key={i}>
               <div className="wf-product-cards__content">
                 <div className="wf-product-cards__heading--wrapper">
@@ -90,32 +91,22 @@ function Exchange(props){
                   </h3>
                 </div>
                 <h4 className="wf-product-cards__feature-list--heading twolineText">
-                    <i className="fa fa-truck fa5"></i>
+                    <img src="/img/product.png" className="productIcon"/>
                     {co.productTitle}</h4>
                 <p className="wf-product-cards__description fourlineText">
-                {co.description}</p>
+                {co.productDescription}</p>
                 <div className="wf-product-cards__features">
                   <div className="wf-product-cards__feature-list--items">
                     <ul>
                       <li className="wf-product-cards__feature-list--item">
-                        <svg className="cl-icon" aria-hidden="true">
-                          <use href="#check-circle"></use>
-                        </svg> حوزه فعالیت: 
-                        <div className="boxTextPlace">{co.work}</div>
+                         <small>حوزه فعالیت: </small>
+                         <div className="boxTextPlace">{co.catData?
+                        co.catData.title:'-'}</div>
                       </li>
                       <li className="wf-product-cards__feature-list--item">
-                        <svg className="cl-icon" aria-hidden="true">
-                          <use href="#check-circle"></use>
-                        </svg> واحد: 
+                         <small>واحد: </small>
                         <div className="boxTextPlace">{co.unitData?
                         co.unitData.title:'-'}</div>
-                      </li>
-                      <li className="wf-product-cards__feature-list--item">
-                        <svg className="cl-icon" aria-hidden="true">
-                          <use href="#check-circle"></use>
-                        </svg> دسته بندی: 
-                        <div className="boxTextPlace">{co.catData?
-                        co.catData.title:'-'}</div>
                       </li>
                     </ul>
                   </div>
