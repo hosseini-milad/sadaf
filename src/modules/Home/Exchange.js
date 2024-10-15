@@ -90,9 +90,10 @@ function Exchange(props){
                     {co.title}
                   </h3>
                 </div>
-                <h4 className="wf-product-cards__feature-list--heading twolineText">
+                <div className="productHead twolineText">
                     <img src="/img/product.png" className="productIcon"/>
-                    {co.productTitle}</h4>
+                    <h4>{co.productTitle}</h4>
+                </div>
                 <p className="wf-product-cards__description fourlineText">
                 {co.productDescription}</p>
                 <div className="wf-product-cards__features">

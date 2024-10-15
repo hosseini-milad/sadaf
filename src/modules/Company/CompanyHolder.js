@@ -1,7 +1,10 @@
+import { useState } from "react"
 import env from "../../env"
+import InnerHTML from 'dangerously-set-html-content'
 
 function CompanyHolder(props){
     const data = props.data
+    const [show,setShow] = useState(0)
     return(
         <div className="pageHolder">
             <div className="sliderPlace">
@@ -40,33 +43,83 @@ function CompanyHolder(props){
                                     <td>آدرس ایمیل</td>
                                     <th>{data.email}</th>
                                 </tr>
-                                <tr>
-                                    <td>ایتا</td>
-                                    <th>@qomstp.ir</th>
+                                <tr style={{cursor:"pointer"}} onClick={()=>setShow(show==1?0:1)}>
+                                    <td className={`hsg-accordion__item ${show==1?"active" :""}`}>
+                                        <span>شبکه های اجتماعی</span>
+                                    </td>
+                                    <td>
+                                        {show?<i className="fa fa-chevron-down"></i>:
+                                            <i className="fa fa-chevron-left"></i>}
+                                    </td>
                                 </tr>
+                                {show?<>
+                                    {data.website?<tr className="socialHolder">
+                                    <td><i className="fa fa-globe socialIcon"></i>
+                                        وب سایت</td>
+                                    <th>{data.website}</th>
+                                </tr>:<></>}
+                                {data.eita?<tr className="socialHolder">
+                                    <td>ایتا</td>
+                                    <th>{data.eita}</th>
+                                </tr>:<></>}
+                                {data.linkedin?<tr className="socialHolder">
+                                    <td><i className="fa fa-linkedin socialIcon"></i>
+                                        لینکداین</td>
+                                    <th>{data.linkedin}</th>
+                                </tr>:<></>}
+                                {data.instagram?<tr className="socialHolder">
+                                    <td><i className="fa fa-instagram socialIcon"></i>
+                                        اینستاگرام</td>
+                                    <th>{data.instagram}</th>
+                                </tr>:<></>}
+                                {data.telegram?<tr className="socialHolder">
+                                    <td><i className="fa fa-telegram socialIcon"></i>
+                                        تلگرام</td>
+                                    <th>{data.telegram}</th>
+                                </tr>:<></>}
+                                {data.aparat?<tr className="socialHolder">
+                                    <td><i className="fa fa-media-player socialIcon"></i>
+                                    آپارات</td>
+                                    <th>{data.aparat}</th>
+                                </tr>:<></>}
+                                {data.youtube?<tr className="socialHolder">
+                                    <td><i className="fa fa-youtube socialIcon"></i>
+                                        یوتیوب</td>
+                                    <th>{data.youtube}</th>
+                                </tr>:<></>}
+                                </>:<></>}
                             </tbody>
                         </table>
+                        <hr/>
+                        {data.videoUrl?
+                        <InnerHTML html={data.videoUrl}/>:
+                        <></>}
                     </div>
                     <div className="col-sm-8">
                         <p>{data.description}</p>
                         <hr/>
 
-                        <h4>{data.productTitle}</h4>
+                        <h4 style={{position:"relative"}}>{data.productTitle}
+                            
+                        <a href={env.siteApiUrl+data.catalogue} 
+                        className="catalogueBTN" >
+                            کاتالوگ <i className="fa fa-download"></i></a>
+                        </h4>
                         <p>{data.productDescription}</p>
                     <div className="row imageFrame" >
-                        <div className="col-sm-4">
+                        {data.image1?<div className="col-sm-4">
                             <img className="img-responsive" 
-                            src={data.image1?env.siteApiUrl+data.image1:''}/>
-                        </div>
-                        <div className="col-sm-4">
+                            src={env.siteApiUrl+data.image1}/>
+                        </div>:<></>}
+                        {data.image2?<div className="col-sm-4">
                             <img className="img-responsive" 
-                            src={data.image2?env.siteApiUrl+data.image2:''}/>
-                        </div>
-                        <div className="col-sm-4">
+                            src={env.siteApiUrl+data.image2}/>
+                        </div>:<></>}
+                        {data.image3?<div className="col-sm-4">
                             <img className="img-responsive" 
-                            src={data.image3?env.siteApiUrl+data.image3:''}/>
+                            src={env.siteApiUrl+data.image3}/>
                         
-                        </div>
+                        </div>:<></>}
                     </div>
                     </div>
                     </div>

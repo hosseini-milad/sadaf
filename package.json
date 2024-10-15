@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@mui/material": "^5.13.6",
+    "dangerously-set-html-content": "^1.1.0",
     "npm": "^10.2.3",
     "react": "^18.2.0",
     "react-card-slider-component": "^1.0.9",
