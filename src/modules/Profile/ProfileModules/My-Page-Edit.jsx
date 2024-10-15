@@ -4,6 +4,7 @@ import MyOption from "../../../components/Button/Options"
 import env from "../../../env"
 import MyImage from "../../../components/Button/Image"
 import PageImage from "./Page-Image"
+import MyUpload from "../../../components/Button/Upload"
 
 function MyPageEdit(props){
     const token = props.token
@@ -98,7 +99,7 @@ function MyPageEdit(props){
                 <hr/>
                 <h5 className="profileText">اطلاعات محصول</h5>
                 <MyInput title="عنوان محصول" require={true} class="profileInput"
-                defaultChange={myChange&&myChange.title}
+                defaultChange={myChange&&myChange.productTitle}
                 action={setChanges} param="productTitle" defaultValue={data.productTitle}/>
                 <MyInput title="مجوزها" require={true} class="profileInput"
                 defaultChange={myChange&&myChange.licence}
@@ -106,10 +107,41 @@ function MyPageEdit(props){
                 <MyInput title="توضیح محصول" class="profileTextArea" kind="textarea"
                 defaultChange={myChange&&myChange.productDescription}
                 action={setChanges} param="productDescription" defaultValue={data.productDescription}/>
+            <MyUpload title="کاتالوگ محصول" require={true} class="imageInput" 
+            data={myChange&&myChange.catalogue}
+            action={setChanges} param="catalogue" 
+            defaultValue={data&&data.catalogue}/>
+       
+
+                <hr/>
+                <h5 className="profileText">راه های ارتباطی</h5>
+                <MyInput title="وب سایت" require={true} class="profileTextArea"
+                defaultChange={myChange&&myChange.website}
+                action={setChanges} param="website" defaultValue={data.website}/>
+                <MyInput title="ایتا" require={true} class="profileInput"
+                defaultChange={myChange&&myChange.eita}
+                action={setChanges} param="eita" defaultValue={data.eita}/>
+                <MyInput title="لینکداین" require={true} class="profileInput"
+                defaultChange={myChange&&myChange.linkedin}
+                action={setChanges} param="linkedin" defaultValue={data.linkedin}/>
+                <MyInput title="اینستاگرام" class="profileInput"
+                defaultChange={myChange&&myChange.instagram}
+                action={setChanges} param="instagram" defaultValue={data.instagram}/>
+                <MyInput title="تلگرام" class="profileInput"
+                defaultChange={myChange&&myChange.telegram}
+                action={setChanges} param="telegram" defaultValue={data.telegram}/>
+                <MyInput title="آپارات" class="profileInput"
+                defaultChange={myChange&&myChange.aparat}
+                action={setChanges} param="aparat" defaultValue={data.aparat}/>
+                <MyInput title="یوتیوب" class="profileInput"
+                defaultChange={myChange&&myChange.youtube}
+                action={setChanges} param="youtube" defaultValue={data.youtube}/>
                 <hr/>
                 <h5 className="profileText">تصاویر شرکت</h5>
                 <PageImage data={data} changes={changes} setChanges={setChanges}/>
-
+                <MyInput title="ویدیوی معرفی" require={true} class="profileTextArea"
+                defaultChange={myChange&&myChange.videoUrl}
+                action={setChanges} param="videoUrl" defaultValue={data.videoUrl}/>
             </form>:<></>}
             <div className="buttonHolder">
                 <a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " 

@@ -883,3 +883,16 @@ a:focus-visible {
 .col8{
   width: 75%;
 }
+.socialHolder{
+  background-color: #eee;
+}
+.socialHolder td{
+  padding: 0 10px;
+}
+.socialHolder th{
+  text-align: left !important;
+  direction: ltr;
+}
+.socialIcon{
+  margin-left: 8px;
+}

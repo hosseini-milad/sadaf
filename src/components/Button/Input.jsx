@@ -1,9 +1,11 @@
 function MyInput(props){
     const UpdateValue=(value)=>{
         var param = props.param?props.param:'park'
-        var updateQuery = `{"${param}":"${value.replace(/\n/g,'_')}"}`
-        
-        var updateJson = JSON.parse(updateQuery)
+        var updateQuery = `{"${param}":""}`
+        updateQuery = JSON.parse(updateQuery)
+        updateQuery[`${param}`]= value.replace(/\n/g,'_')
+        var updateJson = updateQuery
+        console.log(updateJson)
         props.action((prevState) => ({
             ...prevState,
             ...updateJson,

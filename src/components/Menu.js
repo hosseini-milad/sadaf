@@ -26,22 +26,38 @@ const Menu = (props)=>{
               <ul className="hsg-nav__group hsg-nav__group--primary">
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
-                    {/*<a href="/session" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> سالن جلسات </span>
-                    </a>*/}
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> معرفی </span>
+                    </a>
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
                   <div className="hsg-nav__link-wrapper">
-                    {/*<a href="/suit" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> سوییت ها </span>
-                    </a>*/}
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> پذیرش </span>
+                    </a>
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
                     <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> لیست شرکت های پارک </span>
+                      <span className="hsg-nav__link-label"> مراکز </span>
+                    </a>
+                  </div>
+                </li>
+                
+                <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
+                  <div className="hsg-nav__link-wrapper">
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> خدمات </span>
+                    </a>
+                  </div>
+                </li>
+                
+                <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
+                  <div className="hsg-nav__link-wrapper">
+                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> اعلانات </span>
                     </a>
                   </div>
                 </li>
@@ -59,8 +75,6 @@ const Menu = (props)=>{
                 </li>:
                 <li>
                   <div className="header-nav__ctas ">
-                    <i className="fa fa-bell"/>
-                    <i className="fa fa-envelope"/>
                     <a className="cl-button -secondary -small -light ga_nav_link homepage-hp-nav " 
                     href="/my-page" > صفحه شرکت
                     </a>
