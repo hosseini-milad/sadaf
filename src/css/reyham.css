@@ -1107,3 +1107,15 @@
   padding: 5px 10px;
   margin-bottom: 4px;
 }
+
+.tableBtn{
+ margin-left: 15px;
+ padding: 3px 20px;
+}
+.saveBtn{
+  background-image: linear-gradient(195deg, lightgreen 0%, green 100%);
+  box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.4), 0 4px 23px 0 rgba(30, 233, 99, 0.15), 0 8px 10px -5px rgba(30, 230, 99, 0.2) !important;
+}
+.cancelBtn{
+
+}
