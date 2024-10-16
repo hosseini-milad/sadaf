@@ -25,7 +25,7 @@ function MyInput(props){
                     {props.kind=="textarea"?
                     <textarea className="form-control private-form__control login-email" 
                     defaultValue={props.defaultValue} rows="5" style={{height:"100px"}}
-                    onKeyDown={(e) =>UpdateValue(e.target.value)}/>:
+                    onChange={(e) =>UpdateValue(e.target.value)}/>:
                     <input className="form-control private-form__control login-email" 
                     defaultValue={props.defaultValue}
                     onChange={(e) =>UpdateValue(e.target.value)}/>}

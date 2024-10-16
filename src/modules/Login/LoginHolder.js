@@ -125,6 +125,7 @@ function LoginHolder(props){
             onClick={checkLogin}>
            <i18n-string data-locale-at-render="en-us" data-key="login.form.button">ورود</i18n-string>
         </button>
+        <small className="errorShow" style={{color:error.errorColor}}>{error.errorText}</small>
         <hr/>
         <div className="LoginOptionsstyles__ThirdPartyLoginWrapper-mv5y1z-0 AOjGZ">
            

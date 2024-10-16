@@ -93,6 +93,10 @@ a{
   display: flex;
   justify-content: space-evenly;
 }
+.errorShow{
+  float:right;
+  font-size: 13px;
+}
 .disableBtn{
   background-color: silver;
   cursor:not-allowed;

@@ -75,9 +75,9 @@ function MyPageEdit(props){
                 <MyInput title="مدیر عامل" require={true} class="profileInput"
                 defaultChange={myChange&&myChange.managerName}
                 action={setChanges} param="managerName" defaultValue={data.managerName}/>
-                <MyInput title="شماره ثبت" require={true} class="profileInput"
-                defaultChange={myChange&&myChange.regCode}
-                action={setChanges} param="regCode" defaultValue={data.regCode}/>
+                <MyInput title="آدرس شرکت" require={true} class="profileInput"
+                defaultChange={myChange&&myChange.address}
+                action={setChanges} param="address" defaultValue={data.address}/>
                 <MyInput title="حوزه فعالیت/تخصص" require={true} class="profileInput"
                 defaultChange={myChange&&myChange.work}
                 action={setChanges} param="work" defaultValue={data.work}/>

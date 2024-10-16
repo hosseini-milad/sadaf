@@ -25,11 +25,11 @@ function CompanyHolder(props){
                             <tbody>
                                 <tr>
                                     <td>حوزه فعالیت</td>
-                                    <th>{data.catData?data.catData.title:'-'}</th>
+                                    <th>{data.catName?data.catName:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>واحد</td>
-                                    <th>{data.unitData?data.unitData.title:'-'}</th>
+                                    <th>{data.unitName?data.unitName:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>مدیرعامل</td>
@@ -43,9 +43,13 @@ function CompanyHolder(props){
                                     <td>آدرس ایمیل</td>
                                     <th>{data.email}</th>
                                 </tr>
+                                <tr>
+                                    <td>آدرس پستی</td>
+                                    <th>{data.address}</th>
+                                </tr>
                                 <tr style={{cursor:"pointer"}} onClick={()=>setShow(show==1?0:1)}>
                                     <td className={`hsg-accordion__item ${show==1?"active" :""}`}>
-                                        <span>شبکه های اجتماعی</span>
+                                        <span>شبکه اجتماعی</span>
                                     </td>
                                     <td>
                                         {show?<i className="fa fa-chevron-down"></i>:
@@ -96,10 +100,13 @@ function CompanyHolder(props){
                         <></>}
                     </div>
                     <div className="col-sm-8">
+                        <h3>معرفی شرکت: </h3>
                         <p>{data.description}</p>
                         <hr/>
-
-                        <h4 style={{position:"relative"}}>{data.productTitle}
+                        <i>معرفی محصول:</i>
+                        <h4 style={{position:"relative"}}>
+                            
+                             {data.productTitle}
                             
                         <a href={env.siteApiUrl+data.catalogue} 
                         className="catalogueBTN" >

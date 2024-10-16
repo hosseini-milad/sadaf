@@ -21,6 +21,7 @@ function Profile(props){
     const token = cookies.get(env.cookieName)
     const [userData,setUserData] = useState()
     useEffect(()=>{
+        if(!token){return}
         const tabUrl = searchUrl(url,menu,setTab)
         const postOptions={
             method:'get',
@@ -33,7 +34,10 @@ function Profile(props){
       .then(
         (result) => {
             if(result.error){
-                console.log(result.error)
+                if(result.error=="Invalid Token Error"){
+                cookies.remove(env.cookieName, { path: "/" });
+                setTimeout(() => (document.location.reload(), 500));
+                }
             }
             else{
                 setUserData(result.data)
