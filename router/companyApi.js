@@ -29,15 +29,26 @@ router.get('/get-my-company',jsonParser,auth, async (req,res)=>{
         const companyChange = await coChange.findOne({managerPhone:clientData.phone}).lean()
         if(companyDetail||companyChange){
             const catList = await category.find()
-            var cCat = companyChange&&companyChange.category&&
-                catList.find(item=>item._id == companyChange.category)
-            if(companyChange)
-                companyChange.catName = cCat?cCat.title:""
             const unitList = await unit.find()
-            var cUnit = companyChange&&companyChange.unit&&
+            
+            if(companyChange){
+                var cCat = companyChange&&companyChange.category&&
+                catList.find(item=>item._id == companyChange.category)
+                companyChange.catName = cCat?cCat.title:""
+                var cUnit = companyChange&&companyChange.unit&&
                 unitList.find(item=>item._id == companyChange.unit)
-            if(companyChange)
+            
                 companyChange.unitName = cUnit?cUnit.title:""
+            }
+            if(companyDetail){
+                var cCat = companyDetail&&companyDetail.category&&
+                catList.find(item=>item._id == companyDetail.category)
+                companyDetail.catName = cCat?cCat.title:""
+                var cUnit = companyDetail&&companyDetail.unit&&
+                unitList.find(item=>item._id == companyDetail.unit)
+            
+                companyDetail.unitName = cUnit?cUnit.title:""
+            }
             res.status(200).json({data:companyDetail,catList,unitList,
                 change:companyChange,message:"اطلاعات پیدا شد"})
             return
@@ -286,48 +297,35 @@ router.post('/set-category',jsonParser,auth, async (req,res)=>{
     }
 })
 router.post('/update-category',jsonParser, async (req,res)=>{
-    var pageSize = req.body.pageSize?req.body.pageSize:"10";
-    var offset = req.body.offset?(parseInt(req.body.offset)):0;
-    var nowDate = new Date().toISOString().slice(0, 10).split('-')
-    var defaultDate = parseInt(nowDate[0])-1+"/"+
-    nowDate[1]+"/"+nowDate[2]
-    
-    //console.log("def: ",defaultDate)
-    var data={
-        title:StandardInput(req.body.title),
-        nahad:req.body.nahad,
-        year:req.body.year,
-        category:req.body.category,
-        dateFrom:
-            req.body.dateFrom?req.body.dateFrom[0]+"/"+
-            req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
-            defaultDate+" 00:00",
-            //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
-        dateTo:
-            req.body.dateTo?req.body.dateTo[0]+"/"+
-            req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
-            new Date().toISOString().slice(0, 10)+" 23:59",
+    var catId= req.body.id
+    var data=req.body
+    if(!catId){
+        res.status(400).json({error:"کد دسته بندی وارد نشده است"})
+        return
     }
     try{
-        const dataList = await ReqSchema.aggregate([
-            { $match:data.title?{$or:[
-                {title:new RegExp('.*' + data.title + '.*')},
-                {proofUsage:new RegExp('.*' + data.title + '.*')},
-                {nahad:new RegExp('.*' + data.title + '.*')},
-                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            
-            { $match:data.category?{category:data.category}:{}},
-            { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
-            { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
-            { $sort: {"date":-1}},
-     
-        ])
+        const catData = await category.findOne({_id:ObjectID(catId)})
+        if(!catData){
+            res.status(400).json({error:"دسته بندی پیدا نشد"})
+            return
+        }
+        await category.updateOne({_id:ObjectID(catId)},{$set:data})
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
-        const pageData = dataList.slice(offset,
-            (parseInt(offset)+parseInt(pageSize)))  
-
-
-        res.json({data:pageData,size:dataList.length})
+router.post('/remove-category',jsonParser,auth, async (req,res)=>{
+    var categoryId= req.body.id
+    if(!categoryId){
+        res.status(400).json({error:"کد وارد نشده است"})
+        return
+    }
+    try{
+        await category.deleteOne({_id:ObjectID(categoryId)})
+        res.json({message:"اطلاعات حذف شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -373,49 +371,36 @@ router.post('/set-unit',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-router.post('/update-unit',jsonParser, async (req,res)=>{
-    var pageSize = req.body.pageSize?req.body.pageSize:"10";
-    var offset = req.body.offset?(parseInt(req.body.offset)):0;
-    var nowDate = new Date().toISOString().slice(0, 10).split('-')
-    var defaultDate = parseInt(nowDate[0])-1+"/"+
-    nowDate[1]+"/"+nowDate[2]
-    
-    //console.log("def: ",defaultDate)
-    var data={
-        title:StandardInput(req.body.title),
-        nahad:req.body.nahad,
-        year:req.body.year,
-        category:req.body.category,
-        dateFrom:
-            req.body.dateFrom?req.body.dateFrom[0]+"/"+
-            req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
-            defaultDate+" 00:00",
-            //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
-        dateTo:
-            req.body.dateTo?req.body.dateTo[0]+"/"+
-            req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
-            new Date().toISOString().slice(0, 10)+" 23:59",
+router.post('/update-unit',jsonParser,auth, async (req,res)=>{
+    var unitId= req.body.id
+    var data=req.body
+    if(!unitId){
+        res.status(400).json({error:"کد دسته بندی وارد نشده است"})
+        return
     }
     try{
-        const dataList = await ReqSchema.aggregate([
-            { $match:data.title?{$or:[
-                {title:new RegExp('.*' + data.title + '.*')},
-                {proofUsage:new RegExp('.*' + data.title + '.*')},
-                {nahad:new RegExp('.*' + data.title + '.*')},
-                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            
-            { $match:data.category?{category:data.category}:{}},
-            { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
-            { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
-            { $sort: {"date":-1}},
-     
-        ])
+        const unitData = await unit.findOne({_id:ObjectID(unitId)})
+        if(!unitData){
+            res.status(400).json({error:" پیدا نشد"})
+            return
+        }
+        await unit.updateOne({_id:ObjectID(unitId)},{$set:data})
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
-        const pageData = dataList.slice(offset,
-            (parseInt(offset)+parseInt(pageSize)))  
-
-
-        res.json({data:pageData,size:dataList.length})
+router.post('/remove-unit',jsonParser,auth, async (req,res)=>{
+    var unitId= req.body.id
+    if(!unitId){
+        res.status(400).json({error:"کد وارد نشده است"})
+        return
+    }
+    try{
+        await unit.deleteOne({_id:ObjectID(unitId)})
+        res.json({message:"اطلاعات حذف شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -461,49 +446,35 @@ router.post('/set-licence',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-router.post('/update-licence',jsonParser, async (req,res)=>{
-    var pageSize = req.body.pageSize?req.body.pageSize:"10";
-    var offset = req.body.offset?(parseInt(req.body.offset)):0;
-    var nowDate = new Date().toISOString().slice(0, 10).split('-')
-    var defaultDate = parseInt(nowDate[0])-1+"/"+
-    nowDate[1]+"/"+nowDate[2]
-    
-    //console.log("def: ",defaultDate)
-    var data={
-        title:StandardInput(req.body.title),
-        nahad:req.body.nahad,
-        year:req.body.year,
-        category:req.body.category,
-        dateFrom:
-            req.body.dateFrom?req.body.dateFrom[0]+"/"+
-            req.body.dateFrom[1]+"/"+req.body.dateFrom[2]+" "+"00:00":
-            defaultDate+" 00:00",
-            //new Date(nowDate.setDate(nowDate.getDate() - 1)).toISOString().slice(0, 10)+" "+"00:00",
-        dateTo:
-            req.body.dateTo?req.body.dateTo[0]+"/"+
-            req.body.dateTo[1]+"/"+req.body.dateTo[2]+" 23:59":
-            new Date().toISOString().slice(0, 10)+" 23:59",
+router.post('/update-licence',jsonParser,auth, async (req,res)=>{
+    var licenceId= req.body.id
+    var data=req.body
+    if(!licenceId){
+        res.status(400).json({error:"کد  وارد نشده است"})
+        return
     }
     try{
-        const dataList = await ReqSchema.aggregate([
-            { $match:data.title?{$or:[
-                {title:new RegExp('.*' + data.title + '.*')},
-                {proofUsage:new RegExp('.*' + data.title + '.*')},
-                {nahad:new RegExp('.*' + data.title + '.*')},
-                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            
-            { $match:data.category?{category:data.category}:{}},
-            { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
-            { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
-            { $sort: {"date":-1}},
-     
-        ])
-
-        const pageData = dataList.slice(offset,
-            (parseInt(offset)+parseInt(pageSize)))  
-
-
-        res.json({data:pageData,size:dataList.length})
+        const licenceData = await licence.findOne({_id:ObjectID(licenceId)})
+        if(!licenceData){
+            res.status(400).json({error:"پیدا نشد"})
+            return
+        }
+        await licence.updateOne({_id:ObjectID(licenceId)},{$set:data})
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/remove-licence',jsonParser,auth, async (req,res)=>{
+    var licenceId= req.body.id
+    if(!licenceId){
+        res.status(400).json({error:"کد وارد نشده است"})
+        return
+    }
+    try{
+        await licence.deleteOne({_id:ObjectID(licenceId)})
+        res.json({message:"اطلاعات حذف شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
