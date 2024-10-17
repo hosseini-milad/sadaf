@@ -48,5 +48,28 @@ router.post('/list-client',jsonParser,auth, async (req,res)=>{
     }
 })
 
+router.post('/upload', async(req, res, next)=>{
+    const folderName = req.body.folderName?req.body.folderName:"temp"
+    try{
+    // to declare some path to store your converted image
+    var matches = req.body.base64image.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
+    response = {};
+    if (matches.length !== 3) {
+    return new Error('Invalid input string');
+    }
+    response.type = matches[1];
+    response.data = new Buffer.from(matches[2], 'base64');
+    let decodedImg = response;
+    let imageBuffer = decodedImg.data;
+    //let type = decodedImg.type;
+    //let extension = mime.extension(type);
+    let fileName = `QOMSTP-${Date.now().toString()+"-"+req.body.imgName}`;
+   var upUrl = `/upload/${folderName}/${fileName}`
+    fs.writeFileSync("."+upUrl, imageBuffer, 'utf8');
+    return res.send({"status":"success",url:upUrl});
+    } catch (e) {
+        res.send({"status":"failed",error:e});
+    }
+})
 
 module.exports = router;
