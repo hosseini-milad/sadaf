@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import {PostReq} from "../../components/PostReq";
+import TableRow from "./Modules/TableRow";
 
 function LicenceTable(props){
   const [newCat,setNewCat] = useState()
@@ -57,10 +58,9 @@ function LicenceTable(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
-            <tr key={i}>
-              <td>{data.title}</td>
-              <td>{data.licenceCode}</td>
-              </tr>)
+            <TableRow data={data} key={i} code="licenceCode" title="title"
+            url="/company/update-licence"
+            deleteUrl="/company/remove-licence"/>)
             ):<></>}
           <tr>
             <td><input type="text"

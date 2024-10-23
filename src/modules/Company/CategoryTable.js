@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import {PostReq} from "../../components/PostReq";
+import TableRow from "./Modules/TableRow";
 
 function CategoryTable(props){
   const [newCat,setNewCat] = useState()
@@ -57,10 +58,9 @@ function CategoryTable(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
-            <tr key={i}>
-              <td>{data.title}</td>
-              <td>{data.catCode}</td>
-              </tr>)
+            <TableRow data={data} key={i} code="catCode" title="title"
+            url="/company/update-category"
+            deleteUrl="/company/remove-category"/>)
             ):<></>}
           <tr>
             <td><input type="text"

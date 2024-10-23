@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer"
 import Header from "./Header"
-import HeaderLogin from "./HeaderLogin";
+import Cookies from 'universal-cookie';
 import env from "../env";
 import SideBarAccordion from "./SideBarAccordion";
 import { PostReq } from "./PostReq";
 const lang = JSON.parse(localStorage.getItem(env.cookieLang));
 
-function Layout(props){
-    const [pinMenu,setPinMenu] = useState(0)
+function Layout(props){  
+  const cookies = new Cookies();
+  const [pinMenu,setPinMenu] = useState(0)
     
   useEffect(()=>{initial()},[])
   const initial=async()=>{
     var result = await PostReq(
       {method:"GET",url:"/user/welcome",body:{}})
-      console.log(result)
       if(result.error){
-        //cookies.remove(env.cookieName, { path: "/" });
-        //setTimeout(() => (document.location.reload(), 500));
+        cookies.remove(env.cookieName, { path: "/" });
+        setTimeout(() => (document.location.reload(), 500));
       }
   }
     return(
