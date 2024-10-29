@@ -96,6 +96,9 @@ function MyPageEdit(props){
                 <MyInput title="درباره شرکت " class="profileTextArea" kind="textarea"
                 defaultChange={myChange&&myChange.description}
                 action={setChanges} param="description" defaultValue={data.description}/>
+                <MyInput title="دستاوردها و افتخارات" class="profileTextArea" kind="textarea"
+                defaultChange={myChange&&myChange.achivement}
+                action={setChanges} param="achivement" defaultValue={data.achivement}/>
                 <hr/>
                 <h5 className="profileText">اطلاعات محصول</h5>
                 <MyInput title="عنوان محصول" require={true} class="profileInput"

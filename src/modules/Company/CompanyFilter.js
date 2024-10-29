@@ -47,7 +47,7 @@ function CompanyFilter(props){
             <li className={tab==0?"hsg-accordion__item active" :"hsg-accordion__item"}>
             <button className="hsg-accordion__label" 
                 onClick={()=>setTab(tab==0?-1:0)}>
-                <h3 className="hsg-accordion__label-text marketing-hero-product">دسته بندی 
+                <h3 className="hsg-accordion__label-text marketing-hero-product">حوزه فعالیت 
                 <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
                     <span className="hsg-accordion__icon -expand">+</span>
                     <span className="hsg-accordion__icon -collapse">_</span>
@@ -88,7 +88,7 @@ function CompanyFilter(props){
             <li className={tab==2?"hsg-accordion__item active" :"hsg-accordion__item"}>
             <button className="hsg-accordion__label" 
                 onClick={()=>setTab(tab==2?-1:2)}>
-                <h3 className="hsg-accordion__label-text marketing-hero-features">حوزه فعالیت <sup>به زودی</sup>
+                <h3 className="hsg-accordion__label-text marketing-hero-features">مجوزها <sup>به زودی</sup>
                     <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
                         <span className="hsg-accordion__icon -expand">+</span>
                         <span className="hsg-accordion__icon -collapse">_</span>
@@ -97,9 +97,9 @@ function CompanyFilter(props){
             </button>
             <div className="hsg-accordion__content" id="hsg-accordion__content-2" aria-hidden="true">
                 <div className="accHolder">
-                    <div className="accItem">رباتیک</div>
-                    <div className="accItem">هوافضا</div>
-                    <div className="accItem">نانوتکنولوژی</div>
+                    <div className="accItem">مجوز فناوری</div>
+                    <div className="accItem">دانش بنیان</div>
+                    <div className="accItem">صنایع خلاق و فرهنگی</div>
                 </div>
             </div>
             </li>

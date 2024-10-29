@@ -1,5 +1,5 @@
 import { useState } from "react"
-import env from "../../env"
+import env, { permLink } from "../../env"
 import InnerHTML from 'dangerously-set-html-content'
 
 function CompanyHolder(props){
@@ -60,42 +60,50 @@ function CompanyHolder(props){
                                     {data.website?<tr className="socialHolder">
                                     <td><i className="fa fa-globe socialIcon"></i>
                                         وب سایت</td>
-                                    <th>{data.website}</th>
+                                    <th><a href={permLink(data.website)}>{data.website}</a></th>
                                 </tr>:<></>}
                                 {data.eita?<tr className="socialHolder">
                                     <td><img src="/img/eitaa.png" className="socialImages"/>
                                         ایتا</td>
-                                    <th>{data.eita}</th>
+                                    <th><a href={permLink(data.eita)}>{data.eita}</a></th>
                                 </tr>:<></>}
                                 {data.linkedin?<tr className="socialHolder">
                                     <td><i className="fa fa-linkedin socialIcon"></i>
                                         لینکداین</td>
-                                    <th>{data.linkedin}</th>
+                                    <th><a href={permLink(data.linkedin)}>{data.linkedin}</a></th>
                                 </tr>:<></>}
                                 {data.instagram?<tr className="socialHolder">
                                     <td><i className="fa fa-instagram socialIcon"></i>
                                         اینستاگرام</td>
-                                    <th>{data.instagram}</th>
+                                    <th><a href={permLink(data.instagram)}>{data.instagram}</a></th>
                                 </tr>:<></>}
                                 {data.telegram?<tr className="socialHolder">
                                     <td><i className="fa fa-telegram socialIcon"></i>
                                         تلگرام</td>
-                                    <th>{data.telegram}</th>
+                                    <th><a href={permLink(data.telegram)}>{data.telegram}</a></th>
                                 </tr>:<></>}
                                 {data.aparat?<tr className="socialHolder">
                                     <td><i className="fa fa-media-player socialIcon"></i>
                                     آپارات</td>
-                                    <th>{data.aparat}</th>
+                                    <th><a href={permLink(data.aparat)}>{data.aparat}</a></th>
                                 </tr>:<></>}
                                 {data.youtube?<tr className="socialHolder">
                                     <td><i className="fa fa-youtube socialIcon"></i>
                                         یوتیوب</td>
-                                    <th>{data.youtube}</th>
+                                    <th><a href={permLink(data.youtube)}>{data.youtube}</a></th>
                                 </tr>:<></>}
                                 </>:<></>}
                             </tbody>
                         </table>
                         <hr/>
+                        <table className="infoTable">
+                            <tbody>
+                                <tr>
+                                    <td>مجوزها</td>
+                                    <th>{data.licence?data.licence:'-'}</th>
+                                </tr>
+                            </tbody>
+                        </table>
                         {data.videoUrl?
                         <InnerHTML html={data.videoUrl}/>:
                         <></>}
@@ -114,6 +122,9 @@ function CompanyHolder(props){
                             کاتالوگ <i className="fa fa-download"></i></a>
                         </h4>
                         <p>{data.productDescription}</p>
+                        <h3>دستاوردها و افتخارات: </h3>
+                        <p>{data.achivement}</p>
+                        <hr/>
                     <div className="row imageFrame" >
                         {data.image1?<div className="col-sm-4">
                             <img className="img-responsive" 

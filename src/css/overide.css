@@ -170,12 +170,20 @@ a{
 .twolineText {
   -webkit-line-clamp: 2;
   height: 3rem;
+  font-weight: bold;
+}
+.infoTable td{
+  min-width: 90px;
+  font-size: 13px;
 }
 .socialImages{
   float: right;
   width: 15px;
   margin: 7px 0 0 7px;
   filter: brightness(0.4) grayscale(100);
+}
+.accItem{
+  font-size: 13px;
 }
 .onelineText {
   -webkit-line-clamp: 2;
@@ -216,7 +224,19 @@ a{
   text-align: right;
   border: 1px solid #eee;
   padding: 0 8px;
+  font-size: 14px;
   border-radius: 2px;
+}
+.contactSocial{
+  display: grid;
+}
+.social_circle{
+  display: flex;
+  gap:10px;
+  align-content: baseline;
+}
+.social_circle i{
+  margin: 0;
 }
 .mySliderHolder{
   padding: 50px 0;

@@ -29,5 +29,11 @@ export const searchUrl=(url,menu,setTab)=>{
     }
     
 }
+export const permLink=(url)=>{
+    const httpReq = url.includes('http')
+    if(httpReq) return(url)
+    else
+        return("https://"+url)
+}
 
 export default env

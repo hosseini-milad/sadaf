@@ -773,6 +773,7 @@ a:focus-visible {
   text-align: start;
   text-align: var(--cl-tab-control-align,start);
   width: 100%;
+  font-size: 13px;
   word-break: break-word;
 }
 [aria-selected="true"].cl-tab-button {
