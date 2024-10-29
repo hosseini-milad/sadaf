@@ -25,11 +25,11 @@ function CompanyHolder(props){
                             <tbody>
                                 <tr>
                                     <td>حوزه فعالیت</td>
-                                    <th>{data.catName?data.catName:'-'}</th>
+                                    <th>{data.catData?data.catData.title:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>واحد</td>
-                                    <th>{data.unitName?data.unitName:'-'}</th>
+                                    <th>{data.unitData?data.unitData.title:'-'}</th>
                                 </tr>
                                 <tr>
                                     <td>مدیرعامل</td>
@@ -63,7 +63,8 @@ function CompanyHolder(props){
                                     <th>{data.website}</th>
                                 </tr>:<></>}
                                 {data.eita?<tr className="socialHolder">
-                                    <td>ایتا</td>
+                                    <td><img src="/img/eitaa.png" className="socialImages"/>
+                                        ایتا</td>
                                     <th>{data.eita}</th>
                                 </tr>:<></>}
                                 {data.linkedin?<tr className="socialHolder">
