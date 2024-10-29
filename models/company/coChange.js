@@ -31,7 +31,7 @@ const coChangeSchema = new mongoose.Schema({
   
   address:{type:String},
   postalCode:{ type: String},
-
+  achivement:{ type: String},
 
   bannerUrl:{type:String},
   bannerThumb:{type:String},
