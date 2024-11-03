@@ -1,12 +1,10 @@
 
 const env={
     //siteApi:'http://localhost:2020/api',
-    //siteApi:'https://reserveadmin.qomstp.ir/api',
-    siteApi:'http://2.179.166.169:8088/api',
+    siteApi:'https://reserveadmin.qomstp.ir/api',
     
     //siteApiUrl:'http://localhost:2020',
-    //siteApiUrl:'https://reserveadmin.qomstp.ir',
-    siteApiUrl:'http://2.179.166.169:8088',
+    siteApiUrl:'https://reserveadmin.qomstp.ir',
     cookieName:'sadaf-admin-login',
     //cookieName:'panel-login',
     //cookieName:'mehr-login',
