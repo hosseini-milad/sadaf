@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react"
-import {PostReq} from "../../../components/PostReq";
-import StyleSelect from "../../../components/Button/AutoComplete";
+import {PostReq} from "../../components/PostReq";
+import TableRow from "../Company/Modules/TableRow";
 
-function ReqCategory(props){
+function MehvarTable(props){
   const [newCat,setNewCat] = useState()
   const [data,setData] = useState()
-  const [mehvarOpt,setMehvarOpt] = useState()
   const lang=props.lang;
   const addNewCat=async()=>{
     if(!newCat){
       return
     }
     const result = await PostReq(
-      {method:"POST",url:"/data/set-category",
+      {method:"POST",url:"/data/set-mehvar",
         body:newCat
       })
       if(!result.error){
@@ -23,11 +22,10 @@ function ReqCategory(props){
   useEffect(()=>{initial()},[])
   const initial=async()=>{
     var result = await PostReq(
-      {method:"POST",url:"/data/list-category",
+      {method:"POST",url:"/data/list-mehvar",
         body:{}
       })
       setData(result.data)
-      setMehvarOpt(result.mehvarData)
   }
   //if(!data||!data.length) return <main>waiting</main>
   return(
@@ -35,7 +33,7 @@ function ReqCategory(props){
       <div className="od-header">
         <div className="od-header-info">
           <div className="od-header-name">
-            <p>دسته بندی ها</p>
+            <p>محورها</p>
           </div>
         </div>
         
@@ -53,10 +51,6 @@ function ReqCategory(props){
               <i></i>
             </th>
             <th>
-              <p>محور</p>
-              <i></i>
-            </th>
-            <th>
               <p>عملیات</p>
               <i></i>
             </th>
@@ -64,12 +58,9 @@ function ReqCategory(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
-            <tr key={i}>
-              <td>{data.title}</td>
-              <td>{data.catCode}</td>
-              <td>{data.mehvarData&&data.mehvarData[0]&&
-              data.mehvarData[0].title}</td>
-              </tr>)
+            <TableRow data={data} key={i} code="mehvarCode" title="title"
+            url="/data/update-mehvar"
+            deleteUrl="/data/remove-mehvar"/>)
             ):<></>}
           <tr>
             <td><input type="text"
@@ -82,15 +73,7 @@ function ReqCategory(props){
             onChange={(e) =>
               setNewCat((prevState) => ({
                 ...prevState,
-                catCode: e?e.target.value:"",
-              }))}/></td>
-            <td><StyleSelect 
-            options={mehvarOpt}
-            label="title"
-            action={(e) =>
-              setNewCat((prevState) => ({
-                ...prevState,
-                mehvar: e?e.mehvarCode:"",
+                mehvarCode: e?e.target.value:"",
               }))}/></td>
             <td><button onClick={addNewCat}>افزودن</button></td>
           </tr>
@@ -100,4 +83,4 @@ function ReqCategory(props){
   </div>
   )
 }
-export default ReqCategory
+export default MehvarTable

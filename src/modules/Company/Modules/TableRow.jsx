@@ -4,13 +4,14 @@ import { PostReq } from "../../../components/PostReq"
 function TableRow(props){
     const data = props.data
     const [newData,setNewData] = useState({})
+    const [check,setCheck] = useState(data.active)
     const SaveNow=async()=>{
         const result = await PostReq(
             {method:"POST",url:props.url,
               body:{...newData,id:data._id}
             })
             if(!result.error){
-              document.location.reload()
+              //document.location.reload()
             }
     }
     const DeleteNow=async()=>{
@@ -23,8 +24,14 @@ function TableRow(props){
             }
     }
     return(
-        <tr >
-            <td><input type="text" defaultValue={data[props.title]}
+        <tr>
+            <td>
+            <i className={check?"fa fa-check greenIcon":
+             "fa fa-check grayIcon"} onClick={(e)=>{setNewData(prevState => ({
+                ...prevState,
+                active: !check
+            }));setCheck(!check)}}></i>
+            <input type="text" defaultValue={data[props.title]}
             onChange={(e)=>setNewData(prevState => ({
                     ...prevState,
                     [props.title]: e.target.value

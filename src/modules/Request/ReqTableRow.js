@@ -1,14 +1,35 @@
 import React ,{ useState } from "react"
 import ReqQuickCart from "./ReqComponent/ReqQuickCart"
+import env from "../../env"
 
 
 function ReqTableRow(props){
-  const [openOption,setOpenOption] = useState(0)
-  const [checkState,setCheckState] = useState(false)
-  const activeAcc = props.index===props.detail
+  const token = props.token
   const data=props.data
-  const lang=props.lang;
-  const cart = props.cart
+  const activeAcc = props.index===props.detail
+  const updateTable=(active) => {
+    const body = {id:data._id,active:active};
+    const postOptions = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token && token.token,
+        userId: token && token.userId,
+      },
+      body: JSON.stringify(body),
+    };
+    //console.log(postOptions);
+    fetch(env.siteApi + "/data/update-req", postOptions)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          window.location.reload()
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
     return(<React.Fragment>
         <tr 
             className={activeAcc?"activeAccordion":"accordion"}>
@@ -47,8 +68,8 @@ function ReqTableRow(props){
               <td>
                 <div className="order-price">
                   <p>{data.active?
-                  <i className="fa fa-check"/>:
-                  <i className="fa fa-remove"/>}</p>
+                  <i className="fa fa-check" onClick={()=>updateTable(false)}/>:
+                  <i className="fa fa-remove" onClick={()=>updateTable(true)}/>}</p>
                 </div>
               </td>
 

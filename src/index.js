@@ -35,6 +35,7 @@ import Transactions from './pages/Transactions';
 import ClientHolder from './pages/Clients';
 import Requests from './pages/Request';
 import ReqCategory from './modules/Request/ReqComponent/ReqCategory';
+import MehvarTable from './modules/Data/MehvarTable';
 
 const cookies = new Cookies();
 var lang = JSON.parse(localStorage.getItem(env.cookieLang));
@@ -69,6 +70,7 @@ root.render(
         <Route path="/request" element={<Layout><Requests lang={lang}/></Layout>}/>
         <Route path="/request/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
         <Route path="/req-cat" element={<Layout><ReqCategory lang={lang}/></Layout>}/>
+        <Route path="/mehvar" element={<Layout><MehvarTable lang={lang}/></Layout>}/>
         
         <Route path="/cowork" element={<Layout><CoWork lang={lang}/></Layout>}/>
         <Route path="/transactions" element={<Layout><Transactions lang={lang}/></Layout>}/>

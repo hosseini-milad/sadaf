@@ -40,7 +40,7 @@ function ReqTable(props){
         <tbody>
           {data?data.map((data,i)=>(
             <ReqTableRow detail={detail} showDetail={showDetail} 
-              cart={props.cart}
+              cart={props.cart} token={props.token}
               data={data} index={i} key={i} lang={lang}/>
           )):''}
           

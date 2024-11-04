@@ -27,6 +27,7 @@ function Requests(props) {
       pageSize: filters&&filters.pageSize,
       title: filters&&filters.title,
       search:filters&&filters.search,
+      active:(filters&&filters.active)?filters.active:"غیرفعال",
       dateFrom: filters&&filters.date && filters.date.dateFrom,
       dateTo: filters&&filters.date && filters.date.dateTo,
       access: "manager",
@@ -72,7 +73,8 @@ function Requests(props) {
           filters={filters}
         />
           <div className="user-list">
-            <ReqTable data={content ? content.data : {}} lang={lang} />
+            <ReqTable data={content ? content.data : {}} lang={lang} 
+            token={token}/>
           </div>
         <Paging
           content={content}
