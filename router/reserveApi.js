@@ -102,8 +102,8 @@ router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
         {$match:data?{customer:data.customer}:{}},
         {$addFields: { "userId": { $convert: {input:"$userId" ,
             to:'objectId', onError:'',onNull:''}}}},
-                {$lookup:{from : "clients", 
-                    localField: "userId", foreignField: "_id", as : "userInfo"}},
+        {$lookup:{from : "clients", 
+            localField: "userId", foreignField: "_id", as : "userInfo"}},
         ])
         res.json({data:coWorkData})
     }

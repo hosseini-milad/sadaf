@@ -4,6 +4,7 @@ const reqcatSchema = new mongoose.Schema({
   title: { type: String},
   catCode: { type: Number},
   catSubject:{ type: String},
+  mehvar: { type: String},
   date:{type:Date, default:Date.now()}
 });
 

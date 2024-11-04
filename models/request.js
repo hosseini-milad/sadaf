@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const ReqSchema = new mongoose.Schema({
   title: { type: String,unique:true,require:true},
   nahad: { type: String},
+  mehvar: { type: String,default:"park"},
   category: { type: String},
   categoryId:{type:String},
   proofReq: { type: String,unique:true},

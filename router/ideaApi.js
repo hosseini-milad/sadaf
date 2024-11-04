@@ -14,6 +14,7 @@ const auth = require("../middleware/auth");
 const idea = require('../models/idea');
 const clients = require('../models/auth/clients');
 const reqcat = require('../models/reqcat');
+const mehvar = require('../models/mehvar');
 
 router.get('/get-idea/:id',jsonParser, async (req,res)=>{
     const url = req.url.split('/').pop()
@@ -81,6 +82,21 @@ router.post('/reg-req',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+
+router.post('/update-req',jsonParser,auth, async (req,res)=>{
+    var req=req.body
+    try{
+        const reqList = await ReqSchema.updateOne({_id:ObjectID(req.id)},
+            {$set:req}
+        )
+
+
+        res.json({data:reqList,message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 router.post('/req-list',jsonParser, async (req,res)=>{
     var pageSize = req.body.pageSize?req.body.pageSize:"10";
     var offset = req.body.offset?(parseInt(req.body.offset)):0;
@@ -93,6 +109,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
         title:req.body.title,
         nahad:req.body.nahad,
         year:req.body.year,
+        active:req.body.active,
         category:req.body.category,
         dateFrom:
             req.body.dateFrom?req.body.dateFrom[0]+"/"+
@@ -111,7 +128,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
                 {proofUsage:new RegExp('.*' + data.title + '.*')},
                 {nahad:new RegExp('.*' + data.title + '.*')},
                 {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            
+            { $match:data.active=="غیرفعال"?{}:{active:true}},
             { $match:data.category?{category:data.category}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
@@ -231,13 +248,14 @@ router.post('/list-category',jsonParser, async (req,res)=>{
                 {managerName:new RegExp('.*' + data.search + '.*')},
                 {regCode:new RegExp('.*' + data.search + '.*')},
                 {productTitle:new RegExp('.*' + data.search + '.*')}]}:{}},
-            
+            {$lookup:{from : "mehvars", 
+                localField: "mehvar", foreignField: "mehvarCode", as : "mehvarData"}},
             { $sort: {"date":-1}},
             { $limit: 10},
         ])
 
-
-        res.json({data:dataList,size:dataList.length})
+        const mehvarData = await mehvar.find()
+        res.json({data:dataList,size:dataList.length,mehvarData})
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -260,6 +278,80 @@ router.post('/set-category',jsonParser,auth, async (req,res)=>{
 router.post('/update-category',jsonParser, async (req,res)=>{
     try{
         res.json({data:"data"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+
+router.post('/list-mehvar',jsonParser, async (req,res)=>{
+    
+    var data={
+        search:req.body.search
+    }
+    try{
+        const dataList = await mehvar.aggregate([
+            { $match:data.search?{$or:[
+                {title:new RegExp('.*' + data.search + '.*')},
+                {mehvarCode:new RegExp('.*' + data.search + '.*')},
+                {mehvarSubject:new RegExp('.*' + data.search + '.*')}]}:{}},
+            
+            { $sort: {"date":-1}},
+            { $limit: 10},
+        ])
+
+
+        res.json({data:dataList,size:dataList.length})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/set-mehvar',jsonParser,auth, async (req,res)=>{
+    
+    var req=req.body
+    try{
+        const reqList = await mehvar.create(req)
+
+
+        res.json({data:reqList,message:"اطلاعات ثبت شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/update-mehvar',jsonParser, async (req,res)=>{
+    var catId= req.body.id
+    var data=req.body
+    if(!catId){
+        res.status(400).json({error:"کد دسته بندی وارد نشده است"})
+        return
+    }
+    try{
+        const catData = await mehvar.findOne({_id:ObjectID(catId)})
+        if(!catData){
+            res.status(400).json({error:"دسته بندی پیدا نشد"})
+            return
+        }
+        await mehvar.updateOne({_id:ObjectID(catId)},{$set:data})
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/remove-mehvar',jsonParser,auth, async (req,res)=>{
+    var categoryId= req.body.id
+    if(!categoryId){
+        res.status(400).json({error:"کد وارد نشده است"})
+        return
+    }
+    try{
+        await mehvar.deleteOne({_id:ObjectID(categoryId)})
+        res.json({message:"اطلاعات حذف شد"})
     }
     catch(error){
         res.status(500).json({message: error.message})
