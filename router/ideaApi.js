@@ -93,6 +93,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
         title:req.body.title,
         nahad:req.body.nahad,
         year:req.body.year,
+        active:req.body.active?req.body.active:true,
         category:req.body.category,
         dateFrom:
             req.body.dateFrom?req.body.dateFrom[0]+"/"+
@@ -111,7 +112,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
                 {proofUsage:new RegExp('.*' + data.title + '.*')},
                 {nahad:new RegExp('.*' + data.title + '.*')},
                 {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            
+            { $match:data.active?{active:data.active}:{}},
             { $match:data.category?{category:data.category}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
