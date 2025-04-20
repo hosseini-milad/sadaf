@@ -63,6 +63,7 @@ function MyImage(props){
       },[thumb])
 
     const UpdateValue=(value,thumb)=>{
+        console.log(value,thumb)
         var param = props.param?props.param:'park'
         if(thumb) param = props.thumb
         var updateQuery = `{"${param}":"${value}"}`

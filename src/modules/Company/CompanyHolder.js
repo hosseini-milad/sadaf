@@ -7,11 +7,30 @@ function CompanyHolder(props){
     const [show,setShow] = useState(0)
     return(
         <div className="pageHolder">
+            <div className="col-sm-4">
+                <br/>
+                <h3>{data.title}</h3>
+                <div className="titleBanner">
+                    <img className="img-logo" 
+                    src={data.logo?env.siteApiUrl+data.logo:'/img/logo_main.png'}/>
+                    <div className="bannerText">
+                        <small>محور و دسته بندی</small>
+                        <span>{data.catName?data.catName:'-'}</span>
+                    </div>
+                </div>
+            </div>
             <div className="sliderPlace">
-                <img className="slider-image" 
-                    src={data.bannerUrl?env.siteApiUrl+data.bannerUrl:''}/>
-                <h1>{data.title}</h1>
-                {props.edit?<a href="/my-page-edit">ویرایش</a>:<></>}
+                <div className="sliderImg">
+                    <img className="slider-image" 
+                        src={data.bannerUrl?env.siteApiUrl+data.bannerUrl:''}/>
+                    {props.edit?<h1><a href="/my-page-edit">ویرایش</a></h1>:<></>}
+                </div>
+                <div className="sliderLeft">
+                    <div className="leftTitle">راه های ارتباطی</div>
+                    <div className="contactPlace">
+                        <i className="fa fa-phone"></i>
+                    </div>
+                </div>
             </div>
             <div className="container">
                 <div className="clear30"></div>
@@ -19,8 +38,6 @@ function CompanyHolder(props){
                 <div className="alert alert-grey noborder">
                     <div className="row">
                     <div className="col-sm-4">
-                        <img className="img-responsive" 
-                        src={data.logo?env.siteApiUrl+data.logo:''}/>
                         <table className="infoTable">
                             <tbody>
                                 <tr>

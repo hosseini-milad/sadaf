@@ -46,7 +46,6 @@ function MyPageEdit(props){
             'x-access-token':token&&token.token,'userid':token&&token.userId },
             body:JSON.stringify({...changes})//,companyId:data&&data._id})
         }
-        console.log(postOptions)
         fetch(env.siteApi + "/company/set-company",postOptions)
     .then(res => res.json())
     .then(

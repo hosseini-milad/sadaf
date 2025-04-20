@@ -795,7 +795,7 @@ a:focus-visible {
   background-color: rgba(0,0,0,.5);
   position: absolute;
   right: 0px;
-  bottom: 20px;
+  bottom: 60px;
   color: #fff;
   padding: 10px 20px 10px 50px;
   border-radius: 15px 0 0 0;
@@ -896,4 +896,54 @@ a:focus-visible {
 }
 .socialIcon{
   margin-left: 8px;
+}
+.titleBanner{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.img-logo{
+  border:2px solid  #005896;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: #eee;
+  padding: 5px;
+}
+.bannerText{
+  display: grid;
+}
+.bannerText small{
+  color:gray
+}
+.pageHolder{
+  padding: 0 20px;
+}
+.sliderPlace{
+  display: flex;
+  gap:20px;
+  margin:10px;
+}
+.sliderImg{
+  height: 400px;
+  width: 65%;
+
+}
+.slider-image{
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+  height: 100%;
+}
+.sliderLeft{
+  border:2px solid #eee;
+  background-color: #fafafa;
+  box-shadow: 2px 2px 5px #eee;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: 33%;
+}
+.leftTitle{
+  text-align: center;
 }

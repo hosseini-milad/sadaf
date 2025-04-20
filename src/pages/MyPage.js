@@ -31,7 +31,6 @@ function MyPage(props){
             console.log(error)
         })
     },[])
-    console.log(data)
     return(
         <main className={dir=="rtl"?"rtlDir":""}>
             {(data&&data.managerPhone)?
