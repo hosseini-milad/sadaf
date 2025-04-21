@@ -26,9 +26,26 @@ function CompanyHolder(props){
                     {props.edit?<h1><a href="/my-page-edit">ویرایش</a></h1>:<></>}
                 </div>
                 <div className="sliderLeft">
-                    <div className="leftTitle">راه های ارتباطی</div>
-                    <div className="contactPlace">
-                        <i className="fa fa-phone"></i>
+                    <div className="leftTitle">
+                        <i className="fa fa-comments"></i>
+                        راه های ارتباطی</div>
+                    <div className="leftBox">
+                        <i className="fa fa-phone"></i> شماره تماس
+                        <strong>
+                        <i className="fa fa-copy"></i>
+                        {data.phone}</strong>
+                    </div>
+                    <div className="leftBox">
+                        <i className="fa fa-internet-explorer"></i> وب سایت
+                        <strong>
+                        <i className="fa fa-copy"></i>
+                        {data.website}</strong>
+                    </div>
+                    <div className="leftBox">
+                        <i className="fa fa-globe"></i> ایتا
+                        <strong>
+                        <i className="fa fa-copy"></i>
+                        {data.eita}</strong>
                     </div>
                 </div>
             </div>
@@ -125,11 +142,15 @@ function CompanyHolder(props){
                         <InnerHTML html={data.videoUrl}/>:
                         <></>}
                     </div>
-                    <div className="col-sm-8">
-                        <h3>معرفی شرکت: </h3>
+                    <div className="col-sm-8 fieldBox">
+                        <h3 className="newTitle">
+                            <i className="fa fa-chevron-circle-left"></i>
+                            معرفی شرکت </h3>
                         <p>{data.description}</p>
                         <hr/>
-                        <i>معرفی محصول:</i>
+                        <h3 className="newTitle">
+                            <i className="fa fa-chevron-circle-left"></i>
+                            معرفی محصول </h3>
                         <h4 style={{position:"relative"}}>
                             
                              {data.productTitle}
@@ -137,9 +158,11 @@ function CompanyHolder(props){
                         <a href={env.siteApiUrl+data.catalogue} 
                         className="catalogueBTN" >
                             کاتالوگ <i className="fa fa-download"></i></a>
-                        </h4>
+                        </h4> 
                         <p>{data.productDescription}</p>
-                        <h3>دستاوردها و افتخارات: </h3>
+                        <h3 className="newTitle">
+                            <i className="fa fa-gift"></i>
+                            دستاوردها و افتخارات </h3>
                         <p>{data.achivement}</p>
                         <hr/>
                     <div className="row imageFrame" >

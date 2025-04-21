@@ -947,3 +947,38 @@ a:focus-visible {
 .leftTitle{
   text-align: center;
 }
+.leftBox{
+   border:1px solid #E5E5E5;
+   padding: 15px;
+   border-radius: 12px;
+   background-color: #fff;
+   margin-bottom: 20px;
+}
+.leftBox strong{
+  direction: ltr;
+  display: flex;
+  gap:10px;
+}
+.leftTitle{
+  font-size: larger;
+  display: flex;
+  width: 100%;
+  color:#ff5c35;
+  text-align: center;
+  font-weight: 700;
+  margin: 20px;
+  gap: 10px;
+}
+
+.fieldBox{
+  background-color: #fafafa;
+  border-radius: 10px;
+  border:1px solid #E5E5E5;
+}
+.newTitle{
+  font-weight: 700;
+  display: flex;
+  gap:10px;
+  padding: 10px 0;
+  color:#ff5c35;
+}
