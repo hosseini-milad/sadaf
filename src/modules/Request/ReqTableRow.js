@@ -5,7 +5,6 @@ import env from "../../env"
 
 function ReqTableRow(props){
   const token = props.token
-<<<<<<< HEAD
   const activeAcc = props.index===props.detail
   const data=props.data
   const lang=props.lang;
@@ -16,12 +15,9 @@ function ReqTableRow(props){
       id: data._id,
       active:!data.active
     };
-=======
-  const data=props.data
-  const activeAcc = props.index===props.detail
+  }
   const updateTable=(active) => {
     const body = {id:data._id,active:active};
->>>>>>> b3582dd496404528fe4457a17662589390cb7a01
     const postOptions = {
       method: "post",
       headers: {
@@ -36,10 +32,7 @@ function ReqTableRow(props){
       .then((res) => res.json())
       .then(
         (result) => {
-<<<<<<< HEAD
-=======
           window.location.reload()
->>>>>>> b3582dd496404528fe4457a17662589390cb7a01
         },
         (error) => {
           console.log(error);
