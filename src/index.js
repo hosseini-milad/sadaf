@@ -75,6 +75,7 @@ root.render(
         <Route path="/request" element={<Layout><Requests lang={lang}/></Layout>}/>
         <Route path="/request/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
         <Route path="/req-cat" element={<Layout><ReqCategory lang={lang}/></Layout>}/>
+        <Route path="/mehvar" element={<Layout><MehvarTable lang={lang}/></Layout>}/>
         
         <Route path="/cowork" element={<Layout><CoWork lang={lang}/></Layout>}/>
         <Route path="/transactions" element={<Layout><Transactions lang={lang}/></Layout>}/>

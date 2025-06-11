@@ -55,6 +55,14 @@ const menutrans ={
                 url:"request"
             },
             {
+                english: "Request Mehvar",
+                persian: "محور",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/mehvar",
+                url:"mehvar"
+            },
+            {
                 english: "Request Cat",
                 persian: "دسته بندی تقاضا",
                 index:0,

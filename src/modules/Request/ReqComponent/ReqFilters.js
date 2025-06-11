@@ -39,24 +39,17 @@ function ReqFilters(props) {
           //action={createConditionalAction("title", 4)} // Remove the parentheses here
 
         />
+        <StyleSelect
+          title="فعال"
+          options={["فعال","غیرفعال"]}
+          direction={props.lang.dir}
+          action={(e) => handleFilterChange("active", e)}
+
+        />
         <StyleInput
           title="ثبت کننده" class="hiddenMobile"
           direction={props.lang.dir}
           action={(e) => setQuery({prop:"malek", value:e})}
-        />
-        <StyleSelect
-          title="ماهیت" class="hiddenMobile"
-          options={["حقیقی","حقوقی"]}
-          direction={props.lang.dir}
-          action={(e) => handleFilterChange("mahiat", e)}
-
-        />
-        <StyleSelect
-          title="فعال" class="hiddenMobile"
-          options={["فعال","غیرفعال"]}
-          direction={props.lang.dir}
-          action={(e) => handleFilterChange("fill", e)}
-
         />
 
         <StyleDatePicker
