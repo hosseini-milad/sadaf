@@ -15,6 +15,8 @@ const idea = require('../models/idea');
 const clients = require('../models/auth/clients');
 const reqcat = require('../models/reqcat');
 const mehvar = require('../models/mehvar');
+const mehvarSchedule = require('../models/mehvarSchedule');
+const mehvarGoal = require('../models/mehvarGoal');
 
 router.get('/get-idea/:id',jsonParser, async (req,res)=>{
     const url = req.url.split('/').pop()
@@ -284,6 +286,23 @@ router.post('/update-category',jsonParser, async (req,res)=>{
     }
 })
 
+router.post('/fetch-mehvar',jsonParser, async (req,res)=>{
+    const mehvarId = req.body.mehvarId
+    try{
+        const dataList = await mehvar.findOne({_id:ObjectID(mehvarId)})
+        if(!dataList){
+            res.status(400).json({error:"not found"})
+            return
+        }
+        const scheduleList = await mehvarSchedule.find({mehvarCode:dataList.mehvarCode})
+        const goalList = await mehvarGoal.find({mehvarCode:dataList.mehvarCode})
+
+        res.json({data:dataList,goalList,scheduleList})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
 router.post('/list-mehvar',jsonParser, async (req,res)=>{
     
@@ -336,6 +355,47 @@ router.post('/update-mehvar',jsonParser, async (req,res)=>{
             return
         }
         await mehvar.updateOne({_id:ObjectID(catId)},{$set:data})
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/update-mehvar-goal',jsonParser, async (req,res)=>{
+    var mehvarId= req.body.id
+    var data=req.body
+    
+    try{
+        if(!mehvarId){
+            await mehvarGoal.create(data)
+        }
+        else{
+            await mehvarGoal.updateOne({_id:ObjectID(mehvarId)},
+                {$set:data}
+            )
+        }
+        
+        res.json({message:"اطلاعات بروز شد"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.post('/update-mehvar-schedule',jsonParser, async (req,res)=>{
+    var mehvarId= req.body.id
+    var data=req.body
+    
+    try{
+        if(!mehvarId){
+            await mehvarSchedule.create(data)
+        }
+        else{
+            await mehvarSchedule.updateOne({_id:ObjectID(mehvarId)},
+                {$set:data}
+            )
+        }
+        
         res.json({message:"اطلاعات بروز شد"})
     }
     catch(error){

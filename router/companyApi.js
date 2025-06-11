@@ -256,7 +256,19 @@ router.post('/update-company',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-
+router.post('/update-admin-company',jsonParser,auth, async (req,res)=>{
+    const id = req.body.id
+    const data = req.body
+    try{
+        const dataList = await company.updateOne({_id:ObjectID(id)},
+            {$set:data})
+        
+        res.json({dataList,message:"اطلاعات بروز شدند"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 router.post('/list-category',jsonParser, async (req,res)=>{
     
     var data={
