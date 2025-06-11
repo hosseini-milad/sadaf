@@ -2,7 +2,7 @@ import { useState } from "react"
 import ReqTableRow from "./ReqTableRow";
 
 function ReqTable(props){
-  const data = props.data
+  const {data,...test} = props
   const lang=props.lang;
   const [detail,showDetail] = useState(-1)
   if(!data||!data.length) return <main>waiting</main>
@@ -40,7 +40,7 @@ function ReqTable(props){
         <tbody>
           {data?data.map((data,i)=>(
             <ReqTableRow detail={detail} showDetail={showDetail} 
-              cart={props.cart}
+              cart={props.cart} token={props.token}
               data={data} index={i} key={i} lang={lang}/>
           )):''}
           

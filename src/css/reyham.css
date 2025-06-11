@@ -1101,6 +1101,41 @@
 .sub-num{
   min-width: 350px;
 }
+.fullRow{
+  width: 100%;
+}
+.inRow{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.plus-btn{
+  border: 1.5px solid gray;
+  width: 40px;
+  height: 35px;
+  padding-top: 5px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 100%;
+  font-weight: bold;
+}
+.plus-btn:hover{
+  border-color: olivedrab;
+  background-color: olivedrab;
+  color: #fff;
+  width: 40px;
+  height: 35px;
+  padding-top: 5px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 100%;
+}
+.greenBtn{
+  color: olivedrab;
+  border-color: olivedrab;
+}
+.greenBtn i{
+  padding: 0;
+}
 .sub-num li{
   background-color: #fff;
   border: 1px solid #eee;

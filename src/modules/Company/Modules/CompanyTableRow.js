@@ -38,7 +38,7 @@ function CompanyTableRow(props){
             </td>
             <td>
                 <div className="cu-avatar rightAlign">
-                    <p>{data.title}</p>
+                    <a href={`/company/${data._id}`}>{data.title}</a>
                 </div>
             </td>
             <td>

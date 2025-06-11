@@ -1,14 +1,40 @@
 import React ,{ useState } from "react"
 import ReqQuickCart from "./ReqComponent/ReqQuickCart"
+import env from "../../env"
 
 
 function ReqTableRow(props){
-  const [openOption,setOpenOption] = useState(0)
-  const [checkState,setCheckState] = useState(false)
+  const token = props.token
   const activeAcc = props.index===props.detail
   const data=props.data
   const lang=props.lang;
   const cart = props.cart
+  const updateStatus=()=>{
+    
+    const body = {
+      id: data._id,
+      active:!data.active
+    };
+    const postOptions = {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token && token.token,
+        userId: token && token.userId,
+      },
+      body: JSON.stringify(body),
+    };
+    //console.log(postOptions);
+    fetch(env.siteApi + "/data/update-req", postOptions)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
     return(<React.Fragment>
         <tr 
             className={activeAcc?"activeAccordion":"accordion"}>
@@ -45,7 +71,7 @@ function ReqTableRow(props){
                 </div>
               </td>
               <td>
-                <div className="order-price">
+                <div className="order-price" onClick={updateStatus}>
                   <p>{data.active?
                   <i className="fa fa-check"/>:
                   <i className="fa fa-remove"/>}</p>

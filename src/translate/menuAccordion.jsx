@@ -162,6 +162,14 @@ const menutrans ={
             href:"/access",
             url:"access"
         },
+        {
+            english: "Events",
+            persian: "رویدادها",
+            index:0,
+            icon:"fa-key",
+            href:"/mehvar",
+            url:"mehvar"
+        },
         {       
             english: "User Management",
             persian: "مدیریت کاربران",

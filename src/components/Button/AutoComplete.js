@@ -24,7 +24,7 @@ function StyleSelect(props){
     return(
         //<CacheProvider value={props.direction==="rtl"?cacheRtl:cacheltR}>
         <div className={props.class}>
-            <Autocomplete
+            <Autocomplete direction="rtl"
             getOptionLabel={(option) => (option&&option[props.label])?
                 option[props.label]:option}
             //className={stylisRTLPlugin}

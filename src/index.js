@@ -35,6 +35,9 @@ import Transactions from './pages/Transactions';
 import ClientHolder from './pages/Clients';
 import Requests from './pages/Request';
 import ReqCategory from './modules/Request/ReqComponent/ReqCategory';
+import MehvarTable from './modules/Mehvar/MehvarTable';
+import MehvarDetailHolder from './modules/Mehvar/MehvarDetail';
+import CompanyAdminEdit from './modules/Company/adminEdit/CompanyEdit';
 
 const cookies = new Cookies();
 var lang = JSON.parse(localStorage.getItem(env.cookieLang));
@@ -61,11 +64,14 @@ root.render(
 
         <Route path="/clients" element={<Layout><ClientHolder lang={lang}/></Layout>}/>
         <Route path="/company" element={<Layout><CompanyHolder lang={lang}/></Layout>}/>
+        <Route path="/company/:id" element={<Layout><CompanyAdminEdit lang={lang}/></Layout>}/>
         <Route path="/company-edit/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
         <Route path="/category" element={<Layout><CategoryTable lang={lang}/></Layout>}/>
         <Route path="/unit" element={<Layout><UnitTable lang={lang}/></Layout>}/>
         <Route path="/licence" element={<Layout><LicenceTable lang={lang}/></Layout>}/>
-        
+        <Route path="/mehvar" element={<Layout><MehvarTable lang={lang}/></Layout>}/>
+        <Route path="/mehvar/:id" element={<Layout><MehvarDetailHolder lang={lang}/></Layout>}/>
+
         <Route path="/request" element={<Layout><Requests lang={lang}/></Layout>}/>
         <Route path="/request/:id" element={<Layout><CompanyEdit lang={lang}/></Layout>}/>
         <Route path="/req-cat" element={<Layout><ReqCategory lang={lang}/></Layout>}/>

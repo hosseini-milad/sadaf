@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { PostReq } from "../../../components/PostReq"
+import { PostReq } from "../../components/PostReq"
 
-function TableRow(props){
+function MehvarRow(props){
     const data = props.data
     const [newData,setNewData] = useState({})
     const SaveNow=async()=>{
@@ -13,15 +13,7 @@ function TableRow(props){
               document.location.reload()
             }
     }
-    const DeleteNow=async()=>{
-        const result = await PostReq(
-            {method:"POST",url:props.deleteUrl,
-              body:{id:data._id}
-            })
-            if(!result.error){
-              document.location.reload()
-            }
-    }
+    
     return(
         <tr >
             <td>
@@ -54,9 +46,9 @@ function TableRow(props){
             <td>
             <button onClick={SaveNow} className="btn bg-gradient-primary tableBtn saveBtn">
                 ذخیره</button>
-            <button onClick={DeleteNow} className="btn bg-gradient-primary tableBtn cancelBtn">
-                حذف</button></td>
+            <button onClick={()=>window.location.href="/mehvar/"+data._id} className="btn bg-gradient-primary tableBtn editBtn">
+                ویرایش</button></td>
         </tr>
     )
 }
-export default TableRow
+export default MehvarRow

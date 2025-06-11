@@ -29,6 +29,7 @@ function Requests(props) {
       search:filters&&filters.search,
       dateFrom: filters&&filters.date && filters.date.dateFrom,
       dateTo: filters&&filters.date && filters.date.dateTo,
+      active:(filters&&filters.active) ? filters.date.active:"غیرفعال",
       access: "manager",
     };
     const postOptions = {
@@ -54,7 +55,8 @@ function Requests(props) {
       );
   }, [filters]);
   //window.scrollTo(0, 270);},[pageNumber,filters,perPage,refreshTable])
-  return (
+  try{
+    return (
     <div className="user" style={{ direction: direction }}>
       <div className="od-header">
         <div className="od-header-info">
@@ -72,7 +74,8 @@ function Requests(props) {
           filters={filters}
         />
           <div className="user-list">
-            <ReqTable data={content ? content.data : {}} lang={lang} />
+            <ReqTable data={content ? content.data : {}} lang={lang} 
+            token={token}/>
           </div>
         <Paging
           content={content}
@@ -83,6 +86,7 @@ function Requests(props) {
           lang={props.lang}/>
       </div>
     </div>
-  );
+  );}
+  catch{}
 }
 export default Requests;
