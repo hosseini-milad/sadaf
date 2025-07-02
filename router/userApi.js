@@ -30,7 +30,7 @@ router.post('/update-client',jsonParser,auth, async (req,res)=>{
     try{
         const userData = await clients.updateOne({_id:ObjectID(userId)},
         {$set:changes})
-        res.json({data:userData})
+        res.json({data:userData,message:"اطلاعات بروز شدند"})
     }
     catch(error){
         res.status(500).json({message: error.message})

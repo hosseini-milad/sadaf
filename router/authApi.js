@@ -96,6 +96,16 @@ router.post('/login-customer',jsonParser, async (req,res)=>{
           res.status(200).json(user);
           return;
         }
+        else if (user && password== user.password) {
+          const token = jwt.sign(
+            { user_id: user._id, username:user.cName },
+            process.env.TOKEN_KEY,
+            {expiresIn: "24h",}
+          );
+          user.token = token;
+          res.status(200).json(user);
+          return;
+        }
         else{
           res.status(400).json({error:"Invalid Password"}); 
         }
