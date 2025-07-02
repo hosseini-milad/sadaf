@@ -11,6 +11,7 @@ exports.pay = async (req, res) => {
     
     try{    
         var query= await CreateSadadSign("123","123000")
+        console.log(query)
         var Token = "123456"
           var header = {"Content-Type":"application/json"}
     const body = {...query}
