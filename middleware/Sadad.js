@@ -20,10 +20,11 @@ exports.pay = async (req, res) => {
         body:JSON.stringify(body)});
             
         result = await response.json();
+        console.log(result)
         Token = result.Token
         } catch{}
         if(!result){
-            return res.status(400).json({error:"Sadad errors"})
+            return res.status(400).json({result,error:"Sadad errors"})
         }
 
     return(res.render(`sadad_payment.ejs`,
