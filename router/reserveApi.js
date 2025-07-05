@@ -12,6 +12,7 @@ const CheckActive = require('../middleware/CheckActive');
 const CanReserve = require('../middleware/CanReserve');
 const CreateReserveID = require('../middleware/CreateReserveID');
 const transactions = require('../models/transactions');
+const ReserveStatus = require('../middleware/Seat/reserveStatus');
 const {COWORK_PRICE} = process.env
 
 
@@ -23,8 +24,10 @@ router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
         var canReserve = await CanReserve(userData)
         const coWorkData = await cowork.findOne({userId:userId})
         const isActive = CheckActive(coWorkData)
+        
+        const {buttons,message} = await ReserveStatus(canReserve,isActive)
         res.json({user:userData,cowork:coWorkData,
-            isActive,canReserve})
+            isActive,canReserve,message,buttons})
     }
     catch(error){
         res.status(500).json({message: error.message})

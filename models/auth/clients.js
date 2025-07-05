@@ -16,6 +16,7 @@ const clientSchema = new mongoose.Schema({
   profile:{ type: String },
   address:{ type: String },
   meliCode:{ type: String },
+  meliImage:{ type: String },
 
   active:{type:String},
   inPark:{type:String},
