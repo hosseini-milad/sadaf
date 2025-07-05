@@ -4,85 +4,41 @@ import LanguageSwitcher from "./LanguageSwitcher"
 const Footer = (props)=>{
     
     return(
-<footer id="site-footer" className={props.dir==="rtl"?"rtlDir":""}>
+<footer id="site-footer" className={props.dir==="rtl"?"rtlDir footerClass":"footerClass"}>
   <div className="container">
     <div className="clear40"></div>
     <div className="row">
+      <div className="col-sm-6">
+        <p>
+          <strong>پارک علم و فناوی استان قم</strong>
+        </p>
+        پارک علم و فناوری استان قم به عنوان نهاد سازمان حامی توسعه فناوری و اقتصاد دانش بنیان در سطح استان قم، با ساختار مصوّب و کارشناسان جوان فعالیت خود را از ابتدای سال ۱۳۹۱ آغاز کرد و مصمم است به عنوان رکن تعیین کننده فناوری و اقتصاد دانش محور استان قم تبدیل شود. با توجه به ظرفیت های این پارک در حمایت از مؤسسات و شرکت های دانش بنیان، تبدیل دانش به محصول، ارائه فناوری به بازار و صنعت، ایجاد درآمد، و گسترش اشتغال با تکیه بر تخصص و نوآوری فناوران و صنعتگران استان، میتوان پارک علم و فناوری استان قم را پیشگام در پیشرفت و تعالی استان مبتنی بر کسب و کارهای دانش بنیان و تولید فناوری تقاضا محور دانست. پارک علم و فناوری استان قم هم اکنون دارای دو مرکز رشد علوم انسانی و اسلامی و مرکز رشد واحدهای فناور و مدیریت امور موسسات است.
+        <br />
+        
+      </div>
       <div className="col-sm-3">
         <p>
           <strong>رزرواسیون</strong>
-        </p>
-        <a href="/cowork">رزرو صندلی اشتراکی</a>
-        <br />
-        
-      </div>
-      <div className="col-sm-3">
-        <hr className="visible-xs-block" />
-        <p>
-          <strong>منوی2</strong>
-        </p>
-        <a href="/ambassador">منوی ما</a>
+        </p><hr/>
+        <a href="/cowork">صندلی اشتراکی</a><br/>
+        <a href="/suit">سوییت ها</a><br/>
+        <a href="/session">سالن جلسات</a><br/>
         <br />
       </div>
       <div className="col-sm-3">
+        <p>
+          <strong>اطلاعات تماس</strong>
+        </p>
         <hr className="visible-xs-block" />
         <p>
-          <strong>اطلاعات</strong>
+           آدرس: قم، پردیسان، بلوار دانشگاه، ابتدای بلوار مولوی<br/>
+            کد پستی: ۳۷۴۹۱۱۳۹۱۶<br/>
+            <a href="phone:02532220000">تلفن: ۰۲۵-۳۲۲۲۰۰۰۰ </a><br/>
         </p>
         
       </div>
-      <div className="col-sm-3">
-        <hr className="visible-xs-block" />
-        <p>
-          <strong>{errortrans.language[props.lang]}</strong>
-        </p>
-        <a href="/de" title="deutsch" className="languageSelector" data-lang="de" data-href="/de">
-          <img src="/img/gfx/de.png" />
-        </a>&nbsp; <a href="/fr" title="français" className="languageSelector" data-lang="fr" data-href="/fr">
-          <img src="/img/gfx/fr.png" />
-        </a>&nbsp; <a href="/es" title="español" className="languageSelector" data-lang="es" data-href="/es">
-          <img src="/img/gfx/es.png" />
-        </a>&nbsp; <a href="/pt" title="brazil" className="languageSelector" data-lang="pt" data-href="/pt">
-          <img src="/img/gfx/br.png" />
-        </a>&nbsp;
-      </div>
+      
     </div>
-    <div className="clear20"></div>
-    <hr />
-    <div className="row">
-      <div className="col-md-8 col-sm-6">
-        <p className="h3"></p>
-        <a href="https://t.me/bijibtrip" target="_blank" className="social_circle" title="Telegram">
-          <i className="fa fa-telegram fa-2x"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/bijib-trip-a11959301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="social_circle" title="linkedin">
-          <i className="fa fa-linkedin fa-2x"></i>
-        </a>
-        <a href="https://youtube.com/@BijiBTrip?si=Lug37SCYxmLf4I55" target="_blank" className="social_circle" title="YouTube">
-          <i className="fa fa-youtube fa-2x"></i>
-        </a>
-        <a href="https://www.instagram.com/bijibtrip?igsh=MWpxMm9pa3pkMmRhOA==" target="_blank" className="social_circle" title="instagram">
-          <i className="fa fa-instagram fa-2x"></i>
-        </a>
-        <div className="clear20"></div>
-      </div>
-      <div className="col-md-4 col-sm-3">
-        <p className="h3">تماس با ما</p>
-        <div className="contactSocial">
-          <a href="tel:09121212121" className="social_circle" title="Facebook">
-            <i className="fa fa-phone fa-2x"></i>
-          </a>
-          <div className="contactNumber">
-            <span className="ltrText">+9891221212</span>
-            <span className="ltrText">+9893921212</span>
-          </div>
-        </div>
-        
-        <div className="clear20"></div>
-      </div>
-      <div className="col-md-4 col-sm-6 text-right text-left-xs"></div>
-    </div>
-    <div className="clear20"></div>
   </div>
 </footer>
     )

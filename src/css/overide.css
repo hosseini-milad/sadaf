@@ -28,6 +28,18 @@ a{
 .liCircle{
   list-style: circle;
 }
+.liCircleSub{
+  list-style:square;
+  margin-right: 20px;
+}
+.liCircleSub li{
+  font-size: 14px;
+}
+.suiteImage{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 .activeMenu{
   border-right: 15px solid #003eee !important;
 }
@@ -134,4 +146,19 @@ a{
 }
 .cancelStatus{
   background-color: red;
+}
+
+.copyRightClass{
+  padding: 10px;
+  background-color: #003eee;
+  text-align: center;
+  color: #fff;
+}
+.footerClass{
+  background-color: var(--cl-color-background-03,var(--light-theme-background-03));
+  
+  padding-bottom:30px;
+}
+.profileImage{
+  height:60px
 }

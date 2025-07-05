@@ -1,7 +1,15 @@
+import { useState } from "react"
+import env from "../../../env"
+
 function DeActiveCowork(props){
     const data = props.data
+    const [message,setMessage] = useState()
     const payNow=()=>{
-        console.log("pay now")
+        setMessage("در حال انتقال به درگاه پرداخت")
+        setTimeout(()=>
+        window.location.href=(env.siteApiUrl+
+            "/api/payment/sadad?reserveid="+
+            "result.reserveid"),2000) 
     }
     return(
         <>

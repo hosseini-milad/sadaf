@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 import OtpInput from 'react-otp-input';
 
 function OTPLogin(props){
-    const [phone,setPhone] = useState()
+    const [phone,setPhone] = useState(props.mobile)
     const [reqOtp,setReqOtp] = useState()
     const [sentOtp,setSentOtp] = useState()
     const [otp,setOTP] = useState()

@@ -30,9 +30,8 @@ function Profile(props){
             headers: {'Content-Type': 'application/json',
             'x-access-token':token&&token.token,'userid':token&&token.userId }
           }
-          console.log(postOptions)
         fetch(env.siteApi + "/user/fetch-client",postOptions)
-      .then(res => res.json())
+      .then(res =>  res.json())
       .then(
         (result) => {
             if(result.error){

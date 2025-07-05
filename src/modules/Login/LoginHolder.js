@@ -12,6 +12,7 @@ function LoginHolder(props){
     const lang = props.lang?props.lang.lang:errortrans.defaultLang;
     const direction = props.lang?props.lang.dir:errortrans.defaultDir;
     const [showOtp,setOTP] = useState(0)
+    const [showPass,setShowPass] = useState(0)
     //console.log(user)
     const checkLogin=()=>{
       const postOptions={
@@ -55,14 +56,8 @@ function LoginHolder(props){
       })
   }
   return(<>
-  {showOtp?<OTPLogin setOTP={setOTP}/>:
+  {showOtp?<OTPLogin setOTP={setOTP} mobile={user}/>:
   <div className="auth-box marketing-box">
-     <div className="signup-link">
-        <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">حساب کاربری ندارید؟</i18n-string>
-        <a className="private-link uiLinkWithoutUnderline m-left-1 uiLinkDark" href="/register" aria-disabled="false">
-           <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.ctaVariantB">به راحتی به ما ملحق شوید</i18n-string>
-        </a>
-     </div>
      <form style={{backgroundColor: "white"}} id="hs-login">
         <div></div>
         <div>
@@ -94,24 +89,28 @@ function LoginHolder(props){
                     <i18n-string data-locale-at-render="en-us" data-key="login.form.password">کلمه عبور</i18n-string>
                  </span>
                  </label>
-                 <small id="password-help" className="private-microcopy private-form__inlinehelp is--text--help">
-                 <button aria-disabled="false" className="uiButton private-button private-button__link private-button--default" type="button">
-                    <span>نمایش کلمه عبور</span>
+                 <small id="password-help" className="private-microcopy private-form__inlinehelp is--text--help"
+                 style={{direction:"ltr"}}>
+                 <button aria-disabled="false" className="uiButton private-button private-button__link private-button--default" type="button"
+                 onClick={()=>setShowPass(!showPass)}>
+                    {showPass?
+                    <span>مخفی کردن کلمه عبور</span>:
+                    <span>نمایش کلمه عبور</span>}
                  </button>
                  </small>
               </div>
               <div className="private-form__input-wrapper">
-                 <input id="password" type="password" className="form-control private-form__control login-password m-bottom-3" 
+                 <input id="password" type={showPass?"input":"password"} className="form-control private-form__control login-password m-bottom-3" 
                  onChange={(e)=>setPass(e.target.value)}/>
               </div>
               <div className="private-form__meta">
                  <div className="private-form__messages"></div>
               </div>
-              <small id="password-description" className="private-microcopy private-form__description is--text--help">
+              {/*<small id="password-description" className="private-microcopy private-form__description is--text--help">
                  <a href="/login/forgot?email=&amp;useDark=">
                  <i18n-string data-locale-at-render="en-us" data-key="login.form.forgotPassword">فراموشی کلمه عبور</i18n-string>
                  </a>
-              </small>
+              </small>*/}
            </div>
            </div>
         </div>

@@ -26,6 +26,8 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Cowork from './pages/Cowork';
 import Profile from './pages/Profile';
+import Suit from './pages/Suit';
+import Session from './pages/Session';
 
 
 const cookies = new Cookies();
@@ -48,6 +50,8 @@ root.render(
         <Route path="/help" element={<Layout lang={lang}><Help lang={lang}/></Layout>}/>
         <Route path="/faq" element={<Layout lang={lang}><FAQ lang={lang}/></Layout>}/>
         <Route path="/cowork" element={<Layout lang={lang}><Cowork lang={lang}/></Layout>}/>
+        <Route path="/suit" element={<Layout lang={lang}><Suit lang={lang}/></Layout>}/>
+        <Route path="/session" element={<Layout lang={lang}><Session lang={lang}/></Layout>}/>
         <Route path="/profile" element={<Layout lang={lang}><Profile lang={lang}/></Layout>}/>
         <Route path="/login" element={<Layout lang={lang}><Login lang={lang}/></Layout>}/>
       </Routes>

@@ -1,11 +1,46 @@
-import { useState } from "react"
+import { useState, useEffect} from "react"
 import MyInput from "../../components/Button/Input"
 import env from "../../env"
+import ImageSimple from "../../components/Button/ImageSimple"
+import ImageShow from "../../components/Button/ImageShow";
 
 function ProfileBody(props){
+    const [image,setImage]= useState();
+    const [imageUrl,setImageUrl]= useState();
     const [changes,setChanges] = useState()
     const data = props.data
     const token = props.token
+    const [error,setError] = useState('')
+    console.log(error)
+    useEffect(() => {
+      const postOptions={
+          method:'post',
+          headers: {
+              "content-type": "application/json"
+          },
+          body:JSON.stringify({base64image:image&&image.base64,
+                              imgName:image&&image.fileName,
+                            folderName:"user"})
+      }//URL.createObjectURL(image)
+      //console.log(postOptions)
+      image&&fetch(env.siteApi+"/user/upload",postOptions)
+          .then(res => res.json())
+          .then(
+          (result) => {
+            setChanges(prevState => ({
+              ...prevState,
+              meliImage:result.url
+            }))
+          },
+          (error) => {
+              console.log(error);
+          }
+          )
+          .catch((error)=>{
+          console.log(error)
+          })
+
+      },[image])
     const updateChanges=()=>{
         const postOptions={
             method:'post',
@@ -13,7 +48,6 @@ function ProfileBody(props){
             'x-access-token':token&&token.token,'userid':token&&token.userId },
             body:JSON.stringify({...changes})
         }
-        console.log(postOptions)
         fetch(env.siteApi + "/user/update-client",postOptions)
     .then(res => res.json())
     .then(
@@ -22,7 +56,9 @@ function ProfileBody(props){
                 console.log(result.error)
             }
             else{
-                console.log(result)
+                
+            setError(result.message)
+            setTimeout(()=>setError(''),3000)
             }
         },
         (error) => {
@@ -45,6 +81,10 @@ function ProfileBody(props){
                 action={setChanges} param="phone" defaultValue={data.phone}/>
                 <MyInput title="ایمیل" require={true} class="profileInput"
                 action={setChanges} param="email" defaultValue={data.email}/>
+                <ImageSimple cardName="Input Image" imageGallery={[]} 
+                    setImage={setImage} part={1}/>
+                <ImageShow url={(changes&&changes.meliImage)?
+                    changes.meliImage:data.meliImage} />
             </form>
             <div className="buttonHolder">
                 <a className="cl-button -primary -small -light ga_nav_link homepage-hp-nav " 
@@ -52,6 +92,7 @@ function ProfileBody(props){
                 <a className="cl-button -secondary -small -light ga_nav_link homepage-hp-nav " 
                 > پاک کردن فرم</a>
             </div>
+            <div className="messageShow" >{error}</div>
                 
         </div>
     )

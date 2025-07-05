@@ -13,32 +13,32 @@ function Exchange(props){
                   <h3 className="wf-product-cards__heading ">سالن جلسات <span className="wf-product-cards__heading--trademark">®</span>
                   </h3>
                 </div>
-                <p className="wf-product-cards__description">AI-powered marketing software that helps you generate leads and automate marketing.</p>
+                <p className="wf-product-cards__description">اگر به‌دنبال فضایی حرفه‌ای برای برگزاری جلسات، سمینارها یا کارگاه‌های آموزشی هستید، اجاره سالن جلسات مجهز ما گزینه‌ای ایده‌آل برای شماست.</p>
                 <div className="wf-product-cards__features">
-                  <h4 className="wf-product-cards__feature-list--heading ">Popular Features</h4>
+                  <h4 className="wf-product-cards__feature-list--heading ">امکاناتی نظیر</h4>
                   <div className="wf-product-cards__feature-list--items">
                     <ul>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> AI-powered lead generation
+                        </svg> تلویزیون 75 اینچ
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Marketing automation
+                        </svg> ظرفیت تا 120 نفر
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Analytics
+                        </svg> اتاق فرمان
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="wf-product-cards__cta-wrapper">
                   <a className="
-      cl-button -primary -medium wf-product-cards__cta homepage-marketing" href="https://www.hubspot.com/products/marketing?hubs_content=www.hubspot.com&amp;hubs_content-cta=homepage-marketing&amp;hubs_post=blog.hubspot.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." rel="noreferrer "> Learn more <span className="visually-hidden">about Marketing Hub</span>
+      cl-button -primary -medium wf-product-cards__cta homepage-marketing" href="/session" rel="noreferrer "> جزئیات بیشتر
                   </a>
                 </div>
               </div>
@@ -50,32 +50,32 @@ function Exchange(props){
                   <h3 className="wf-product-cards__heading ">فضای کار اشتراکی <span className="wf-product-cards__heading--trademark">®</span>
                   </h3>
                 </div>
-                <p className="wf-product-cards__description">Easy-to-adopt sales software that leverages AI to build pipelines and close deals.</p>
+                <p className="wf-product-cards__description">فضایی پویا و منعطف فعاليت کنین؛ با افراد متخصص اشنا بشین و یک فضای کار تجهیرشده و دائمی داشته باشین؛ فضای کار اشتراکی مناسب شماست.</p>
                 <div className="wf-product-cards__features">
-                  <h4 className="wf-product-cards__feature-list--heading ">Popular Features</h4>
+                  <h4 className="wf-product-cards__feature-list--heading ">امکاناتی نظیر</h4>
                   <div className="wf-product-cards__feature-list--items">
                     <ul>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Prospecting workspace
+                        </svg> اینترنت پرسرعت
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Deal management
+                        </svg> میز کار
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Sales automation
+                        </svg> سالن جلسات
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="wf-product-cards__cta-wrapper">
                   <a className="
-      cl-button -primary -medium wf-product-cards__cta homepage-sales" href="https://www.hubspot.com/products/sales?hubs_content=www.hubspot.com&amp;hubs_content-cta=homepage-sales&amp;hubs_post=blog.hubspot.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." rel="noreferrer "> Learn more <span className="visually-hidden">about Sales Hub</span>
+      cl-button -primary -medium wf-product-cards__cta homepage-sales" href="/cowork"> جزئیات بیشتر 
                   </a>
                 </div>
               </div>
@@ -87,32 +87,32 @@ function Exchange(props){
                   <h3 className="wf-product-cards__heading ">سوئیت <span className="wf-product-cards__heading--trademark">®</span>
                   </h3>
                 </div>
-                <p className="wf-product-cards__description">Customer service software powered by AI to scale support and drive retention.</p>
+                <p className="wf-product-cards__description">برای اقامت راحت و دل‌نشین، می‌توانید همین حالا نسبت به رزرو سوییت‌های مجهز و شیک ما اقدام کنید.</p>
                 <div className="wf-product-cards__features">
-                  <h4 className="wf-product-cards__feature-list--heading ">Popular Features</h4>
+                  <h4 className="wf-product-cards__feature-list--heading ">امکاناتی نظیر</h4>
                   <div className="wf-product-cards__feature-list--items">
                     <ul>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Omni-channel help desk
+                        </svg> ظرفیت تا 6 نفر
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> AI chatbot
+                        </svg> آشپزخانه مجهز
                       </li>
                       <li className="wf-product-cards__feature-list--item">
                         <svg className="cl-icon" aria-hidden="true">
                           <use href="#check-circle"></use>
-                        </svg> Customer success workspace
+                        </svg> حمام و سرویس بهداشتی
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="wf-product-cards__cta-wrapper">
                   <a className="
-      cl-button -primary -medium wf-product-cards__cta homepage-service" href="https://www.hubspot.com/products/service?hubs_content=www.hubspot.com&amp;hubs_content-cta=homepage-service&amp;hubs_post=blog.hubspot.com%25252F&amp;hubs_post-cta=null&amp;_gl=1*zbxus2*_ga*MTY2MjYyMTg5Mi4xNzE2OTA4NDUz*_ga_LXTM6CQ0XK*MTcxNjkwODQ1MS4xLjEuMTcxNjkwOTQzOS4yMi4wLjA." rel="noreferrer "> Learn more <span className="visually-hidden">about Service Hub</span>
+      cl-button -primary -medium wf-product-cards__cta homepage-service" href="suit"> جزئیات بیشتر
                   </a>
                 </div>
               </div>
