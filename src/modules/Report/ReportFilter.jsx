@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import env from "../../env"
 
 function ReportFilter(props){
     const [search,setSearch] = useState('')
-    
+    const [subject,setSubject] = useState('')
     const [year,setYear] = useState('')
     const [tab,setTab] = useState(-1)
     useEffect(()=>{
@@ -21,6 +22,30 @@ function ReportFilter(props){
             }))
         
     },[year])
+    useEffect(()=>{
+        const postBody={
+         method: "GET",
+         headers: {
+           "Content-Type": "application/json"
+         }
+       }
+      fetch(env.siteApi + "/data/data-subject-list",postBody)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if(result.error){
+               
+            }
+            else{
+               setSubject(result.data)
+               
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    },[])
     return(
         <div className="product-core-header__accordion-container">
             <div className="private-form__control-wrapper">
@@ -33,7 +58,7 @@ function ReportFilter(props){
                      </div>
                      <div className="private-form__input-wrapper">
                         <input id="username" tabIndex="1" className="form-control private-form__control login-email"
-                        placeholder="عبارت، شماره ثبت یا ..." value={search}
+                        placeholder="عبارت، موضوع یا ..." value={search}
                         onChange={(e)=>
                             setSearch(e.target.value)}/>
                      </div>
@@ -56,25 +81,16 @@ function ReportFilter(props){
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-0" aria-hidden="true">
                     <div className="accHolder">
-                        <div className={search=="ایده"?"accItem activeAcc":"accItem"}
+                        {subject&&subject.map((subject,i)=>(
+                            <div key={i} className={search=="ایده"?"accItem activeAcc":"accItem"}
                         onClick={(e)=>setSearch("ایده")}>
-                                ایده‌پردازی و برنامه‌ریزی </div>
-                        <div className={search=="تحقیق"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("تحقیق")}>
-                                تحقیق و توسعه محتوا </div>
-                        <div className={search=="محتوا"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("محتوا")}>
-                                تولید محتوا </div>
-                        <div className={search=="ویرایش"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("ویرایش")}>
-                            ویرایش و بهینه‌سازی </div>
-                        <div className={search=="انتشار"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("انتشار")}>
-                            توزیع و انتشار</div>
+                                {subject.title} </div>
+                        ))}
+                        
                     </div>
                 </div>
                 </li>
-                <li className={tab==1?"hsg-accordion__item active" :"hsg-accordion__item"} >
+                {/*<li className={tab==1?"hsg-accordion__item active" :"hsg-accordion__item"} >
                 <button className="hsg-accordion__label" 
                     onClick={()=>setTab(tab==1?-1:1)}>
                     <h3 className="hsg-accordion__label-text marketing-hero-pricing">سال ثبت <span aria-hidden="true" className="hsg-accordion__icon-wrapper">
@@ -97,7 +113,7 @@ function ReportFilter(props){
                         onClick={()=>setYear("old")}>قبل از 1400</div>
                     </div>
                 </div>
-                </li>
+                </li>*/}
                 <li className={tab==2?"hsg-accordion__item active" :"hsg-accordion__item"}>
                 <button className="hsg-accordion__label" 
                     onClick={()=>setTab(tab==2?-1:2)}>

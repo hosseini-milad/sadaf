@@ -5,11 +5,11 @@ function Slider(props){
         <div class="wf-section-wrapper">
           <div class="wf-page-header__wrapper">
             <div class="wf-page-header__image-wrapper ">
-              <img src="/img/hub/sliderMain.jpg"/>
+              <img src="/img/sadaf/slider.jpg"/>
             </div>
             <div class="wf-page-header__content-wrapper">
               <p class="wf-page-header__tagline -microheading"> </p>
-              <img src="/img/hub/sliderText.png" />
+              <img src="/img/sadaf/sliderText.png" />
              
               <div class="wf-page-header__cta-wrapper">
                 <a class="

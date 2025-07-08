@@ -12,7 +12,7 @@ function MyTransaction(props){
             'x-access-token':token&&token.token,'userid':token&&token.userId }
           }
           console.log(postOptions)
-        fetch(env.siteApi + "/reserve/my-transactions",postOptions)
+        fetch(env.siteApi + "/data/my-idea-list",postOptions)
       .then(res => res.json())
       .then(
         (result) => {
@@ -20,7 +20,7 @@ function MyTransaction(props){
                 console.log(result.error)
             }
             else{
-                setTransaction(result.transData)
+                setTransaction(result.data)
             }
         },
         (error) => {
@@ -32,10 +32,8 @@ function MyTransaction(props){
             <tbody>
                 <tr>
                     <td>ردیف</td>
-                    <td>شماره رزرو</td>
-                    <td>شماره پیگیری</td>
-                    <td>وضعیت پرداخت</td>
-                    <td>پیام پرداخت</td>
+                    <td>عنوان ایده</td>
+                    <td>تقاضای فناوری</td>
                     <td>تاریخ</td>
                 </tr>
             {transaction&&transaction.map((trans,i)=>(

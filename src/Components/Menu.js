@@ -11,10 +11,10 @@ const Menu = (props)=>{
       <nav className="hsg-nav-menu stickyHeader" >
         <div className="cl-page-width">
           <div className="hsg-nav__inner">
-            <a href="/" className="logo">
-              <img id="hsg-nav__logo-desktop" alt="sadaf" src="/img/logo_main.png"/>
-              <img id="hsg-nav__logo-fixed" alt="sadaf" src="/img/logo_main.png"/>
-              <img id="hsg-nav__logo-mobile" alt="sadaf" src="/img/logo_main.png"/>
+            <a href="\location" className="logo">
+              <img id="hsg-nav__logo-desktop" alt="sadaf" src="/img/sadaf/logoText.png"/>
+              <img id="hsg-nav__logo-fixed" alt="sadaf" src="/img/sadaf/logoText.png"/>
+              <img id="hsg-nav__logo-mobile" alt="sadaf" src="/img/sadaf/logoText.png"/>
               
             </a>
             <button id="hsg-nav__logo-caret" data-hs-event-72370834="1">

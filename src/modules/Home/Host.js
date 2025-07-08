@@ -11,12 +11,11 @@ function Host(props){
           <img src="/img/hub/thumbVideo.jpg" alt="How HubSpot works" height="620" width="1054" loading="lazy" />
         </div>
         <div className="wf-company-story_rich-text -light">
-          <h2 className="wf-company-story_rich-text-heading  ">رویداد تانا چیست؟</h2>
+          <h2 className="wf-company-story_rich-text-heading  ">رویداد ریورس پیچ </h2>
           <div className="cl-rich-text">
             <p>
               <span>
-              فرصتی برای رفع نیازهای اساسی نهادها، دستگاهها و بنگاه‌های اقتصادی استان،
-               با استفاده از ظرفیت‌های زیست بوم نوآوری و فناوری، از طریق انتقال و تبادل فناوری با حمایت‌های ملی و استانی.
+              این رویداد برای افرادی (مانند تولیدکنندگان، طراحان، صادرکنندگان، یا فعالان صنعت فرش) طراحی می‌شود که مشکلات یا نیازهای مشخصی در این صنعت دارند. هدف، جمع‌آوری چالش‌های واقعی است که بتوان برای آن‌ها راه‌حل‌های نوآورانه ارائه داد.
               </span>
             </p>
             <p>

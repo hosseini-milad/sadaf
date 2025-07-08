@@ -1,5 +1,7 @@
+
 function IdeaTab(props){
   const search = props.search
+  const tabs = props.tabs
     return(
       <section id="free-crm-tabs-section" className="free-crm-tabs-section -dark -background-01">
       <div className="free-crm-tabs-section-wrapper">
@@ -11,7 +13,14 @@ function IdeaTab(props){
                 onClick={()=>props.setSearch("")}
                  aria-selected={!search?"true":""}> همه دسته ها </button>
               </li>
-              <li className="cl-tab-item">
+              {tabs&&tabs.map((tab,i)=>(
+                <li className="cl-tab-item" key={i}>
+                <button className="cl-tab-button" onClick={()=>props.setSearch(tab.title)}
+                  aria-selected={search==tab.title?"true":""}>
+                   {tab.title} </button>
+              </li> 
+              ))}
+              {/*<li className="cl-tab-item">
                 <button className="cl-tab-button" onClick={()=>props.setSearch("برنامه")}
                   aria-selected={search=="برنامه"?"true":""}>
                    ایده‌پردازی و برنامه‌ریزی </button>
@@ -31,7 +40,7 @@ function IdeaTab(props){
               <li className="cl-tab-item " role="presentation">
                 <button className="cl-tab-button" onClick={()=>props.setSearch("انتشار")}
                   aria-selected={search=="انتشار"?"true":""}>	توزیع و انتشار</button>
-              </li>
+              </li>*/}
             </ul>
           </div>
         </div>

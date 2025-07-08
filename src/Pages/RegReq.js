@@ -5,6 +5,7 @@ import LoginHolder from "../modules/Login/LoginHolder";
 function RegReq(props){
   const token = props.token
    const [formData, setFormData] = useState();
+   const [userData, setUserData] = useState();
    const [error, setError] = useState({message:"",color:""});
    const regNow=()=>{
       const postBody={
@@ -32,6 +33,32 @@ function RegReq(props){
           }
         );
     }
+  useEffect(()=>{
+    const postBody={
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'x-access-token':token&&token.token,'userid':token&&token.userId
+      }
+    }
+   fetch(env.siteApi + "/user/fetch-client",postBody)
+     .then((res) => res.json())
+     .then(
+       (result) => {
+         if(result.error){
+            setError({message:result.message,color:"brown"})
+         }
+         else{
+            setUserData(result.data)
+            setError({message:result.message,color:"green"})
+         }
+       },
+       (error) => {
+         console.log(error);
+       }
+     );
+  },[])
+  console.log(userData)
    return(
       <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
          <section className="offers-demo-section -neutral">
@@ -41,17 +68,17 @@ function RegReq(props){
         <section className="offers-features-list -neutral">
           <div className="offers-features-list__main-content">
             <h1 className="offers-features-list__title"> فرم تقاضای فناوری (نیازها و چالش‌ها)  </h1>
-            <p className="offers-features-list__subtitle"> رویداد تانا (توسعه و ارتقای زیست بوم  نوآوری استان ها) استان قم در حوزه زنجیره ارزش راهبردی فناوری های تولید محتوای دیجیتال </p>
-            <a className="offers-features-list__mobile-cta cta cta--primary cta--medium " href="#offers-features-list-form"> Request your demo </a>
+            {/*<p className="offers-features-list__subtitle">این فرم برای افرادی (مانند تولیدکنندگان، طراحان، صادرکنندگان، یا فعالان صنعت فرش) طراحی می‌شود که مشکلات یا نیازهای مشخصی در این صنعت دارند. هدف، جمع‌آوری چالش‌های واقعی است که بتوان برای آن‌ها راه‌حل‌های نوآورانه ارائه داد.</p>*/}
             <div className="offers-features-list__features">
-              <h2 className="offers-features-list__features-title"> موضوع  و محورهای رویداد </h2>
+              {/*<h2 className="offers-features-list__features-title"> پوستر رویداد </h2>*/}
               
           <div className="offers-features-list__bottom-content">
-            <p>
+            <img src="/img/sadaf/rug.jpg" className="formImage"/>
+            {/*<p>
             رویداد ارزش با تمرکز بر حوزه زنجیره ارزش راهبردی فناوری های تولید محتوای دیجیتال برگزار خواهد شد. محورهای اصلی رویداد به شرح زیر است:
-            </p>
+            </p>*/}
           </div>
-              <div className="offers-features-list__features-wrapper">
+              {/*<div className="offers-features-list__features-wrapper">
                
                 <div className="offers-features-list__features-item">
                   <h3 className="offers-features-list__features-item--title"> ایده‌پردازی و برنامه‌ریزی </h3>
@@ -81,7 +108,7 @@ function RegReq(props){
                   <h3 className="offers-features-list__features-item--title">	مدیریت و بهبود مستمر</h3>
                   
                 </div>
-              </div>
+              </div>*/}
             </div>
           </div>
         </section>
@@ -89,7 +116,8 @@ function RegReq(props){
     </div>
     <div className="offers-demo-section-right -">
       <div id="hs_cos_wrapper_csol_bam" className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" >
-        {token?<section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
+        {token?(userData&&userData.cName)?
+        <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
           <div className="csol-section-wrapper">
             <div className="csol-book-a-meeting-wrapper">
               <div id="csol-book-a-meeting-form-container-csol_bam" className="csol-book-a-meeting-form-container" data-query-string="" data-locale="en" data-form-id="95c7a26e-eb03-4da7-bb69-4ca3c029983b" data-portal-id="53" data-custom-submit-text="Get your free demo" data-hs-forms-root="true">
@@ -277,8 +305,15 @@ function RegReq(props){
           </div>
         </section>:
         <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
+        <div className="fill">
+          لطفا اطلاعات کاربری خود را تکمیل نمایید
+          <br/>
+          <a href="/profile">تکمیل اطلاعات کاربری</a>
+        </div>
+      </section>:
+        <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
           <LoginHolder />
-          </section>}
+        </section>}
       </div>
     </div>
   </div>

@@ -410,7 +410,7 @@ button {
 }
 .wf-page-header.-neutral {
   --wf-page-header-tagline-background-color: #ffffff;
-  background: linear-gradient(0deg, rgba(27,44,88,1) 0%, rgba(6,79,158,1) 50%, rgba(13,29,65,1) 100%);
+  background: linear-gradient(0deg, rgba(228,219,201,1) 0%, rgba(228,219,201,1) 50%, rgba(228,219,201,1) 100%);
 }
 .wf-page-header.-dark {
   --wf-page-header-tagline-background-color: #213343

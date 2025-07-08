@@ -15,11 +15,11 @@ function Home(props){
          <Slider />
          
          <div className="footerSlider">
-            <img src="/img/hub/sliderFooter.jpg" />
+            <img src="/img/sadaf/subSlider.png" />
          </div>
          <Host/>
-         <Plan />
-         <Goal/>
+         {/*<Plan />
+         <Goal/>*/}
          <Content />
          <Exchange />
          <BottomPart />

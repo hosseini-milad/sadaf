@@ -49,7 +49,7 @@ const Footer = (props)=>{
                   </h2>
                   <ul>
                     <li className="hsg-footer__nav-item" data-order="0">
-                      <a className="ga_nav_link " href="#">درباره تانا</a>
+                      <a className="ga_nav_link " href="#">درباره شتاب</a>
                     </li>
                     <li className="hsg-footer__nav-item" data-order="1">
                       <a className="ga_nav_link " href="#"> موقعیت های شغلی</a>
@@ -58,7 +58,7 @@ const Footer = (props)=>{
                       <a className="ga_nav_link " href="#"> آشنایی با تیم ما</a>
                     </li>
                     <li className="hsg-footer__nav-item" data-order="3">
-                      <a className="ga_nav_link " href="#"> مزیت های تانا</a>
+                      <a className="ga_nav_link " href="#"> مزیت های شتاب</a>
                     </li>
                   </ul>
                 </section>
@@ -104,7 +104,7 @@ const Footer = (props)=>{
         <section className="hsg-footer__bottom">
           <div className="hsg-footer__logo">
             <a href="/" className="ga_nav_link" data-ga_nav_type="footer_nav" data-ga_nav_tree_text="sadaf Logo">
-              <img loading="lazy" src="/Wordmark-White.svg" alt="event-value"/>
+              <img loading="lazy" src="/img/sadaf/logoText.png" alt="event-value"/>
             </a>
             <p>تمامی حقوق سایت متعلق به 
               <a href="www.qomstp.ir"> پارک علم و فناوری استان قم </a>

@@ -28,6 +28,7 @@ function IdeaReg(props){
                }
                else{
                   setError({message:result.message,color:"green"})
+                  setTimeout(()=>setError({message:"",color:""}),3000)
                }
              },
              (error) => {
@@ -45,7 +46,10 @@ function IdeaReg(props){
                 </span>
                 </h3>
             </button>
-            <fieldset class="form-columns-2">
+            {error.message?
+            <small style={{color:error.color}}>{error.message}</small>:
+                
+                <fieldset class="form-columns-2">
                 <div class="hs_email hs-email hs-fieldtype-text field hs-form-field fullWidth colPad">
                     <legend class="hs-field-desc"></legend>
                     <div class="input">
@@ -58,6 +62,7 @@ function IdeaReg(props){
                      onClick={regIdeaFunc} />
                 </div>
             </fieldset>
+                }
         </li>
     )
 

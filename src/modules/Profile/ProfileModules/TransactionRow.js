@@ -1,12 +1,11 @@
 function TransactionRow(props){
     const data = props.data
+    const req = data&&data.Data&&data.Data[0]
     return(
         <tr>
             <td>{props.index}</td>
-            <td>{data.reserveId}</td>
-            <td>{data.trackId}</td>
-            <td>{data.status}</td>
-            <td>{data.payMessage}</td>
+            <td>{data.description}</td>
+            <td>{req&&req.title}</td>
             <td>{new Date(data.date).toLocaleDateString('fa')}</td>
         </tr>
     )
