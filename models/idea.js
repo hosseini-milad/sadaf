@@ -8,7 +8,7 @@ const ideaSchema = new mongoose.Schema({
   active: { type: Boolean,default:false},
   
   url: { type: String},
-  date:{type:Date}
+  date:{type:Date, default:Date.now()}
 });
 
 module.exports = mongoose.model("idea", ideaSchema);

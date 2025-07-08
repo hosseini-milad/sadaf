@@ -17,6 +17,7 @@ const reqcat = require('../models/reqcat');
 const mehvar = require('../models/mehvar');
 const mehvarSchedule = require('../models/mehvarSchedule');
 const mehvarGoal = require('../models/mehvarGoal');
+const mehvarSubject = require('../models/mehvarSubject');
 
 router.get('/get-idea/:id',jsonParser, async (req,res)=>{
     const url = req.url.split('/').pop()
@@ -186,6 +187,49 @@ router.post('/list-idea',jsonParser,auth, async (req,res)=>{
     }
 })
 
+router.get('/data-subject-list',jsonParser, async (req,res)=>{
+    try{
+        const subject = await mehvarSubject.find()
+        res.json({data:subject})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/my-idea-list',jsonParser,auth, async (req,res)=>{
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
+    var search = req.body.search
+    var userId = req.user.user_id
+    try{
+        const dataList = await idea.aggregate([
+            { $match:search?{$or:[
+                {title:new RegExp('.*' + data.title + '.*')},
+                {proofUsage:new RegExp('.*' + data.title + '.*')},
+                {nahad:new RegExp('.*' + data.title + '.*')},
+                {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
+            {$match:{userId:userId}},
+            { $sort: {"date":-1}},
+            { $addFields: { reqId: { $toObjectId: '$reqCode' } } },
+            {$lookup: {
+                from: 'reqs',
+                localField: 'reqId',
+                foreignField: '_id',
+                as: 'Data',
+            },
+        }
+        ])
+
+        const pageData = dataList.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+
+        const subject = await mehvarSubject.find()
+        res.json({data:pageData,size:dataList.length,subject})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 router.post('/data-req-list',jsonParser, async (req,res)=>{
     var pageSize = req.body.pageSize?req.body.pageSize:"10";
     var offset = req.body.offset?(parseInt(req.body.offset)):0;
@@ -197,6 +241,7 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
                 {proofUsage:new RegExp('.*' + data.title + '.*')},
                 {nahad:new RegExp('.*' + data.title + '.*')},
                 {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
+            {$match:{active:true}},
             { $sort: {"date":-1}},
      
         ])
@@ -204,8 +249,8 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
 
-
-        res.json({data:pageData,size:dataList.length})
+        const subject = await mehvarSubject.find()
+        res.json({data:pageData,size:dataList.length,subject})
     }
     catch(error){
         res.status(500).json({message: error.message})
