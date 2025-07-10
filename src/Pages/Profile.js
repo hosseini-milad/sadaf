@@ -17,8 +17,7 @@ const menu=[
     {title:"تغییر رمزعبور",enTitle:"password",index:3},
 ]
     const signOut=()=>{
-        cookies.remove(env.cookieName,{ path: '/' });
-       setTimeout(()=>(window.location.href=("/login"),1000))
+        
     }
 
 function Profile(props){
@@ -41,7 +40,10 @@ function Profile(props){
             if(result.error){
                 console.log(result.error)
                 if(result.error == "Invalid Token Error")
-                    var i="()=>signOut()"
+                {
+                    cookies.remove(env.cookieName,{ path: '/' });
+                    setTimeout(()=>(window.location.href=("/login"),1000))
+                }
             }
             else{
                 setUserData(result.data)

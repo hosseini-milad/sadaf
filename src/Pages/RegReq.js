@@ -6,6 +6,7 @@ function RegReq(props){
   const token = props.token
    const [formData, setFormData] = useState();
    const [userData, setUserData] = useState();
+   const [subject, setSubject] = useState();
    const [error, setError] = useState({message:"",color:""});
    const regNow=()=>{
       const postBody={
@@ -58,7 +59,24 @@ function RegReq(props){
        }
      );
   },[])
-  console.log(userData)
+  useEffect(()=>{
+    const postBody={
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+   fetch(env.siteApi + "/data/data-subject-list",postBody)
+     .then((res) => res.json())
+     .then(
+       (result) => {
+            setSubject(result.data)
+       },
+       (error) => {
+         console.log(error);
+       }
+     );
+  },[])
    return(
       <main className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module">
          <section className="offers-demo-section -neutral">
@@ -145,12 +163,18 @@ function RegReq(props){
                       </label>
                       <legend className="hs-field-desc" ></legend>
                       <div className="input">
-                        <input name="lastname" required="" placeholder="" type="text" className="hs-input" inputmode="text" autocomplete="family-name"
-                        value={formData&&formData.category}
-                        onChange={(e)=>setFormData((prevState) => ({
-                           ...prevState,
-                           category: e.target.value,
-                         }))}/>
+                        <select className="formSelect"
+                          onChange={(e)=>setFormData((prevState) => ({
+                            ...prevState,
+                            category: e.target.value,
+                          }))}>
+                          <option value="" disabled>انتخاب دسته بندی...</option>
+                          {subject.map((subject, index) => (
+                            <option key={index} value={subject.title}>
+                              {subject.title}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
                   </fieldset>

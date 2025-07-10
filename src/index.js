@@ -26,6 +26,7 @@ import Cookies from 'universal-cookie';
 import env from './env';
 import Profile from './Pages/Profile';
 import Location from './Pages/location';
+import Contact from './Pages/contact';
 const cookies = new Cookies();
 const token = cookies.get(env.cookieName)
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -41,6 +42,7 @@ root.render(
 
           <Route path="/profile" element={<Layout><Profile token={token}/></Layout>}/>
           <Route path="/location" element={<Layout><Location token={token}/></Layout>}/>
+          <Route path="/contact" element={<Layout><Contact token={token}/></Layout>}/>
           
           <Route path="/reg-request" element={<Layout><RegReq token={token}/></Layout>}/>
         </Routes>

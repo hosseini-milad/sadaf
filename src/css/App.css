@@ -1496,7 +1496,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
 }
 @media(max-width:899px) {
   .hsg-nav__group{
-    display: none;
+    /*display: none;*/
   }
   .hsg-nav__inner {
     background:#fff;
@@ -1609,7 +1609,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
   margin-bottom:-.875rem
 }
 @media(max-width:899px) {
-  .hsg-nav__group--primary .hsg-nav__link-label:after {
+  /*.hsg-nav__group--primary .hsg-nav__link-label:after {
     color:#516f90;
     content:"";
     display:inline-block;
@@ -1621,7 +1621,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
     position:relative;
     transform:rotate(-90deg);
     vertical-align:middle
-  }
+  }*/
 }
 @media(min-width:900px) {
   .hsg-nav__link-label .hsg-nav__box-link {
@@ -1776,7 +1776,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
 .hsg-nav__groups-wrapper {
   background-color:#fff;
   border-radius:0 .1875rem .1875rem 0;
-  display:none;
+  
   font-size:1rem;
   height:calc(100vh - 100%);
   left:0;
@@ -3828,4 +3828,11 @@ body.active-nav .hsgModalFullscreenContainer.active {
 }
 .free-crm-tabs.cl-tabs .cl-tab-group .cl-tab-content {
   background-color:var(--light-theme-background-01)
+}
+
+
+.formSelect{
+  width: 100%;
+  min-width: 300px;
+  background-color: #fff;
 }

@@ -17,7 +17,6 @@ function LoginHolder(props){
           'Access-Control-Allow-Origin': '*'},
           body:JSON.stringify({phone:user,password:pass})
         }
-        console.log(postOptions)
       fetch(env.siteApi + "/auth/login-customer",postOptions, {mode:'cors'})
     .then(res => res.json())
     .then(
@@ -55,10 +54,8 @@ function LoginHolder(props){
   {showOtp?<OTPLogin setOTP={setOTP}/>:
   <div className="auth-box marketing-box">
      <div className="signup-link">
-        <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">حساب کاربری ندارید؟</i18n-string>
-        <a className="private-link uiLinkWithoutUnderline m-left-1 uiLinkDark" href="/register" aria-disabled="false">
-           <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.ctaVariantB">به راحتی به ما ملحق شوید</i18n-string>
-        </a>
+        <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">ورود/ایجاد حساب کاربری</i18n-string>
+        
      </div>
      <form style={{backgroundColor: "white"}} id="hs-login">
         <div></div>
