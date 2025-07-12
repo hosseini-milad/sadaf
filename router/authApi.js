@@ -148,6 +148,8 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
           process.env.TOKEN_KEY,
           {expiresIn: "72h",}
         );
+        await SMSSend(phone,`کد ورود: ${otpValue}\n\r
+          سامانه رزرو پارک علم و فناوری استان قم`)
         newUser.token = token;
         res.status(200).json({...newUser,otp:otpValue,message:"new user"});
         return;
