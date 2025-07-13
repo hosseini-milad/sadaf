@@ -25,7 +25,7 @@ router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
         const coWorkData = await cowork.findOne({userId:userId})
         const isActive = CheckActive(coWorkData)
         
-        const {buttons,message} = await ReserveStatus(canReserve,isActive,coWorkData.reserveid)
+        const {buttons,message} = await ReserveStatus(canReserve,isActive,coWorkData&&coWorkData.reserveid)
         res.json({user:userData,cowork:coWorkData,
             isActive,canReserve,message,buttons})
     }
