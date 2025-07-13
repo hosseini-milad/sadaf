@@ -1,5 +1,5 @@
 
-async function ReserveStatus(canReserve,isActive) {
+async function ReserveStatus(canReserve,isActive,reserveCode) {
   var message =''
   var buttons =[]
   if(!canReserve){
@@ -15,12 +15,25 @@ async function ReserveStatus(canReserve,isActive) {
     }]
     return({message,buttons})  
     }
-    if(!isActive){
+  if(!isActive=="noData"){
+    message = "سفارش صندلی اشتراکی."
+    buttons=[{
+        class:"cl-button disableBtn -small -light ga_nav_link homepage-hp-nav ",
+        title:"پرداخت آنلاین",
+        href:"https://reserveadmin.qomstp.ir/api/payment/sadad?reserveid="+reserveCode
+    },{
+        class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
+        title:"پروفایل کاربری",
+        href:"/profile"
+    }]
+    return({message,buttons})  
+    }
+    if(isActive=="notPaid"){
       message = "شما درخواست غیر فعالی دارید."
       buttons=[{
         class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
         title:"پرداخت آنلاین",
-        href:"#"
+        href:"https://reserveadmin.qomstp.ir/api/payment/sadad?reserveid="+reserveCode
     },{
         class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
         title:"مشاهده جزئیات رزرو",

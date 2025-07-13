@@ -2,9 +2,10 @@
 function CheckActive(coWorkData) {
     var isActive = 0
     var nowDate = new Date()
-    if(!coWorkData||!coWorkData.isPaid){
-      return(0)
-    }
+    if(!coWorkData)
+      return("noData")
+    if(!coWorkData.isPaid)
+      return("notPaid")
     var sDate = new Date(coWorkData.sDate)
     var defDate = nowDate - sDate
 
