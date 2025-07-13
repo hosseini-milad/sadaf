@@ -16,7 +16,7 @@ async function ReserveStatus(canReserve,isActive,reserveCode) {
     }]
     return({message,buttons})  
     }
-  if(!isActive=="noData"){
+  if(isActive=="noData"){
     message = "سفارش صندلی اشتراکی."
     buttons=[{
         class:"cl-button disableBtn -small -light ga_nav_link homepage-hp-nav ",
