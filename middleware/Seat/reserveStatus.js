@@ -1,5 +1,6 @@
 
 async function ReserveStatus(canReserve,isActive,reserveCode) {
+    console.log(isActive)
   var message =''
   var buttons =[]
   if(!canReserve){
