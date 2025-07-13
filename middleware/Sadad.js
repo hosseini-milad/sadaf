@@ -54,8 +54,8 @@ exports.Reserve = async (req, res) => {
         body:JSON.stringify(body)});
             
         result = await response.json();
-        console.log(result)
         Token = result.Token
+        console.log(Token)
         } catch{}
         if(!result){
             return res.status(400).json({result,error:"Sadad errors"})

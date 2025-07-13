@@ -20,7 +20,7 @@ async function ReserveStatus(canReserve,isActive,reserveCode) {
     buttons=[{
         class:"cl-button disableBtn -small -light ga_nav_link homepage-hp-nav ",
         title:"پرداخت آنلاین",
-        href:"https://reserveadmin.qomstp.ir/api/payment/sadad?reserveid="+reserveCode
+        href:"https://reserveadmin.qomstp.ir/api/payment/reserve-pay"
     },{
         class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
         title:"پروفایل کاربری",
