@@ -33,9 +33,11 @@ router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
-router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
+router.get('/set-cowork',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
-    var changes = req.body 
+    var changes = {
+        sDate:new Date(Date.now()).toLocaleDateString('en')
+    }
     changes.userId = userId
     changes.reserveid = await CreateReserveID("co")
     changes.price = COWORK_PRICE
@@ -46,11 +48,11 @@ router.post('/set-cowork',jsonParser,auth, async (req,res)=>{
             res.status(400).json({message:"زمان وارد نشده است",error:true})
             return 
         }
-        var myDate = jalali_to_gregorian(changes.sDate.year,
+        /*var myDate = jalali_to_gregorian(changes.sDate.year,
             changes.sDate.month,changes.sDate.day)
         var enDate = myDate[0]+"/"+myDate[1]+"/"+myDate[2]
 
-        changes.sDate = enDate
+        changes.sDate = enDate*/
         const coWorkData = await cowork.create(changes)
         res.json({data:userData,coWorkData,
             reserveid:changes.reserveid})

@@ -10,6 +10,7 @@ const {SADAD_URL,SADAD_PAZIRANDE,SADAD_TERMINAL,SADAD_KEY,RETURN_URL} = process.
 //payment
 router.get('/zibal', zibal.pay);
 router.get('/sadad', sadad.pay);
+router.get('/reserve-pay', sadad.Reserve);
 router.get('/test/:credit',(req, res) => {
     res.render('index.ejs');
 });

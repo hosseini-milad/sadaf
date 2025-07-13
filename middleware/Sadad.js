@@ -2,6 +2,7 @@ var moment = require('moment');
 var ObjectID = require('mongodb').ObjectID;
 const { default: fetch } = require("node-fetch");
 const CreateSadadSign = require('./CreateSadadSign');
+const ReserveNow = require('./Seat/reserveNow');
 moment.locale('en'); 
 
 
@@ -15,6 +16,38 @@ exports.pay = async (req, res) => {
         var Token = "123456"
           var header = {"Content-Type":"application/json"}
     const body = {...query}
+        var result =''
+    try{const response = await fetch(SADAD_URL,
+            {method: 'POST' ,headers:header,
+        body:JSON.stringify(body)});
+            
+        result = await response.json();
+        console.log(result)
+        Token = result.Token
+        } catch{}
+        if(!result){
+            return res.status(400).json({result,error:"Sadad errors"})
+        }
+
+    return(res.render(`sadad_payment.ejs`,
+        {url:SADAD_PAY_URL+Token,error:"result.message"}))
+    }
+    catch(error){
+        console.log("error: ",error) 
+        return({error:error})
+    }
+    
+};
+exports.Reserve = async (req, res) => {
+    const userId = req.body.userId
+    try{    
+        var orderData= await ReserveNow(userId)
+        const query = await CreateSadadSign(orderData.reserveid,
+            orderData.price)
+        var Token = "123456"
+          var header = {"Content-Type":"application/json"}
+    const body = {...query}
+    console.log(body)
         var result =''
     try{const response = await fetch(SADAD_URL,
             {method: 'POST' ,headers:header,
