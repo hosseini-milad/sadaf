@@ -47,7 +47,6 @@ exports.Reserve = async (req, res) => {
         var Token = "123456"
           var header = {"Content-Type":"application/json"}
     const body = {...query}
-    console.log(body)
         var result =''
     try{const response = await fetch(SADAD_URL,
             {method: 'POST' ,headers:header,
@@ -55,7 +54,6 @@ exports.Reserve = async (req, res) => {
             
         result = await response.json();
         Token = result.Token
-        console.log(Token)
         } catch{}
         if(!result){
             return res.status(400).json({result,error:"Sadad errors"})
@@ -63,6 +61,17 @@ exports.Reserve = async (req, res) => {
 
     return(res.render(`sadad_payment.ejs`,
         {url:SADAD_PAY_URL+Token,error:"result.message"}))
+    }
+    catch(error){
+        console.log("error: ",error) 
+        return({error:error})
+    }
+    
+};
+exports.gateway= async (req, res) => {
+    try{
+        const token = req.query.token
+        res.redirect(SADAD_PAY_URL+token); 
     }
     catch(error){
         console.log("error: ",error) 
