@@ -60,7 +60,7 @@ exports.Reserve = async (req, res) => {
         }
 
     return(res.render(`sadad_payment.ejs`,
-        {url:SADAD_PAY_URL+Token,error:"result.message"}))
+        {url:"https://reserveadmin.qomstp.ir/api/payment/gateway",error:"result.message"}))
     }
     catch(error){
         console.log("error: ",error) 
