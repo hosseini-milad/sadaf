@@ -13,6 +13,10 @@ const ReqSchema = new mongoose.Schema({
   action: { type: String},
   support: { type: String},
   active:{type:Boolean, default:false},
+  investigate: { type: String},
+  pre: { type: String},
+  advantage: { type: String},
+  time: { type: String},
   userId: { type: String},
   phone: { type: String},
   
