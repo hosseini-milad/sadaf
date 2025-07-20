@@ -155,6 +155,20 @@ router.post('/req-list',jsonParser, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+router.post('/my-request',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
+    var req=req.body
+    
+    try{
+        const reqList = await ReqSchema.find({userId:userId})
+
+
+        res.json({data:reqList,message:"لیست درخواست ها"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
 router.post('/reg-idea',jsonParser,auth, async (req,res)=>{
     var userId = req.headers['userid']
