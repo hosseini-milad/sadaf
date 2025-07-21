@@ -79,7 +79,9 @@ router.post('/reg-req',jsonParser,auth, async (req,res)=>{
         const reqList = await ReqSchema.create(req)
 
 
-        res.json({data:reqList,message:"اطلاعات ثبت شد"})
+        res.json({data:reqList,message:"اطلاعات ثبت شد",
+            id:reqList._id
+        })
     }
     catch(error){
         res.status(500).json({message: error.message})
@@ -164,6 +166,41 @@ router.post('/my-request',jsonParser,auth, async (req,res)=>{
 
 
         res.json({data:reqList,message:"لیست درخواست ها"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.post('/update-request',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
+    var id = req.body.id
+    var data=req.body
+    
+    try{
+        const reqData = await ReqSchema.findOne({_id:ObjectID(id)})
+        if(reqData.closed){
+            return res.status(400).json({error:true,
+                message:"درخواست بسته است. لطفا به ادمین پیام دهید"
+            })
+        }
+        const reqList = await ReqSchema.updateOne({_id:ObjectID(id)},{$set:data})
+
+
+        res.json({data:reqList,message:"آپدیت درخواست ها"})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+router.get('/fetch-request/:id',jsonParser,auth, async (req,res)=>{
+    var userId = req.headers['userid']
+    var id = req.params.id
+    
+    try{
+        const reqList = await ReqSchema.findOne({_id:ObjectID(id),userId:userId})
+
+
+        res.json({data:reqList,message:"آپدیت درخواست ها"})
     }
     catch(error){
         res.status(500).json({message: error.message})
