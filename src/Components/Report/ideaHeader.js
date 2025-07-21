@@ -15,7 +15,7 @@ function IdeaHeader(props){
                     <strong className="product-core-header__text-intro h4">
                     <span className={content.etebar?"sales-hub-icon activeIcon":"sales-hub-icon deactiveIcon"} 
                     title={content.etebar?"اعتبار دارد":"اعتبار ندارد"}>
-                        </span> عنوان تقاضا </strong>
+                        </span> عنوان چالش </strong>
                     <h1 className="product-core-header__text-title">{content.title}</h1>
                     <sub className="ideaDate">
                         {content.date?
@@ -24,7 +24,7 @@ function IdeaHeader(props){
                     <div className="product-core-header__ctas ">
                     <a onClick={()=>setIdea(1)}
                         className="cl-button -primary -medium  product-core-header__text-multi-cta marketing-hero">
-                         ثبت ایده برای تقاضا    
+                         ثبت ایده برای چالش    
                     </a>
                     <a href={"#"} 
                         className="cl-button -secondary -medium  product-core-header__text-multi-cta marketing-hero2 borderHero" > 
@@ -38,8 +38,10 @@ function IdeaHeader(props){
                             <IdeaReg title="ثبت ایده" reqCode={content._id}/>:
                             <></>}
                         <IdeaAcc title="اطلاعات تقاضا" data={[
-                            "نهاد: "+content.nahad,
-                            "دسته بندی :"+ content.category
+                           "دسته بندی :"+ content.category,
+                            "دامنه تاثیر: "+content.action,
+                            "اولویت: "+ content.support,
+                            "بازه زمانی مورد انتظار : "+ content.time
                         ]}/>
                         
                     </ul>
@@ -48,11 +50,20 @@ function IdeaHeader(props){
                 <div className="product-core-header__text"><hr/>
                     <p dangerouslySetInnerHTML={{__html:content.description}}></p>
                     <hr/>
-                    اثبات نیاز:<br/>
+                    جایگاه زنجیره ارزش فرش دستباف :<br/>
                     <p>{content.proofReq}</p>
                     <hr/>
-                    اثبات توان بهره‌گیری:<br/>
+                    تاثیر بر صنعت:<br/>
                     <p>{content.proofUsage}</p>
+                    <hr/>
+                    راه‌حل‌های قبلی:<br/>
+                    <p>{content.pre}</p>
+                    <hr/>
+                    نیاز به فناوری، سرمایه‌گذاری، تخصص خاص:<br/>
+                    <p>{content.investigate}</p>
+                    <hr/>
+                    مزایای رفع چالش:<br/>
+                    <p>{content.advantage}</p>
                     <hr/>
                 </div>
                 </div>

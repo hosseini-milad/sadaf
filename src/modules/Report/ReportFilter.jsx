@@ -4,7 +4,7 @@ import env from "../../env"
 function ReportFilter(props){
     const [search,setSearch] = useState('')
     const [subject,setSubject] = useState('')
-    const [year,setYear] = useState('')
+    const [category,setCategory] = useState('')
     const [tab,setTab] = useState(-1)
     useEffect(()=>{
         if(search.length<3) return
@@ -18,10 +18,10 @@ function ReportFilter(props){
     useEffect(()=>{
         props.setFilter((prevState) => ({
             ...prevState,
-            year: year,
+            category: category,
             }))
         
-    },[year])
+    },[category])
     useEffect(()=>{
         const postBody={
          method: "GET",
@@ -82,8 +82,8 @@ function ReportFilter(props){
                 <div className="hsg-accordion__content" id="hsg-accordion__content-0" aria-hidden="true">
                     <div className="accHolder">
                         {subject&&subject.map((subject,i)=>(
-                            <div key={i} className={search=="ایده"?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setSearch("ایده")}>
+                            <div key={i} className={category==subject.title?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setCategory(subject.title)}>
                                 {subject.title} </div>
                         ))}
                         

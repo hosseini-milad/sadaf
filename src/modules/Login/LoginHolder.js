@@ -54,8 +54,8 @@ function LoginHolder(props){
   {showOtp?<OTPLogin setOTP={setOTP}/>:
   <div className="auth-box marketing-box">
      <div className="signup-link">
-        <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">ورود/ایجاد حساب کاربری</i18n-string>
-        
+        <i18n-string data-locale-at-render="en-us" data-key="login.signupLink.text">ورود به حساب کاربری</i18n-string>
+        <a className="registerBtn" href="#" onClick={()=>setOTP(1)}>ثبت نام</a>
      </div>
      <form style={{backgroundColor: "white"}} id="hs-login">
         <div></div>
@@ -102,7 +102,7 @@ function LoginHolder(props){
                  <div className="private-form__messages"></div>
               </div>
               <small id="password-description" className="private-microcopy private-form__description is--text--help">
-                 <a href="/login/forgot?email=&amp;useDark=">
+                 <a href="/login">
                  <i18n-string data-locale-at-render="en-us" data-key="login.form.forgotPassword">فراموشی کلمه عبور</i18n-string>
                  </a>
               </small>

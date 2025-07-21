@@ -3094,7 +3094,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
   padding-left:20px;
 }
 .hsg-footer__nav-column:last-child {
-  padding-right:0
+  padding-right:20px
 }
 .hsg-footer__nav-column>ul {
   display:none;
@@ -3212,7 +3212,7 @@ body.active-nav .hsgModalFullscreenContainer.active {
   pointer-events:none
 }
 .hsg-footer__nav-column .hsg-footer__nav-toggle:after {
-  content:"";
+  /*content:"";*/
   display:inline-block;
   font-family:hsg-icons;
   font-size:1.125rem;

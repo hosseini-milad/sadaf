@@ -23,6 +23,7 @@ function ProfileBody(props){
             }
             else{
                 console.log(result)
+                document.location.reload()
             }
         },
         (error) => {
@@ -38,7 +39,7 @@ function ProfileBody(props){
                 action={setChanges} param="sName" defaultValue={data.sName}/>
                 <MyInput title="کد ملی / شماره کارت اقامت" require={true} class="profileInput"
                 action={setChanges} param="meliCode" defaultValue={data.meliCode}/>
-                <MyInput title="حوزه فعالیت/تخصص" require={true} class="profileInput"
+                <MyInput title="نقش در صنعت" require={true} class="profileInput"
                 action={setChanges} param="work" defaultValue={data.work}/>
                 <MyInput title="شماره همراه" require={true} class="profileInput"
                 disabled={true}

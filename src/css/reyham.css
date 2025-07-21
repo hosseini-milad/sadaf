@@ -527,7 +527,9 @@ button {
     max-width:630px
   }
 }
-
+.registerBtn{
+  padding-right: 20px;
+}
 .cl-button {
   --cl-button-background:var(--cl-color-hubspot-brand-01,#ff5c35);
   --cl-button-hover-background:var(--cl-color-hover-brand-01,#e04826);

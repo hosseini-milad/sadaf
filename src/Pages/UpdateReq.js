@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import env from "../env"
 import LoginHolder from "../modules/Login/LoginHolder";
 
-function RegReq(props){
+function UpdateReq(props){
   const token = props.token
-   const [formData, setFormData] = useState();
+  const reqCode = document.location.pathname.split('/')[2]
+  const [formData, setFormData] = useState();
    const [userData, setUserData] = useState();
    const [subject, setSubject] = useState();
-   const [showBtn,setShowBtn] = useState(0)
    const [error, setError] = useState({message:"",color:""});
    const regNow=()=>{
       const postBody={
@@ -16,21 +16,45 @@ function RegReq(props){
            "Content-Type": "application/json",
            'x-access-token':token&&token.token,'userid':token&&token.userId
          },
-         body: JSON.stringify(formData),
+         body: JSON.stringify({...formData,id:reqCode}),
        }
-      fetch(env.siteApi + "/data/reg-req",postBody)
+      fetch(env.siteApi + "/data/update-request",postBody)
         .then((res) => res.json())
         .then(
           (result) => {
             if(result.error){
                setError({message:result.message,color:"brown"})
-               setTimeout(()=>setError({message:"",color:""}),5000)
             }
             else{
                setFormData()
-               setShowBtn(result.id)
                setError({message:result.message,color:"green"})
-               setTimeout(()=>setError({message:"",color:""}),3000)
+               setTimeout(()=>document.location.reload(),3000)
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
+  const closeNow=()=>{
+      const postBody={
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+           'x-access-token':token&&token.token,'userid':token&&token.userId
+         },
+         body: JSON.stringify({...formData,closed:true,id:reqCode}),
+       }
+      fetch(env.siteApi + "/data/update-request",postBody)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if(result.error){
+               setError({message:result.message,color:"brown"})
+            }
+            else{
+               setError({message:result.message,color:"green"})
+               setTimeout(()=>document.location.reload(),3000)
             }
           },
           (error) => {
@@ -46,7 +70,7 @@ function RegReq(props){
         'x-access-token':token&&token.token,'userid':token&&token.userId
       }
     }
-   fetch(env.siteApi + "/user/fetch-client",postBody)
+   fetch(env.siteApi + "/data/fetch-request/"+reqCode,postBody)
      .then((res) => res.json())
      .then(
        (result) => {
@@ -54,7 +78,7 @@ function RegReq(props){
             setError({message:result.message,color:"brown"})
          }
          else{
-            setUserData(result.data)
+            setFormData(result.data)
             setError({message:result.message,color:"green"})
          }
        },
@@ -138,7 +162,7 @@ function RegReq(props){
     </div>
     <div className="offers-demo-section-right -">
       <div id="hs_cos_wrapper_csol_bam" className="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" >
-        {token?(userData&&userData.cName)?
+        {token?
         <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
           <div className="csol-section-wrapper">
             <div className="csol-book-a-meeting-wrapper">
@@ -174,7 +198,8 @@ function RegReq(props){
                           }))}>
                           <option value="" disabled>انتخاب دسته بندی...</option>
                           {subject&&subject.map((subject, index) => (
-                            <option key={index} value={subject.title}>
+                            <option key={index} value={subject.title}
+                            selected={formData&&(subject.title == formData.category)?true:false}>
                               {subject.title}
                             </option>
                           ))}
@@ -375,10 +400,11 @@ function RegReq(props){
                   style={{display:"flex",gap:"10px"}}>
                      <a className="
                      cl-button -primary -large wf-page-header__cta homepage-hero-cta" 
-                     onClick={regNow}>ثبت تقاضای فناوری</a>
-                     {showBtn?<a className="
-                     cl-button -warning wf-page-header__cta homepage-hero-cta" 
-                     href={"/edit-request/"+showBtn}>مشاهده تقاضای ثبت شده</a>:<></>}
+                     onClick={regNow}>بروزرسانی تقاضای فناوری</a>
+                  
+                     <a className="
+                     cl-button -success -middle wf-page-header__cta homepage-hero-cta" 
+                     onClick={closeNow}>ثبت نهایی</a>
                   </div>
                   </div>
                 </form>
@@ -386,13 +412,6 @@ function RegReq(props){
             </div>
           </div>
         </section>:
-        <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
-        <div className="fill">
-          لطفا اطلاعات کاربری خود را تکمیل نمایید
-          <br/>
-          <a href="/profile">تکمیل اطلاعات کاربری</a>
-        </div>
-      </section>:
         <section id="csol_bam" className="csol-section csol-book-a-meeting -light -padding-top-md -padding-bottom-md">
           <LoginHolder />
         </section>}
@@ -403,4 +422,4 @@ function RegReq(props){
       </main>
    )
 }
-export default RegReq
+export default UpdateReq

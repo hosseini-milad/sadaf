@@ -20,9 +20,9 @@ function Home(props){
          <Host/>
          {/*<Plan />
          <Goal/>*/}
-         <Content />
          <Exchange />
-         <BottomPart />
+         <Content />
+         {/*<BottomPart />*/}
     </main>
    )
 }
