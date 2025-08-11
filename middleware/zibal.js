@@ -50,7 +50,7 @@ exports.pay = async (req, res) => {
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
 
-    return(res.render(`zibal_payment.ejs`,{url:requestZibal,error:result.message}))
+    return(res.render(`zibal_payment.ejs`,{url:resultPay,error:result.message}))
     }
     catch{}
     
