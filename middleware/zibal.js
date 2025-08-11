@@ -31,7 +31,6 @@ exports.pay = async (req, res) => {
             "orderId": reserveId,
             "mobile": userData&&userData.phone
         }
-        console.log(body)
         response = await fetch(ZIBAL_URL,
         {method: 'POST' , 
         headers:{"Content-Type":"application/json"},
@@ -40,17 +39,11 @@ exports.pay = async (req, res) => {
     trackId = result.trackId
     var requestZibal = `https://gateway.zibal.ir/start/`+trackId
     
-    var responsePay = await fetch(requestZibal,
-        {method: 'GET' , 
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(body)});
-        const resultPay = await responsePay.json();
-    console.log(resultPay)
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
 
-    return(res.render(`zibal_payment.ejs`,{url:resultPay,error:result.message}))
+    return(res.render(`zibal_payment.ejs`,{url:requestZibal,error:result.message}))
     }
     catch{}
     
