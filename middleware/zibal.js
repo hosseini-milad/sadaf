@@ -40,6 +40,11 @@ exports.pay = async (req, res) => {
     trackId = result.trackId
     var requestZibal = `https://gateway.zibal.ir/start/`+trackId
     
+    var responsePay = await fetch(requestZibal,
+        {method: 'GET' , 
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)});
+    console.log(responsePay)
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
