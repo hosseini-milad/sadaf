@@ -44,7 +44,8 @@ exports.pay = async (req, res) => {
         {method: 'GET' , 
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(body)});
-    console.log(responsePay)
+        const resultPay = await responsePay.json();
+    console.log(resultPay)
 
     await cowork.updateOne({reserveid:reserveId},
         {$set:{trackId:trackId}})
