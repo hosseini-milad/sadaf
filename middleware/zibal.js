@@ -21,11 +21,11 @@ exports.pay = async (req, res) => {
         return
     }
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
-    
+    var reservePrice = (userData.group=="park")?"10000":reserveData.price
     try{    
         const body= {
             "merchant": ZIBAL_Merchant,
-            "amount": reserveData.price,
+            "amount": reservePrice,
             "callbackUrl": RETURN_URL,
             "description": "OrderTest",
             "orderId": reserveId,
