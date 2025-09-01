@@ -67,7 +67,7 @@ router.post('/cancel-cowork',jsonParser,auth, async (req,res)=>{
     const reserveId = req.body.reserveId
     
     try{
-        const userData = await cowork.updateOne({reserveId:reserveId}
+        const userData = await cowork.updateOne({reserveid:reserveId}
             ,{$set:{status:"cancel"}}
         )
         

@@ -85,10 +85,10 @@ exports.gateway= async (req, res) => {
 };
 exports.callBack=async (req,res)=>{
     console.log(req.body)
-    const reserveId = req.query.orderId
-    const trackId = req.query.trackId
-    const success = req.query.success
-    const payCode = req.query.status
+    const reserveId = req.body.OrderId
+    const trackId = req.body.token
+    const success = req.body.success
+    const payCode = req.body.ResCode
     const payMessage = findError(payCode)
     const orderData = await cowork.findOne({reserveid:reserveId})
     await transactions.create({
