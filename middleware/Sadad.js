@@ -3,6 +3,8 @@ var ObjectID = require('mongodb').ObjectID;
 const { default: fetch } = require("node-fetch");
 const CreateSadadSign = require('./CreateSadadSign');
 const ReserveNow = require('./Seat/reserveNow');
+const cowork = require('../models/cowork');
+const transactions = require('../models/transactions');
 moment.locale('en'); 
 
 
@@ -82,7 +84,7 @@ exports.gateway= async (req, res) => {
     
 };
 exports.callBack=async (req,res)=>{
-    
+    console.log(req.body)
     const reserveId = req.query.orderId
     const trackId = req.query.trackId
     const success = req.query.success
