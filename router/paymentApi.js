@@ -16,6 +16,7 @@ router.get('/test/:credit',(req, res) => {
     res.render('index.ejs');
 });
 router.get('/callback', sadad.callBack);
+router.post('/callback', sadad.callBack);
 router.post('/enc',jsonParser, async (req,res)=>{
     var sign = ""
     const cipher = crypto.createCipheriv('aes-256-ecb', SADAD_KEY, ''); // IV is not used in ECB

@@ -21,6 +21,7 @@ exports.pay = async (req, res) => {
         return
     }
     const userData = await clients.findOne({_id:ObjectID(reserveData.userId)})
+    
     var reservePrice = (userData.group=="park")?"10000":reserveData.price
     try{    
         const body= {

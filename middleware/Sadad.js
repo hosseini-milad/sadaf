@@ -39,9 +39,11 @@ exports.pay = async (req, res) => {
     
 };
 exports.Reserve = async (req, res) => {
-    const userId = req.body.userId
+    const date = req.query.date
+    const dateObject = date&&date.split('-')
+    const userId = req.query.user
     try{    
-        var orderData= await ReserveNow(userId)
+        var orderData= await ReserveNow(userId,dateObject)
         const query = await CreateSadadSign(orderData.reserveid,
             orderData.price)
         var Token = "123456"
@@ -81,7 +83,7 @@ exports.gateway= async (req, res) => {
 };
 exports.callBack=async (req,res)=>{
     
-    /*const reserveId = req.query.orderId
+    const reserveId = req.query.orderId
     const trackId = req.query.trackId
     const success = req.query.success
     const payCode = req.query.status
@@ -99,43 +101,12 @@ exports.callBack=async (req,res)=>{
     await cowork.updateOne({reserveid:reserveId},
         {$set:{payCode,payMessage,
             isPaid:success,trackId,date:Date.now()}}
-    )*/
+    )
    //const faktorData = await faktor.findOne({Authority:authority})
     if(1){
-        const query = {
-            "type": 2,
-            "description": "پرداخت آنلاین توسط  محسن کریمی",
-            "amount": faktorData.totalPrice,
-            "contactCode": 9,
-            "bankCode": 2,
-            "cashCode": null,
-            "pettyCashCode": null,
-            "currency": "IRR",
-            "currencyRate": 1
-        }
-            /*await transaction.create({
-                title:"پرداخت آنلاین",
-                bankCode:"1",
-                userId:faktorData&&faktorData.userId,
-                orderNo:faktorData&&faktorData.faktorNo,
-                payValue:faktorData&&faktorData.totalPrice,
-                description:"پرداخت آنلاین توسط ",
-                result:req.query,
-                status:true
-            })*/
         return(res.render(`sadad_correct.ejs`,{url:"/orders"}))
     }
     else{
-        /*    await transaction.create({
-            title:"پرداخت ناموفق",
-            bankCode:"2-مهر",
-            userId:faktorData&&faktorData.userId,
-            orderNo:faktorData&&faktorData.faktorNo,
-            payValue:faktorData&&faktorData.totalPrice,
-            description:"پرداخت ناموفق توسط ",
-            result:req.query,
-            status:false
-        })*/
         return(res.render(`sadad_error.ejs`,{url:"/orders"}))
     }
 }

@@ -1,6 +1,7 @@
 
-async function ReserveStatus(canReserve,isActive,reserveCode) {
+async function ReserveStatus(canReserve,isActive,reserveCode,userId) {
   var message =''
+  var calendar = false
   var buttons =[]
   if(!canReserve){
     message = "لطفا اطلاعات کاربری خود را تکمیل نمایید."
@@ -17,10 +18,12 @@ async function ReserveStatus(canReserve,isActive,reserveCode) {
     }
   if(isActive=="noData"){
     message = "سفارش صندلی اشتراکی."
+    calendar=true
     buttons=[{
         class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
         title:"پرداخت آنلاین",
-        href:"https://reserveadmin.qomstp.ir/api/payment/reserve-pay"
+        acceptDate:true,
+        href:"https://reserveadmin.qomstp.ir/api/payment/reserve-pay?user="+userId
     },{
         class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
         title:"پروفایل کاربری",
@@ -33,7 +36,9 @@ async function ReserveStatus(canReserve,isActive,reserveCode) {
       buttons=[{
         class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
         title:"پرداخت آنلاین",
-        href:"https://reserveadmin.qomstp.ir/api/payment/sadad?reserveid="+reserveCode
+        acceptDate:true,
+        href:"https://reserveadmin.qomstp.ir/api/payment/sadad?reserveid="+reserveCode+
+            "&user="+userId
     },{
         class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
         title:"مشاهده جزئیات رزرو",
@@ -41,22 +46,39 @@ async function ReserveStatus(canReserve,isActive,reserveCode) {
     },{
         class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
         title:"لغو رزرو قبلی",
-        href:"#"
+        href:"/profile#myreserve"
     }]
       return({message,buttons})  
     }
-    else{
-message = `رزرو فعال تا ${isActive} روز دیگر دارید.`
-    buttons=[{
-        class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
-        title:"مشاهده جزئیات رزرو",
-        href:"/profile#myreserve"
-    },{
-        class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
-        title:"رزرو اتاق جلسات",
-        href:"#"
-    }]
+    else if(isActive){
+        message = `رزرو فعال تا ${isActive} روز دیگر دارید.`
+        calendar=true
+        buttons=[{
+            class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
+            title:"مشاهده جزئیات رزرو",
+            href:"/profile#myreserve"
+        },{
+            class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
+            title:"رزرو اتاق جلسات",
+            acceptDate:true,
+            href:"#"
+        }]
     return({message,buttons})  
+    }
+    else{
+        message = `رزرو شما منقضی شده است `
+        calendar=true
+        buttons=[{
+            class:"cl-button -secondary -small -light ga_nav_link homepage-hp-nav",
+            title:"مشاهده جزئیات رزرو",
+            href:"/profile#myreserve"
+        },{
+            class:"cl-button -primary -small -light ga_nav_link homepage-hp-nav ",
+            title:"تمدید رزرو",
+            acceptDate:true,
+            href:"https://reserveadmin.qomstp.ir/api/payment/reserve-pay?user="+userId
+        }]
+    return({message,buttons,calendar}) 
     }
 }
 module.exports =ReserveStatus
