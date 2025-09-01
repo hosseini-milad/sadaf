@@ -11,10 +11,12 @@ moment.locale('en');
 const {SADAD_URL,SADAD_PAY_URL} = process.env
 
 exports.pay = async (req, res) => {
-    
+    const reserveId = req.query.reserveid
+    const reserveData = await cowork.findOne({reserveid:reserveId})
+    if(!reserveData) return({error:"پیدا نشد"})
     try{    
-        var query= await CreateSadadSign("123","123000")
-        console.log(query)
+        var query= await CreateSadadSign(reserveId,reserveData.price)
+        //console.log(query)
         var Token = "123456"
           var header = {"Content-Type":"application/json"}
     const body = {...query}
