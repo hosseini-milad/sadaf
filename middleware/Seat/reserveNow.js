@@ -27,7 +27,7 @@ async function ReserveNow(userId,date) {
           var enDate = myDate[0]+"/"+myDate[1]+"/"+myDate[2]
           
           changes.sDate = enDate*/
-          var reservePrice = (userData.group=="park")?"10000":COWORK_PRICE
+          var reservePrice = (userData.group=="park")?"100000":COWORK_PRICE
           const coWorkData = await cowork.create(changes)
           return({data:userData,coWorkData,price:reservePrice,
               reserveid:changes.reserveid})
