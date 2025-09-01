@@ -22,7 +22,7 @@ router.get('/fetch-cowork',jsonParser,auth, async (req,res)=>{
         
         const userData = await clients.findOne({_id:ObjectID(userId)})
         var canReserve = await CanReserve(userData)
-        const coWorkData = await cowork.findOne({userId:userId})
+        const coWorkData = await cowork.findOne({userId:userId,status:{$nin:["cancel"]}})
         const isActive = CheckActive(coWorkData)
         
         const {buttons,message,calendar} = 
@@ -89,7 +89,7 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
         const coWorkData = await cowork.find({userId:userId}).lean()
         for(var i=0;i<coWorkData.length;i++){
             const active = CheckActive(coWorkData[i])
-            console.log(active)
+            
             coWorkData[i].active = active
         }
         res.json({data:userData,coWorkData})
