@@ -62,6 +62,22 @@ router.get('/set-cowork',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+router.post('/cancel-cowork',jsonParser,auth, async (req,res)=>{
+    const userId = req.headers["userid"]
+    const reserveId = req.body.reserveId
+    
+    try{
+        const userData = await cowork.updateOne({reserveId:reserveId}
+            ,{$set:{status:"cancel"}}
+        )
+        
+        res.json({data:userData,
+            reserveid:reserveId})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
     try{
