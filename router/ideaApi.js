@@ -240,7 +240,7 @@ router.post('/list-idea',jsonParser,auth, async (req,res)=>{
 
 router.get('/data-subject-list',jsonParser, async (req,res)=>{
     try{
-        const subject = await mehvarSubject.find()
+        const subject = await reqcat.find()
         res.json({data:subject})
     }
     catch(error){
@@ -274,7 +274,7 @@ router.post('/my-idea-list',jsonParser,auth, async (req,res)=>{
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
 
-        const subject = await mehvarSubject.find()
+        const subject = await reqcat.find()
         res.json({data:pageData,size:dataList.length,subject})
     }
     catch(error){
@@ -300,7 +300,7 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
 
-        const subject = await mehvarSubject.find()
+        const subject = await reqcat.find()
         res.json({data:pageData,size:dataList.length,subject})
     }
     catch(error){
@@ -410,7 +410,7 @@ router.post('/list-mehvar',jsonParser, async (req,res)=>{
             { $match:data.search?{$or:[
                 {title:new RegExp('.*' + data.search + '.*')},
                 {mehvarCode:new RegExp('.*' + data.search + '.*')},
-                {mehvarSubject:new RegExp('.*' + data.search + '.*')}]}:{}},
+                {reqcat:new RegExp('.*' + data.search + '.*')}]}:{}},
             
             { $sort: {"date":-1}},
             { $limit: 10},
