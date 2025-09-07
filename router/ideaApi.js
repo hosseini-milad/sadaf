@@ -348,7 +348,7 @@ router.post('/list-category',jsonParser, async (req,res)=>{
                 {productTitle:new RegExp('.*' + data.search + '.*')}]}:{}},
             {$lookup:{from : "mehvars", 
                 localField: "mehvar", foreignField: "mehvarCode", as : "mehvarData"}},
-            { $sort: {"date":-1}},
+            { $sort: {"catCode":1}},
             { $limit: 10},
         ])
 
