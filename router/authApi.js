@@ -40,7 +40,7 @@ router.post('/login',jsonParser, async (req,res)=>{
           const token = jwt.sign(
             { user_id: user._id, username },
             process.env.TOKEN_KEY,
-            {expiresIn: "72h",}
+            {expiresIn: "572h",}
           );
           user.token = token;
           res.status(200).json(user);
@@ -50,7 +50,7 @@ router.post('/login',jsonParser, async (req,res)=>{
           const token = jwt.sign(
             { user_id: user._id, username },
             process.env.TOKEN_KEY,
-            {expiresIn: "12h",}
+            {expiresIn: "412h",}
           );
           user.token = token;
           res.status(200).json(user);
@@ -90,7 +90,7 @@ router.post('/login-customer',jsonParser, async (req,res)=>{
           const token = jwt.sign(
             { user_id: user._id, username:user.cName },
             process.env.TOKEN_KEY,
-            {expiresIn: "92h",}
+            {expiresIn: "592h",}
           );
           user.token = token;
           res.status(200).json(user);
@@ -100,7 +100,7 @@ router.post('/login-customer',jsonParser, async (req,res)=>{
           const token = jwt.sign(
             { user_id: user._id, username:user.cName },
             process.env.TOKEN_KEY,
-            {expiresIn: "24h",}
+            {expiresIn: "524h",}
           );
           user.token = token;
           res.status(200).json(user);
@@ -131,7 +131,7 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
         const token = jwt.sign(
           { user_id: user._id, phone },
           process.env.TOKEN_KEY,
-          {expiresIn: "72h",}
+          {expiresIn: "572h",}
         );
         user.token = token;
         await SMSSend(phone,`کد ورود: ${otpValue}\n\r
@@ -146,7 +146,7 @@ router.post('/send-OTP',jsonParser, async (req,res)=>{
         const token = jwt.sign(
           { user_id: newUser._id, phone },
           process.env.TOKEN_KEY,
-          {expiresIn: "72h",}
+          {expiresIn: "572h",}
         );
         await SMSSend(phone,`کد ورود: ${otpValue}\n\r
           سامانه رزرو پارک علم و فناوری استان قم`)
@@ -180,7 +180,7 @@ router.post('/login-OTP',jsonParser, async (req,res)=>{
         { user_id: user._id, phone },
         process.env.TOKEN_KEY,
         {
-          expiresIn: "48h",
+          expiresIn: "548h",
         }
       );
 
