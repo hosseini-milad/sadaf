@@ -107,11 +107,11 @@ exports.callBack=async (req,res)=>{
             isPaid:success,trackId,date:Date.now()}}
     )
    //const faktorData = await faktor.findOne({Authority:authority})
-    if(1){
-        return(res.render(`sadad_correct.ejs`,{url:"/orders"}))
+    if(payCode =="-1"){
+        return(res.render(`sadad_error.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
     }
     else{
-        return(res.render(`sadad_error.ejs`,{url:"/orders"}))
+        return(res.render(`sadad_correct.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
     }
 }
 const findError=(code)=>{
