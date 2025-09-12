@@ -7,7 +7,9 @@ function CoworkBody(props){
     <div className="fullWidth">
       <div className="colSpan col90">
         <div className="col50">
-          <img src="/img/cowork01.jpg" />
+          <img src="/img/cowork02.jpg" />
+        </div>
+        <div className="col50">
           <b>امكانات فضای کار اشتراکی</b>
           <ul className="liCircle">
             <li>میز کار</li>
@@ -18,11 +20,16 @@ function CoworkBody(props){
             <li>مینی کافی</li>
           </ul>
         </div>
-        <div className="col50">
+        </div>
+        <hr/>
+        
+      <div className="colSpan col90">
           {!token?<LoginHolder />:
           <RegStatus />}
-        </div>
+          
       </div>
+      
+    <div className="orderSpace"/>
     </div>
     
     )

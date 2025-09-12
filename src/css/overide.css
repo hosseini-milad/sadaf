@@ -14,7 +14,7 @@ a{
 }
 .colSpan{
   display: flex;
-  gap:15px;
+  gap:30px;
   justify-content: space-between;
 }
 .col90{
@@ -96,6 +96,16 @@ a{
 }
 .checkSeat{
   margin: auto;
+  width: 100%;
+}
+.orderSpace{
+  min-height: 120px;
+}
+.bullotText{
+  list-style: initial;
+}
+.tahodHolder{
+  display: grid;
 }
 .seatPanel{
   text-align: center;

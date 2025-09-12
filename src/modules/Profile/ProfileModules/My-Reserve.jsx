@@ -30,7 +30,7 @@ function MyReserve(props){
     return(
         <div className="reserveList">
             {reserve&&reserve.map((res,i)=>(
-                <ReserveCard data={res} key={i}/>
+                <ReserveCard data={res} key={i} token={token}/>
             ))}
             
         </div>

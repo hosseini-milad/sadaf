@@ -5,11 +5,13 @@ import Cookies from 'universal-cookie';
 import SeatOldReserve from "./SeatOldReserve";
 import NotAllowReserve from "./CoworkAction/NotAllowReserve";
 import SeatBack from "./SeatBack";
+import SeatText from "./SeatText";
 const cookies = new Cookies();
 
 function RegStatus(props){
     const token = cookies.get(env.cookieName)
     const [coWork,setCoWork] = useState('')
+    const [check,setCheck] = useState(0)
     useEffect(()=>{
         const postOptions={
             method:'get',
@@ -37,24 +39,32 @@ function RegStatus(props){
         })
     },[])
     return(
-    <div className="checkSeat">
-        <div className="seatTabHolder">
-            <div className="seatTab">
-                <img src="/img/shared-seat-min-1.png" />
+        <>
+      <div className="colSpan col90">
+        <div className="checkSeat">
+            <div className="seatTabHolder">
+                <div className="seatTab">
+                    <img src="/img/shared-seat-min-1.png" />
+                </div>
+                {/*<div className="seatTab">
+                    <img src="/img/dedicated-seat-min.png" />
+                </div>
+                <div className="seatTab">
+                    <img src="/img/private-room-min.png" />
+                </div>*/}
             </div>
-            <div className="seatTab">
-                <img src="/img/dedicated-seat-min.png" />
-            </div>
-            <div className="seatTab">
-                <img src="/img/private-room-min.png" />
+            <div className="seatPanel">
+                {/*canReserve?(coWork)?<SeatOldReserve data={coWork}/>:
+                    <SeatPanel token={token}/>:
+                    <NotAllowReserve />*/}
+                <SeatBack data={coWork} check={check} setCheck={setCheck}/>
             </div>
         </div>
-        <div className="seatPanel">
-            {/*canReserve?(coWork)?<SeatOldReserve data={coWork}/>:
-                <SeatPanel token={token}/>:
-                <NotAllowReserve />*/}
-            <SeatBack data={coWork} />
-        </div>
-    </div>)
+
+      </div>
+      <div className="colSpan col90">
+        {coWork?<SeatText text={coWork.text} abstract={coWork.abstract}/>:<></>}
+      </div>
+    </>)
 }
 export default RegStatus

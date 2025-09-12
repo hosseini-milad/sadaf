@@ -69,6 +69,13 @@ p {
   font-weight:var(--cl-text-font-weight, 300);
   line-height:var(--cl-text-line-height, 1.75)
 }
+.inRow{
+  display: flex !important;
+  gap: 5px;
+}
+.cancel{
+  background-color: brown !important;
+}
 body {
   color:var(--cl-text-color, #213343);
   font-family:"Lexend Deca",sans-serif;

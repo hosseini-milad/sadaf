@@ -26,7 +26,7 @@ function Slider(props){
               </div>*/}
             </div>
             <div className="wf-page-header__image-wrapper ">
-              <img src="/img/slider1.png"/>
+              <img src="/img/slider.jpg"/>
             </div>
           </div>
         </div>

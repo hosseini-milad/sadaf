@@ -58,7 +58,7 @@ function ProfileBody(props){
             else{
                 
             setError(result.message)
-            setTimeout(()=>setError(''),3000)
+            setTimeout(()=>window.location.reload(),3000)
             }
         },
         (error) => {

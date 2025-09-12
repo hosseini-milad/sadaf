@@ -18,7 +18,7 @@ function SeatDate(props){
             changeDate()
     },[selectedDate])
     var today = utils('fa').getToday()
-    return(
+    return(<>
         <Calendar
             value={selectedDate}
             onChange={setSelectedDate}
@@ -27,6 +27,8 @@ function SeatDate(props){
             minimumDate={today}
             locale={'fa'} // add this
         />
+        <input type="checkbox" onChange={()=>props.setCheck(props.check?0:1)}/>         اینجانب متعهد به پذیرش و اجرای ضوابط و مقررات هستم. 
+        </>
     )
 }
 export default SeatDate

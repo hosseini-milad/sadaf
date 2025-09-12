@@ -1,5 +1,29 @@
+import env from "../../../env"
+
 function ReserveCard(props){
     const data = props.data
+    const token = props.token
+    const cancelNow=()=>{
+        const postOptions={
+            method:'post',
+            headers: {'Content-Type': 'application/json',
+            'x-access-token':token&&token.token,'userid':token&&token.userId },
+            body:JSON.stringify({reserveId:data.reserveid})
+            }
+        fetch(env.siteApi + "/reserve/cancel-cowork",postOptions)
+        .then(res => res.json())
+        .then(
+        (result) => {
+            if(result.error){
+                console.log(result.error)
+            }
+            else{
+                setTimeout(()=>window.location.reload(),3000)}
+        },
+        (error) => {
+            console.log(error)
+        })
+    }
     return(
         <div className="wf-product-cards__card cl-card -hoverable ">
         <div className="wf-product-cards__content">
@@ -30,11 +54,16 @@ function ReserveCard(props){
               </ul>
             </div>
           </div>
-          <div className="wf-product-cards__cta-wrapper">
+          {data.status =="cancel"?<></>:
+          <div className="wf-product-cards__cta-wrapper inRow">
             <a className="
-cl-button -primary -medium wf-product-cards__cta homepage-marketing" href="/upgrade">تمدید رزرو
+              cl-button -primary -medium wf-product-cards__cta homepage-marketing" 
+                href={`${env.siteApi}/payment/sadad?reserveid=${data.reserveid}&user=${data.userId}`}>تمدید رزرو
             </a>
-          </div>
+            <div className="cl-button cancel -medium" 
+              onClick={cancelNow}>×
+            </div>
+          </div>}
         </div>
       </div>
     )
