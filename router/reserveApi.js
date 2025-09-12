@@ -116,6 +116,9 @@ router.post('/my-transactions',jsonParser,auth, async (req,res)=>{
 
 router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
+    
+    var pageSize = req.body.pageSize?req.body.pageSize:"10";
+    var offset = req.body.offset?(parseInt(req.body.offset)):0;
     try{
         const data ={
             customer:req.body.customer
@@ -126,8 +129,11 @@ router.post('/list-cowork',jsonParser,auth, async (req,res)=>{
             to:'objectId', onError:'',onNull:''}}}},
         {$lookup:{from : "clients", 
             localField: "userId", foreignField: "_id", as : "userInfo"}},
+        {$sort:{date:-1}}
         ])
-        res.json({data:coWorkData})
+        const pageData = coWorkData.slice(offset,
+            (parseInt(offset)+parseInt(pageSize)))  
+        res.json({data:pageData,size:coWorkData.length})
     }
     catch(error){
         res.status(500).json({message: error.message})
