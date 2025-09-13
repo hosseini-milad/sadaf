@@ -141,7 +141,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
      
         ])
 
-        const pageData = dataList.slice(offset,
+        const pageData = data.category?dataList:dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
         for(var i=0;i<pageData.length;i++){
             const userData = await clients.findOne({_id:ObjectID(pageData[i].userId)})
