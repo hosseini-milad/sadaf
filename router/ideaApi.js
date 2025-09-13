@@ -314,7 +314,20 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
         const pageData = dataList.slice(offset,
             (parseInt(offset)+parseInt(pageSize)))  
 
-        const subject = await reqcat.find()
+        const subject = await ReqSchema.aggregate([
+            {$match:{active:true}},
+            {
+                $group: {
+                _id: { category: "$category" } // group by both fields
+                }
+            },
+            {
+                $project: {
+                _id: 0,
+                title: "$_id.category"
+                }
+            }
+            ])
         res.json({data:pageData,size:dataList.length,subject})
     }
     catch(error){
