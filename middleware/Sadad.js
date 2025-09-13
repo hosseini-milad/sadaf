@@ -116,7 +116,7 @@ exports.callBack=async (req,res)=>{
 }
 const findError=(code)=>{
     const errorArray=[
-        {id:"-1", message:"در انتظار پردخت"},
+        {id:"-1", message:"در انتظار پرداخت"},
         {id:"-2", message:	"خطای داخلی"},
         {id:"1", message:	"پرداخت شده - تاییدشده"},
         {id:"2", message:	"پرداخت شده - تاییدنشده"},
