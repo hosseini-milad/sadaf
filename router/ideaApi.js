@@ -303,6 +303,7 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
         const dataList = await ReqSchema.aggregate([
             { $match:search?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
+                {category:new RegExp('.*' + data.title + '.*')},
                 {proofUsage:new RegExp('.*' + data.title + '.*')},
                 {nahad:new RegExp('.*' + data.title + '.*')},
                 {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
