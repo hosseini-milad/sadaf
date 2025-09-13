@@ -241,7 +241,19 @@ router.post('/list-idea',jsonParser,auth, async (req,res)=>{
 router.get('/data-subject-list',jsonParser, async (req,res)=>{
     try{
         const subject = await reqcat.find()
-        const uniqueSub = await ReqSchema.distinct("category", { active: true })
+        const uniqueSub = await ReqSchema.aggregate([
+            {
+                $group: {
+                _id: { category: "$category" } // group by both fields
+                }
+            },
+            {
+                $project: {
+                _id: 0,
+                title: "$_id.category"
+                }
+            }
+            ])
         res.json({data:subject,uniqueSub})
     }
     catch(error){
