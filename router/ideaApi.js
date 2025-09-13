@@ -253,7 +253,7 @@ router.get('/data-subject-list',jsonParser, async (req,res)=>{
                 _id: 0,
                 title: "$_id.category"
                 }
-            }
+            },{sort:{title:1}}
             ])
         res.json({data:uniqueSub,category:subject})
     }
@@ -327,7 +327,7 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
                 _id: 0,
                 title: "$_id.category"
                 }
-            }
+            },{sort:{title:1}}
             ])
         res.json({data:pageData,size:dataList.length,subject})
     }
