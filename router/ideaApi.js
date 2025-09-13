@@ -254,7 +254,7 @@ router.get('/data-subject-list',jsonParser, async (req,res)=>{
                 }
             }
             ])
-        res.json({data:subject,uniqueSub})
+        res.json({data:uniqueSub,category:subject})
     }
     catch(error){
         res.status(500).json({message: error.message})
