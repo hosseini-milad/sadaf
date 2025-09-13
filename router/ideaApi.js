@@ -242,6 +242,7 @@ router.get('/data-subject-list',jsonParser, async (req,res)=>{
     try{
         const subject = await reqcat.find()
         const uniqueSub = await ReqSchema.aggregate([
+            {$match:{active:true}},
             {
                 $group: {
                 _id: { category: "$category" } // group by both fields
