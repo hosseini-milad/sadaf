@@ -1,5 +1,6 @@
 const crypto = require('crypto');
-const {SADAD_URL,SADAD_PAZIRANDE,SADAD_TERMINAL,SADAD_KEY,RETURN_URL} = process.env
+const {SADAD_SHABA,SADAD_SHENASE,SADAD_PAZIRANDE,SADAD_TERMINAL,
+    SADAD_KEY,RETURN_URL} = process.env
 
 
 async function CreateSadadSign(orderNo,price) {
@@ -16,7 +17,14 @@ async function CreateSadadSign(orderNo,price) {
         "Amount" : price,
         "SignData" : encrypted.toString('base64'),
         "ReturnUrl" : RETURN_URL,
-        "OrderId" : orderNo
+        "OrderId" : orderNo,
+        "MultiIdentityData":{
+            MultiIdentityRows:{
+                IbanNumber:SADAD_SHABA,
+                Amount:price,
+                PaymentIdentity:SADAD_SHENASE
+            }
+        }
         }
         return query
 }
