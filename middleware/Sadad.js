@@ -89,7 +89,7 @@ exports.callBack=async (req,res)=>{
     const reserveId = req.body.OrderId
     const trackId = req.body.token
     const payCode = req.body.ResCode
-    const success = payCode==0?1:0
+    const success = payCode=="0"?1:0
     const payMessage = findError(payCode)
     const orderData = await cowork.findOne({reserveid:reserveId})
     await transactions.create({
