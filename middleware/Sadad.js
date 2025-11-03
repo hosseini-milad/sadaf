@@ -60,6 +60,7 @@ exports.Reserve = async (req, res) => {
             
         result = await response.json();
         console.log(result)
+        console.log(query)
         Token = result.Token
         } catch{}
         if(!result){
