@@ -57,8 +57,7 @@ exports.Reserve = async (req, res) => {
     try{const response = await fetch(SADAD_URL,
             {method: 'POST' ,headers:header,
         body:JSON.stringify(body)});
-        console.log(SADAD_URL)
-        console.log(JSON.stringify(body))
+        console.log("Result: ")
         console.log(result)
         result = await response.json();
         console.log(query)
