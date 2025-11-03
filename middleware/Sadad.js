@@ -5,10 +5,11 @@ const CreateSadadSign = require('./CreateSadadSign');
 const ReserveNow = require('./Seat/reserveNow');
 const cowork = require('../models/cowork');
 const transactions = require('../models/transactions');
+const SMSSend = require('./SMSSend');
 moment.locale('en'); 
 
 
-const {SADAD_URL,SADAD_PAY_URL} = process.env
+const {SADAD_URL,SADAD_PAY_URL,SMS_PHONE} = process.env
 
 exports.pay = async (req, res) => {
     const reserveId = req.query.reserveid
@@ -105,6 +106,8 @@ exports.callBack=async (req,res)=>{
         {$set:{payCode,payMessage,
             isPaid:success,trackId,date:Date.now()}}
     )
+    await SMSSend(SMS_PHONE,`رزرو سفارش: ${reserveId}\n\r
+          با موفقیت انجام شد`)
    //const faktorData = await faktor.findOne({Authority:authority})
     if(payCode =="-1"){
         return(res.render(`sadad_error.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
