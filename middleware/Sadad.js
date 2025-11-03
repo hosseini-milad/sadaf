@@ -59,6 +59,7 @@ exports.Reserve = async (req, res) => {
         body:JSON.stringify(body)});
             
         result = await response.json();
+        console.log(result)
         Token = result.Token
         } catch{}
         if(!result){
