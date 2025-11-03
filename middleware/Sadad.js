@@ -57,10 +57,7 @@ exports.Reserve = async (req, res) => {
     try{const response = await fetch(SADAD_URL,
             {method: 'POST' ,headers:header,
         body:JSON.stringify(body)});
-        console.log("Result: ")
-        console.log(response)
         result = await response.json();
-        console.log(query)
         Token = result.Token
         } catch{}
         if(!result){
@@ -91,8 +88,8 @@ exports.callBack=async (req,res)=>{
     console.log(req.body)
     const reserveId = req.body.OrderId
     const trackId = req.body.token
-    const success = req.body.success
     const payCode = req.body.ResCode
+    const success = payCode==0?1:0
     const payMessage = findError(payCode)
     const orderData = await cowork.findOne({reserveid:reserveId})
     await transactions.create({
