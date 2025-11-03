@@ -58,7 +58,7 @@ exports.Reserve = async (req, res) => {
             {method: 'POST' ,headers:header,
         body:JSON.stringify(body)});
         console.log("Result: ")
-        console.log(result)
+        console.log(response)
         result = await response.json();
         console.log(query)
         Token = result.Token
