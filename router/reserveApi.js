@@ -98,6 +98,24 @@ router.post('/my-reserve',jsonParser,auth, async (req,res)=>{
         res.status(500).json({message: error.message})
     }
 })
+
+router.get('/all-reserve',jsonParser, async (req,res)=>{
+    const userId = req.headers["userid"]
+    try{
+        const coWorkData = await cowork.find({isPaid:1}).sort({date:-1}).lean()
+        //var result = []
+        for(var i=0;i<coWorkData.length;i++){
+            const active = CheckActive(coWorkData[i])
+            
+            coWorkData[i].active = active
+        }
+        res.json({data:coWorkData})
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
 router.post('/my-transactions',jsonParser,auth, async (req,res)=>{
     const userId = req.headers["userid"]
     try{

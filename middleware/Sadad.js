@@ -103,17 +103,18 @@ exports.callBack=async (req,res)=>{
         date:Date.now()
     }) 
     await cowork.updateOne({reserveid:reserveId},
-        {$set:{payCode,payMessage,
+        {$set:{payCode,payMessage,status:success?"paid":"cancel",
             isPaid:success,trackId,date:Date.now()}}
     )
     await SMSSend(SMS_PHONE,`رزرو سفارش: ${reserveId}\n\r
           با موفقیت انجام شد`)
    //const faktorData = await faktor.findOne({Authority:authority})
-    if(payCode =="-1"){
-        return(res.render(`sadad_error.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
-    }
-    else{
+    if(payCode =="0")
+        {
         return(res.render(`sadad_correct.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
+        }
+    else{
+        return(res.render(`sadad_error.ejs`,{url:"https://reserve.qomstp.ir/profile#myreserve"}))
     }
 }
 const findError=(code)=>{
