@@ -103,14 +103,16 @@ router.get('/all-reserve',jsonParser, async (req,res)=>{
     const userId = req.headers["userid"]
     try{
         const coWorkData = await cowork.find({isPaid:1}).sort({date:-1}).lean()
-        //var result = []
+        var result = []
         for(var i=0;i<coWorkData.length;i++){
             const userInfo = await clients.findOne({_id:ObjectID(coWorkData[i].userId)})
             const active = CheckActive(coWorkData[i])
             coWorkData[i].active = active
             coWorkData[i].userInfo = userInfo
+            if(active>-3)
+                result.push(coWorkData[i])
         }
-        res.json({data:coWorkData})
+        res.json({data:result})
     }
     catch(error){
         res.status(500).json({message: error.message})

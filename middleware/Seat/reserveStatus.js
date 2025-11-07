@@ -51,7 +51,7 @@ async function ReserveStatus(canReserve,isActive,reserveCode,userId) {
     }]
       return({message,buttons})  
     }
-    else if(isActive){
+    else if(isActive>-1){
         message = `رزرو فعال تا ${isActive} روز دیگر دارید.`
         calendar=true
         buttons=[{
