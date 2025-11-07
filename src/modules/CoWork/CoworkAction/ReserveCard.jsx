@@ -1,6 +1,7 @@
 import env from "../../../env"
 
 function ReserveCard(props){
+    const newCart = props.data=="+"
     const data = props.data
     const token = props.token
     const cancelNow=()=>{
@@ -24,6 +25,39 @@ function ReserveCard(props){
             console.log(error)
         })
     }
+    if(newCart)
+    return(
+      <div className="wf-product-cards__card cl-card -hoverable ">
+        <div className="wf-product-cards__content">
+          <div className="wf-product-cards__heading--wrapper">
+            
+            <h3 className="wf-product-cards__heading ">{data.title} 
+            </h3>
+          </div>
+          <p className="wf-product-cards__description"></p>
+          <div className="">
+            <h4 className="wf-product-cards__feature-list--heading "></h4>
+            <div className="wf-product-cards__feature-list--items">
+              <ul>
+                <li className="wf-product-cards__feature-list--item">
+                  <a className="
+                    cl-button -primary -medium wf-product-cards__cta homepage-marketing" 
+                      href={`/cowork`}>ایجاد درخواست جدید
+                  </a>
+                </li>
+                {/*<li className="wf-product-cards__feature-list--item">
+                  <svg className="cl-icon" aria-hidden="true">
+                    <use href="#check-circle"></use>
+                  </svg> سالن جلسات: 5 ساعت
+                </li>*/}
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    ) 
+    else
     return(
         <div className="wf-product-cards__card cl-card -hoverable ">
         <div className="wf-product-cards__content">

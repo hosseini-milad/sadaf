@@ -21,8 +21,8 @@ const Footer = (props)=>{
           <strong>رزرواسیون</strong>
         </p><hr/>
         <a href="/cowork">صندلی اشتراکی</a><br/>
-        <a href="/suit">سوییت ها</a><br/>
-        <a href="/session">سالن جلسات</a><br/>
+        {/*<a href="/suit">سوییت ها</a><br/>
+        <a href="/session">سالن جلسات</a><br/>*/}
         <br />
       </div>
       <div className="col-sm-3">
@@ -34,6 +34,7 @@ const Footer = (props)=>{
            آدرس: قم، پردیسان، بلوار دانشگاه، ابتدای بلوار مولوی<br/>
             کد پستی: ۳۷۴۹۱۱۳۹۱۶<br/>
             <a href="phone:02532220000">تلفن: ۰۲۵۳۲۲۲۰۲۳۰ </a><br/>
+            <a href="phone:02532220001">تلفن: ۰۲۵۳۲۲۲۰۲۳۱ </a><br/>
         </p>
         
       </div>

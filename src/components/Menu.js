@@ -24,7 +24,7 @@ const Menu = (props)=>{
             </div>
             <div id="burger-submenu" className="hsg-nav__groups-wrapper">
               <ul className="hsg-nav__group hsg-nav__group--primary">
-                <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
+                {/*<li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
                     <a href="/session" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
                       <span className="hsg-nav__link-label"> سالن جلسات </span>
@@ -37,7 +37,7 @@ const Menu = (props)=>{
                       <span className="hsg-nav__link-label"> سوییت ها </span>
                     </a>
                   </div>
-                </li>
+                </li>*/}
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-1">
                   <div className="hsg-nav__link-wrapper">
                     <a href="/cowork" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">

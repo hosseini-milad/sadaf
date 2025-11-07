@@ -5,6 +5,14 @@ function CoworkBody(props){
   const token = props.token
     return(
     <div className="fullWidth">
+        
+      <div className="colSpan col90">
+          {!token?<LoginHolder />:
+          <RegStatus />}
+          
+      </div>
+      
+        <hr/>
       <div className="colSpan col90">
         <div className="col50">
           <img src="/img/cowork02.jpg" />
@@ -21,13 +29,6 @@ function CoworkBody(props){
           </ul>
         </div>
         </div>
-        <hr/>
-        
-      <div className="colSpan col90">
-          {!token?<LoginHolder />:
-          <RegStatus />}
-          
-      </div>
       
     <div className="orderSpace"/>
     </div>

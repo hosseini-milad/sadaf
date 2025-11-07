@@ -31,12 +31,12 @@ function MyTransaction(props){
         <table className="transactionList">
             <tbody>
                 <tr>
-                    <td>ردیف</td>
-                    <td>شماره رزرو</td>
-                    <td>شماره پیگیری</td>
-                    <td>وضعیت پرداخت</td>
-                    <td>پیام پرداخت</td>
-                    <td>تاریخ</td>
+                    <th>ردیف</th>
+                    <th>شماره رزرو</th>
+                    <th>شماره پیگیری</th>
+                    <th>وضعیت پرداخت</th>
+                    <th>پیام پرداخت</th>
+                    <th>تاریخ</th>
                 </tr>
             {transaction&&transaction.map((trans,i)=>(
                 <TransactionRow key={i} index={i+1} data={trans}/>

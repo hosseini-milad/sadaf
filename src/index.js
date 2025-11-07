@@ -44,7 +44,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Router>
       <Routes>
-        <Route path="/" element={<Layout lang={lang}><Home lang={lang}/></Layout>}/>
+        <Route path="/" element={<Layout lang={lang}><Cowork lang={lang}/></Layout>}/>
         <Route path="/about" element={<Layout lang={lang}><About lang={lang}/></Layout>}/>
         <Route path="/contact" element={<Layout lang={lang}><Contact lang={lang}/></Layout>}/>
         <Route path="/help" element={<Layout lang={lang}><Help lang={lang}/></Layout>}/>

@@ -1086,3 +1086,27 @@ button {
   height:4rem;
   width:4rem
 }
+
+.transactionList{
+  width: 90%;
+  margin: 10px 5%;
+  border-collapse: collapse;
+  direction: rtl;
+  text-align: center;
+}
+.transactionList th{
+  background: #003366;
+  color: #fff;
+  padding: 12px;
+  border: 1px solid #9bb0cc;
+}
+.transactionList td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.transactionList tr:nth-child(2n+1) td {
+  border: 1px solid #d0d7e0;
+  padding: 10px;
+}
