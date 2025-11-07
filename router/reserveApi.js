@@ -105,9 +105,10 @@ router.get('/all-reserve',jsonParser, async (req,res)=>{
         const coWorkData = await cowork.find({isPaid:1}).sort({date:-1}).lean()
         //var result = []
         for(var i=0;i<coWorkData.length;i++){
+            const userInfo = await clients.findOne({_id:ObjectID(coWorkData[i]._id)})
             const active = CheckActive(coWorkData[i])
-            
             coWorkData[i].active = active
+            coWorkData[i].userInfo = userInfo
         }
         res.json({data:coWorkData})
     }
