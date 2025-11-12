@@ -5,8 +5,9 @@ const ideaSchema = new mongoose.Schema({
   reqCode: { type: String},
   userId: { type: String},
   description:{type:String},
-  
+
   ideaBenefit:{type:String},
+  ideaStatus:{type:String},
   ideaRecommend:{type:String},
   ideaMoney:{type:String},
   ideaTime:{type:String},
