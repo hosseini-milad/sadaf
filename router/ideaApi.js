@@ -135,16 +135,16 @@ router.post('/req-list',jsonParser, async (req,res)=>{
     if(!activeMehvar){
             return res.status(400).json({error:"not active mehvar"})
         }
-    const mehvar = activeMehvar.mehvarCode
+    const mehvarInfo = activeMehvar.mehvarCode
     try{
         const dataList = await ReqSchema.aggregate([
-            { $match :{mehvar:mehvar}},
+            { $match :{mehvar:mehvarInfo}},
             { $match:data.title?{$or:[
                 {title:new RegExp('.*' + data.title + '.*')},
                 {proofUsage:new RegExp('.*' + data.title + '.*')},
                 {nahad:new RegExp('.*' + data.title + '.*')},
                 {proofReq:new RegExp('.*' + data.title + '.*')}]}:{}},
-            { $match:data.active=="غیرفعال"?{}:{active:true}},
+            //{ $match:data.active=="غیرفعال"?{}:{active:true}},
             { $match:data.category?{category:data.category}:{}},
             { $match:!data.title?{date:{$gte:new Date(data.dateFrom)}}:{}},
             { $match:!data.title?{date:{$lte:new Date(data.dateTo)}}:{}},
