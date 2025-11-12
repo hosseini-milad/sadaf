@@ -9,6 +9,9 @@
   opacity: 100;
   visibility: visible;
 }
+.centerBtn{
+  margin:10px auto 30px;
+}
 .twolineText{
   display: block;
   display: -webkit-box;
@@ -68,7 +71,7 @@
 .ReportHolder{
   width: 75%;
   background-color: var(--main-color);
-  padding: 0 3%;
+  padding: 0 3% 30px;
 }
 
 .accItem{
@@ -203,4 +206,8 @@
 }
 .borderHero{
   border:1px solid #eee
+}
+.boldTitle{
+  font-weight: bold;
+  font-size: 1.2rem;
 }

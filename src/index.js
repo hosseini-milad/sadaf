@@ -28,6 +28,7 @@ import Profile from './Pages/Profile';
 import Location from './Pages/location';
 import Contact from './Pages/contact';
 import UpdateReq from './Pages/UpdateReq';
+import Subject from './Pages/subject';
 const cookies = new Cookies();
 const token = cookies.get(env.cookieName)
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -37,6 +38,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>}/>
           <Route path="/report" element={<Layout><Report /></Layout>}/>
+          <Route path="/subject" element={<Layout><Subject /></Layout>}/>
           <Route path="/login" element={<Layout><Login /></Layout>}/>
           <Route path="/register" element={<Layout><Login /></Layout>}/>
           <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>

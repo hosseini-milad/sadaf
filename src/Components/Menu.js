@@ -50,17 +50,17 @@ const Menu = (props)=>{
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-2 ">
                   <div className="hsg-nav__link-wrapper">
-                    <a href="/" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
-                      <span className="hsg-nav__link-label"> محورها </span>
+                    <a href="/report" className="ga_nav_link hsg-nav__link hsg-nav__link-active nav-pricing" data-ga_nav_type="header_nav" data-ga_nav_tree_text="Pricing">
+                      <span className="hsg-nav__link-label"> ثبت ایده </span>
                     </a>
                   </div>
                 </li>
                 <li className="hsg-nav__group-item hsg-nav__group-item--order-3 hsg-nav__group-item--has-dropdown"
                   onMouseOver={()=>setTab(2)} onMouseOut={()=>setTab(-1)}>
                   <div className="hsg-nav__link-wrapper"
-                  onClick={()=>window.location.href="/report"}>
+                  onClick={()=>window.location.href="/subject"}>
                     <button className="hsg-nav__link">
-                      <span className="hsg-nav__link-label"> ثبت ایده </span>
+                      <span className="hsg-nav__link-label"> چالش ها </span>
                     </button>
                   </div>
                   {/*<ResourceMenu tab={tab} />*/}
@@ -70,7 +70,7 @@ const Menu = (props)=>{
                   <div className="hsg-nav__link-wrapper"
                   onClick={()=>window.location.href="/reg-request"}>
                     <button className="hsg-nav__link homepage-nav-about-mobile" >
-                      <span className="hsg-nav__link-label"> تقاضای فناوری </span>
+                      <span className="hsg-nav__link-label"> ثبت چالش </span>
                     </button>
                   </div>
                 </li>

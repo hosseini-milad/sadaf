@@ -43,6 +43,14 @@ function IdeaHeader(props){
                             "اولویت: "+ content.support,
                             "بازه زمانی مورد انتظار : "+ content.time
                         ]}/>
+                        <IdeaAcc title="ایده ها" data={
+                            content.ideaData.map((idea,i)=>(
+                                <small key={i}>
+                                    {"ایده " +idea.description}
+                                    <hr/>
+                                </small>
+                            ))
+                        }/>
                         
                     </ul>
                     </div>

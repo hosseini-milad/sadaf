@@ -18,7 +18,7 @@ function SingleIdea(props){
                 <div className="wf-product-cards__features">
                   <h4 className="wf-product-cards__feature-list--heading ">
                     <i className="fa fa-building ideaIcon" ></i>
-                    <small>{data.nahad}
+                    <small>{data.category}
                     </small>
                     {/*<sub onClick={()=>setMore(1)}> 
                       ({2} ایده) </sub>

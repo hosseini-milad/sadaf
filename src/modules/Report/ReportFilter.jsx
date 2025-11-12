@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import env from "../../env"
 
-function ReportFilter(props){
+function  ReportFilter(props){
     const [search,setSearch] = useState('')
     const [subject,setSubject] = useState('')
-    const [category,setCategory] = useState('')
+    const [category,setCategory] = useState(props.category)
     const [tab,setTab] = useState(-1)
     useEffect(()=>{
         if(search.length<3) return
@@ -15,13 +15,13 @@ function ReportFilter(props){
               })), 1000);
         return () => clearTimeout(timeOutId);
     },[search])
-    useEffect(()=>{
+    /*useEffect(()=>{
         props.setFilter((prevState) => ({
             ...prevState,
             category: category,
             }))
         
-    },[category])
+    },[category])*/
     useEffect(()=>{
         const postBody={
          method: "GET",
@@ -37,7 +37,7 @@ function ReportFilter(props){
                
             }
             else{
-               setSubject(result.data)
+               setSubject(result.category)
                
             }
           },
@@ -81,6 +81,9 @@ function ReportFilter(props){
                 </button>
                 <div className="hsg-accordion__content" id="hsg-accordion__content-0" aria-hidden="true">
                     <div className="accHolder">
+                        <div className={category==""?"accItem activeAcc":"accItem"}
+                        onClick={(e)=>setCategory("")}>
+                                همه دسته بندی ها </div>
                         {subject&&subject.map((subject,i)=>(
                             <div key={i} className={category==subject.title?"accItem activeAcc":"accItem"}
                         onClick={(e)=>setCategory(subject.title)}>
