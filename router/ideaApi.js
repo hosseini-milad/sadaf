@@ -256,22 +256,16 @@ router.get('/data-subject-list',jsonParser, async (req,res)=>{
         if(!activeMehvar){
             return res.status(400).json({error:"not active mehvar"})
         }
-        const subject = await reqcat.find({mehvar:activeMehvar&&activeMehvar.mehvarCode})
-        
-        const uniqueSub = await reqcat.aggregate([
-            {$match:{active:true}},
-            {
-                $group: {
-                _id: { category: "$category" } // group by both fields
-                }
-            },
-            {
-                $project: {
-                _id: 0,
-                title: "$_id.category"
-                }
-            },{$sort:{title:1}}
-            ])
+        const subject = await reqcat.find({mehvar:activeMehvar&&activeMehvar.mehvarCode}).lean()
+        for(var i=0;i<subject.length;i++){
+            var challengeData=await ReqSchema.
+                find({category:subject[i].title})
+            var challengeIds = challengeData.map(item=>item._id)
+            var ideaCount=await idea.
+                find({reqCode:{$in:challengeIds}}).count()
+            subject[i].challengeCount = challengeIds.length
+            subject[i].ideaCount=ideaCount
+        }
         res.json({data:subject,category:subject})
     }
     catch(error){
