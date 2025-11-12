@@ -261,7 +261,7 @@ router.get('/data-subject-list',jsonParser, async (req,res)=>{
                 }
             },{$sort:{title:1}}
             ])
-        res.json({data:uniqueSub,category:subject})
+        res.json({data:subject,category:subject})
     }
     catch(error){
         res.status(500).json({message: error.message})
