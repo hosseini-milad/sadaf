@@ -240,8 +240,12 @@ router.post('/list-idea',jsonParser,auth, async (req,res)=>{
 
 router.get('/data-subject-list',jsonParser, async (req,res)=>{
     try{
-        const subject = await reqcat.find()
-        const uniqueSub = await ReqSchema.aggregate([
+        const subject = await reqcat.find({mehvar:activeMehvar&&activeMehvar.mehvarCode})
+        const activeMehvar = await mehvar.findOne({active:true})
+        if(!activeMehvar){
+            return res.status(400).json({error:"not active mehvar"})
+        }
+        const uniqueSub = await reqcat.aggregate([
             {$match:{active:true}},
             {
                 $group: {
