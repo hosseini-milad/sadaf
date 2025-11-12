@@ -367,8 +367,14 @@ router.post('/list-category',jsonParser, async (req,res)=>{
         search:req.body.search,
         title:req.body.title,
     }
+        const mehvarData = await mehvar.find()
+        const activeMehvar = await mehvar.findOne({active:true})
+        if(!activeMehvar){
+            return res.status(400).json({error:"not active mehvar"})
+        }
     try{
         const dataList = await reqcat.aggregate([
+            { $match: {mehvar:activeMehvar.mehvarCode}},
             { $match:data.search?{$or:[
                 {title:new RegExp('.*' + data.search + '.*')},
                 {managerName:new RegExp('.*' + data.search + '.*')},
@@ -377,10 +383,9 @@ router.post('/list-category',jsonParser, async (req,res)=>{
             {$lookup:{from : "mehvars", 
                 localField: "mehvar", foreignField: "mehvarCode", as : "mehvarData"}},
             { $sort: {"catCode":1}},
-            { $limit: 10},
+            { $limit: 20},
         ])
 
-        const mehvarData = await mehvar.find()
         res.json({data:dataList,size:dataList.length,mehvarData})
     }
     catch(error){
