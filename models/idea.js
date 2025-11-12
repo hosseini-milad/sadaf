@@ -5,6 +5,12 @@ const ideaSchema = new mongoose.Schema({
   reqCode: { type: String},
   userId: { type: String},
   description:{type:String},
+  
+  ideaBenefit:{type:String},
+  ideaRecommend:{type:String},
+  ideaMoney:{type:String},
+  ideaTime:{type:String},
+
   active: { type: Boolean,default:false},
   
   url: { type: String},
