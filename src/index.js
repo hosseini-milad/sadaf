@@ -22,6 +22,8 @@ import Cookies from 'universal-cookie';
 import errortrans from './translate/error';
 import LayoutLogin from './components/LayoutLogin';
 import env, { findFPage } from './env';
+import AccessHolder from './modules/AccessControl/AccessHolder';
+import ProfileAdd from './modules/AccessControl/ProfileAdd';
 
 import Data from './pages/Data';
 import NewData from './pages/NewData';
@@ -34,6 +36,7 @@ import CoWork from './pages/CoWork';
 import Transactions from './pages/Transactions';
 import ClientHolder from './pages/Clients';
 import Requests from './pages/Request';
+import Users from './pages/Users';
 import ReqCategory from './modules/Request/ReqComponent/ReqCategory';
 import MehvarTable from './modules/Mehvar/MehvarTable';
 import MehvarDetailHolder from './modules/Mehvar/MehvarDetail';
@@ -62,7 +65,9 @@ root.render(
         <Route path="/dashboard" element={<Layout><Dashboard lang={lang}/></Layout>}/>
         <Route path="/data" element={<Layout><Data lang={lang}/></Layout>}/>
         <Route path="/new-data" element={<Layout><NewData lang={lang}/></Layout>}/>
-
+        <Route path="/access" element={<Layout><AccessHolder lang={lang}/></Layout>}/>
+        <Route path="/access/detail/:profileId" element={<Layout><ProfileAdd lang={lang}/></Layout>}/>
+        
         <Route path="/clients" element={<Layout><ClientHolder lang={lang}/></Layout>}/>
         <Route path="/company" element={<Layout><CompanyHolder lang={lang}/></Layout>}/>
         <Route path="/company/:id" element={<Layout><CompanyAdminEdit lang={lang}/></Layout>}/>
@@ -78,9 +83,12 @@ root.render(
         <Route path="/req-cat" element={<Layout><ReqCategory lang={lang}/></Layout>}/>
         <Route path="/mehvar" element={<Layout><MehvarTable lang={lang}/></Layout>}/>
         
+        <Route path="users" element={<Layout><Users lang={lang}/></Layout>}/>
+
         <Route path="/cowork" element={<Layout><CoWork lang={lang}/></Layout>}/>
         <Route path="/cowork-list" element={<Layout><CoWorkList lang={lang}/></Layout>}/>
         <Route path="/transactions" element={<Layout><Transactions lang={lang}/></Layout>}/>
+        
         
       </Routes>:
         <Routes>
