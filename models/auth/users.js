@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   access:{
     type:String
   },
+  profile:{ type: String },
   group: { type:String },
   credit: { type: String },
   token: { type: String },
