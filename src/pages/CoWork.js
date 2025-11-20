@@ -14,10 +14,21 @@ function CoWork(props){
     
     useEffect(()=>{initial()},[kind,refresh])
     const initial=async()=>{
+      const body = {
+        offset: filters&&filters.offset,
+        pageSize: filters&&filters.pageSize,
+        title: filters&&filters.title,
+        search:filters&&filters.search,
+        active:(filters&&filters.active)?filters.active:"غیرفعال",
+        dateFrom: filters&&filters.date && filters.date.dateFrom,
+        dateTo: filters&&filters.date && filters.date.dateTo,
+        active:(filters&&filters.active) ? filters.date.active:"غیرفعال",
+        access: "manager",
+      };
         var result = await PostReq(
         {method:"POST",url:
           "/reserve/list-cowork",
-            body:{}
+            body: body,
         })
         setData(result.data)
     }
@@ -34,7 +45,7 @@ function CoWork(props){
         <CoworkFilters
           lang={props.lang}
           setFilters={setFilters}
-          filters={filters}
+          filters={filters} 
         />
         <div className="user-list">
             {loading ? (

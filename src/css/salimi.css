@@ -1920,6 +1920,13 @@ input:checked + .switch-label:after {
   display: flex;
   justify-content: space-around;
 }
+.imageShow img{
+  height: 100px !important;
+  width: auto !important;
+}
+.imageShow{
+  display: grid;
+}
 .myButton {
   background-color: #de2768;
   border-radius: 28px;

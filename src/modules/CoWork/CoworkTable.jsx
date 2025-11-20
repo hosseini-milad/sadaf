@@ -1,5 +1,6 @@
 import { useState } from "react"
 import CoworkTableRow from "./CoworkTableRow";
+import CoworkTableListRow from "./CoworkListTable";
 
 function CoworkTable(props){
   const data = props.data
@@ -41,6 +42,8 @@ function CoworkTable(props){
         </thead>
         <tbody>
           {data?data.map((data,i)=>(
+            props.list?<CoworkTableListRow detail={detail} showDetail={showDetail} 
+              data={data} index={i} key={i} lang={lang}/>:
             <CoworkTableRow detail={detail} showDetail={showDetail} 
               data={data} index={i} key={i} lang={lang}
               setRefresh={props.setRefresh} kind={props.kind}/>

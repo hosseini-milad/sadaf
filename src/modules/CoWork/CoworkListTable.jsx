@@ -4,32 +4,14 @@ import { PostReq } from "../../components/PostReq"
 import CoworkQuick from "./Modules/CoworkQuick"
 
 
-function CoworkTableRow(props){
-  const [openOption,setOpenOption] = useState(0)
+function CoworkTableListRow(props){
+  const data = props.data
+  const userInfo = data&&data.userInfo
+  console.log(userInfo)
   const [checkState,setCheckState] = useState(false)
   const activeAcc = props.index===props.detail
-  const data=props.data
+  
 
-  const acceptEdit=async(managerPhone)=>{
-    const result = await PostReq(
-      {method:"POST",url:"/company/accept-edit",
-        body:{managerPhone:managerPhone}
-      })
-      if(!result.error){
-        props.setRefresh(Math.random())
-      }
-    
-  }
-  const publishItem=async(managerPhone,publish)=>{
-    const result = await PostReq(
-      {method:"POST",url:"/company/update-company",
-        body:{managerPhone:managerPhone,publish:!publish}
-      })
-      if(!result.error){
-        props.setRefresh(Math.random())
-      }
-    
-  }
     return(<React.Fragment>
         <tr 
             className={activeAcc?"activeAccordion":"accordion"}>
@@ -38,27 +20,31 @@ function CoworkTableRow(props){
             </td>
             <td>
                 <div className="cu-avatar rightAlign">
-                    <p>{data.userInfo[0]&&data.userInfo[0].cName} {" "}
-                    {data.userInfo[0]&&data.userInfo[0].sName}
+                    <p>{userInfo&&userInfo.cName} {" "}
+                    {userInfo&&userInfo.sName} <br/>
+                     <small> 
+                    {data&&data.reserveid}</small>
                     </p>
                 </div>
             </td>
             <td>
               <div className="cu-avatar">
-                  {data.mahiat?<img src="/img/avatar/business.png" alt="avatar"/>:
-                  <img src="/img/avatar/person.png" alt="avatar"/>}
+                  {(data.active&&data.active>-1)?data.active>3?
+                    <img src="/img/avatar/green.png" alt="avatar"/>:
+                    <img src="/img/avatar/yellow.png" alt="avatar"/>:
+                    <img src="/img/avatar/red.png" alt="avatar"/>}
                   <div className="cu-name">
                     <p className="name">
-                    {data.userInfo[0]&&data.userInfo[0].meliCode}<br/>
+                    {userInfo&&data.userInfo.meliCode}<br/>
                     <small>شماره تماس: 
-                    {data.userInfo[0]&&data.userInfo[0].phone}</small></p>
+                    {userInfo&&userInfo.phone}</small></p>
                   </div>
                   
                 </div>
               </td>
               <td>
                 <div className="order-num">
-                  <p>{data.userInfo[0]&&data.userInfo[0].work}</p>
+                  <p>{userInfo&&userInfo.work}</p>
                 </div>
               </td>
               <td>
@@ -70,7 +56,7 @@ function CoworkTableRow(props){
               </td>
               <td>
                 <div className="order-price">
-                  {data.payMessage}
+                  {data.active&&data.active>-1?(data.active +" روز مانده "):"منقضی شده است"}
                 </div>
                 {/*<div className="order-price" 
                 onClick={()=>publishItem(data.managerPhone,data.publish)}>
@@ -95,4 +81,4 @@ function CoworkTableRow(props){
           </React.Fragment>
     )
 }
-export default CoworkTableRow
+export default CoworkTableListRow
