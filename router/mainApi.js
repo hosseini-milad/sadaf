@@ -3,6 +3,7 @@ const router = express.Router()
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cheerio = require("cheerio")
+const panelUserApi = require('./panelUserApi')
 const axios = require("axios")
 const { default: fetch } = require("node-fetch");
 const dataSchema = require('../models/data')
@@ -23,6 +24,7 @@ router.use('/reserve', reserveApi)
 router.use('/company', companyApi) 
 router.use('/payment',paymentApi)
 
+router.use('/panel/user', panelUserApi)
 
 router.post('/data-list',jsonParser, async (req,res)=>{
     var pageSize = req.body.pageSize?req.body.pageSize:"10";
