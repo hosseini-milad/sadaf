@@ -143,6 +143,14 @@ const menutrans ={
                 url:"cowork"
             },
             {
+                english: "Active Seat",
+                persian: "صندلی فعال",
+                index:0,
+                icon:"fa-dashboard",
+                href:"/cowork-list",
+                url:"cowork-list"
+            },
+            {
                 english: "Share Room",
                 persian: "سالن جلسات",
                 index:0,

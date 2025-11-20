@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 function CoworkFilters(props) {
   const category = props.filters && props.filters.category;
-  const [query,setQuery] = useState()
+  const [query,setQuery] = useState() 
   return (
     <div className="user-filter">
       <div className="serach-input">

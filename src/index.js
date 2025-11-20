@@ -38,6 +38,7 @@ import ReqCategory from './modules/Request/ReqComponent/ReqCategory';
 import MehvarTable from './modules/Mehvar/MehvarTable';
 import MehvarDetailHolder from './modules/Mehvar/MehvarDetail';
 import CompanyAdminEdit from './modules/Company/adminEdit/CompanyEdit';
+import CoWorkList from './pages/CoWorkList';
 
 const cookies = new Cookies();
 var lang = JSON.parse(localStorage.getItem(env.cookieLang));
@@ -78,6 +79,7 @@ root.render(
         <Route path="/mehvar" element={<Layout><MehvarTable lang={lang}/></Layout>}/>
         
         <Route path="/cowork" element={<Layout><CoWork lang={lang}/></Layout>}/>
+        <Route path="/cowork-list" element={<Layout><CoWorkList lang={lang}/></Layout>}/>
         <Route path="/transactions" element={<Layout><Transactions lang={lang}/></Layout>}/>
         
       </Routes>:
