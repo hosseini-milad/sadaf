@@ -28,11 +28,6 @@ function ReqTable(props){
               <p>تاریخ</p>
               <i></i>
             </th>
-
-            <th>
-            <p>انتشار</p>
-              <i></i>
-            </th>
             <th>
             </th>
           </tr>

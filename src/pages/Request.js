@@ -27,10 +27,9 @@ function Requests(props) {
       pageSize: filters&&filters.pageSize,
       title: filters&&filters.title,
       search:filters&&filters.search,
-      active:(filters&&filters.active)?filters.active:"غیرفعال",
       dateFrom: filters&&filters.date && filters.date.dateFrom,
       dateTo: filters&&filters.date && filters.date.dateTo,
-      active:(filters&&filters.active) ? filters.date.active:"غیرفعال",
+      active:(filters&&filters.active) ? filters.active:"غیرفعال",
       access: "manager",
     };
     const postOptions = {

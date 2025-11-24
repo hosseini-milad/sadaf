@@ -74,13 +74,13 @@ function ReqTableRow(props){
                   {new Date(data.date).toLocaleDateString('fa')}
                 </div>
               </td>
-              <td>
+              {/*<td>
                 <div className="order-price" onClick={updateStatus}>
                   <p>{data.active?
                   <i className="fa fa-check" onClick={()=>updateTable(false)}/>:
                   <i className="fa fa-remove" onClick={()=>updateTable(true)}/>}</p>
                 </div>
-              </td>
+              </td>*/}
 
             <td>
               <div className="more-btn">

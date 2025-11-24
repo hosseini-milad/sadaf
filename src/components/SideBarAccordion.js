@@ -12,6 +12,7 @@ import MenuItems from "./MenuItems";
 function SideBarAccordion(props){
     const url = window.location.pathname.split('/')[1]
     const menuList = menutrans
+    console.log(menuList)
     const cookies = new Cookies();
     const token=cookies.get(env.cookieName)
     const logOff=()=>{

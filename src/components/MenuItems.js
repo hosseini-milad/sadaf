@@ -6,10 +6,15 @@ function MenuItems(props){
     const profile=props.profile
     const menu = props.menu
     const [showItem,setShowItem] = useState(1)
+    console.log(showItem)
     const checkAllow=(submenu)=>{
         if(access==="manager")return(1)
-
+        try{
         return(profile&&profile.find(item=>item.title===submenu['english']))
+        }
+        catch{
+            return(0)
+        }
     }
     return(
         menu.children&&menu.children.length?
