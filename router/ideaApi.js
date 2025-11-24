@@ -352,7 +352,7 @@ router.get('/get-req/:id',jsonParser, async (req,res)=>{
     userId = req.headers&&req.headers['userid']//userReq?userReq.user_id:''
     const url = req.url.split('/').pop()
     console.log(url)
-    try{
+    
         const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)}).lean()
         const ideaData = userId?await idea.find({reqCode:url,userId:userId}):[]
         dataDetail.ideaData = ideaData
@@ -362,7 +362,7 @@ router.get('/get-req/:id',jsonParser, async (req,res)=>{
         else
             res.status(400).json({error:"اطلاعات پیدا نشد"})
         
-    }
+    try{}
     catch(error){
         res.status(400).json({error:error})
     }
