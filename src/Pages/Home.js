@@ -7,6 +7,7 @@ import BottomPart from "../modules/Home/BottomPart"
 import Plan from "../modules/Home/Plan"
 import Content from "../modules/Home/Content"
 import Goal from "../modules/Home/Goal"
+import ReportSubject from "../modules/Report/ReportSubject"
 
 function Home(props){
     
@@ -20,7 +21,8 @@ function Home(props){
          <Host/>
          {/*<Plan />
          <Goal/>*/}
-         <Exchange />
+         <ReportSubject col={4}/>
+         {/*<Exchange />*/}
          <Content />
          {/*<BottomPart />*/}
     </main>

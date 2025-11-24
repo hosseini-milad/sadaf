@@ -143,7 +143,7 @@ function RegReq(props){
           <div className="csol-section-wrapper">
             <div className="csol-book-a-meeting-wrapper">
               <div id="csol-book-a-meeting-form-container-csol_bam" className="csol-book-a-meeting-form-container" data-query-string="" data-locale="en" data-form-id="95c7a26e-eb03-4da7-bb69-4ca3c029983b" data-portal-id="53" data-custom-submit-text="Get your free demo" data-hs-forms-root="true">
-                <form >
+                {!showBtn?<form >
                   <fieldset className="form-columns-2">
                     <div className="hs_firstname hs-firstname hs-fieldtype-text field hs-form-field">
                       <label id="label-firstname-95c7a26e-eb03-4da7-bb69-4ca3c029983b" className="" placeholder="Enter your First Name" for="firstname-95c7a26e-eb03-4da7-bb69-4ca3c029983b">
@@ -376,12 +376,17 @@ function RegReq(props){
                      <a className="
                      cl-button -primary -large wf-page-header__cta homepage-hero-cta" 
                      onClick={regNow}>ثبت تقاضای فناوری</a>
-                     {showBtn?<a className="
+                     
+                  </div>
+                  </div>
+                </form>:<></>}
+                {showBtn?<><a className="
                      cl-button -warning wf-page-header__cta homepage-hero-cta" 
-                     href={"/edit-request/"+showBtn}>مشاهده تقاضای ثبت شده</a>:<></>}
-                  </div>
-                  </div>
-                </form>
+                     href={"/edit-request/"+showBtn}>مشاهده تقاضای ثبت شده</a>
+                <a style={{marginRight:"20px"}} className="
+                    cl-button -primary wf-page-header__cta homepage-hero2-cta" 
+                    href="/reg-request">ثبت چالش جدید</a>
+                    </>:<></>}
               </div>
             </div>
           </div>

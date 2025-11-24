@@ -211,3 +211,7 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
+.fieldSet{
+  display: grid;
+  gap: 10px;
+}

@@ -41,7 +41,7 @@ root.render(
           <Route path="/subject" element={<Layout><Subject /></Layout>}/>
           <Route path="/login" element={<Layout><Login /></Layout>}/>
           <Route path="/register" element={<Layout><Login /></Layout>}/>
-          <Route path="/report/:ideaid" element={<Layout><Idea /></Layout>}/>
+          <Route path="/report/:ideaid" element={<Layout><Idea token={token}/></Layout>}/>
 
           <Route path="/profile" element={<Layout><Profile token={token}/></Layout>}/>
           <Route path="/location" element={<Layout><Location token={token}/></Layout>}/>

@@ -86,7 +86,7 @@ function  ReportFilter(props){
                                 همه دسته بندی ها </div>
                         {subject&&subject.map((subject,i)=>(
                             <div key={i} className={category==subject.title?"accItem activeAcc":"accItem"}
-                        onClick={(e)=>setCategory(subject.title)}>
+                        onClick={(e)=>window.open("/report?title="+subject.title,"_self")}>
                                 {subject.title} </div>
                         ))}
                         

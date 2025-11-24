@@ -39,14 +39,14 @@ function IdeaHeader(props){
                             <></>}
                         <IdeaAcc title="اطلاعات تقاضا" data={[
                            "دسته بندی :"+ content.category,
-                            "دامنه تاثیر: "+content.action,
-                            "اولویت: "+ content.support,
-                            "بازه زمانی مورد انتظار : "+ content.time
+                            content.action?("دامنه تاثیر: "+content.action):'',
+                            content.support?("اولویت: "+ content.support):'',
+                            content.time?("بازه زمانی مورد انتظار : "+ content.time):''
                         ]}/>
-                        <IdeaAcc title="ایده ها" data={
+                        <IdeaAcc title="ایده های من" data={
                             content.ideaData.map((idea,i)=>(
                                 <small key={i}>
-                                    {"ایده " +idea.description}
+                                    {idea.title}
                                     <hr/>
                                 </small>
                             ))

@@ -3,6 +3,7 @@ import env from "../../env";
 import SingleSubject from "../FindIdea/SingleSubject";
 
 function ReportSubject(props){
+  const col = props.col?props.col:3
     const [content,setContent] = useState()
 useEffect(()=>{
   setContent("");
@@ -26,7 +27,7 @@ useEffect(()=>{
     return(
         <section className="wf-section wf-product-cards -neutral -padding-top-xs -padding-bottom-md">
             <div className="wf-section-wrapper">
-            <div className="wf-product-cards__container">
+            <div className="wf-product-cards__container col4">
                 {content?content.map((idea,i)=>(
                 <SingleSubject  data={idea} key={i}/>
                 )):env.loader}

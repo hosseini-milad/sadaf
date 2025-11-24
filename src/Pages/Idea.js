@@ -5,10 +5,16 @@ import IdeaHeader from "../Components/Report/ideaHeader"
 import env from "../env"
 
 function Idea(props){
+   const token = props.token
    const url = document.location.pathname.split('/')[2]
    const [content,setContent] = useState()
    useEffect(()=>{
-      fetch(env.siteApi + "/data/get-req/"+url)
+      const postOptions={
+            method:'get',
+            headers: {'Content-Type': 'application/json',
+            'x-access-token':token&&token.token,'userid':token&&token.userId }
+        }
+      fetch(env.siteApi + "/data/get-req/"+url ,postOptions)
         .then((res) => res.json())
         .then(
           (result) => {
