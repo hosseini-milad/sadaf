@@ -354,10 +354,11 @@ router.get('/get-req/:id',jsonParser, async (req,res)=>{
     try{
         const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)}).lean()
         const ideaData = userId?await idea.find({reqCode:url,userId:userId}):[]
+        const allIdea = await idea.find({reqCode:url})
         dataDetail.ideaData = ideaData
         dataDetail.ideaCount = await idea.find({reqCode:url}).count()
         if(dataDetail)
-            res.status(200).json({data:dataDetail,userId,message:"اطلاعات پیدا شد"})
+            res.status(200).json({data:dataDetail,userId,allIdea,message:"اطلاعات پیدا شد"})
         else
             res.status(400).json({error:"اطلاعات پیدا نشد"})
         
