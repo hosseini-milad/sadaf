@@ -347,12 +347,14 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
     }
 })
 router.get('/get-req/:id',jsonParser, async (req,res)=>{
+    const userReq = req.user
+    const userId = userReq?userReq.user_id:''
     const url = req.url.split('/').pop()
     try{
         const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)}).lean()
-        const ideaData = await idea.find({reqCode:url})
+        const ideaData = userId?await idea.find({reqCode:url,userId:userId}):[]
         dataDetail.ideaData = ideaData
-        dataDetail.ideaCount = ideaData&&ideaData.length
+        dataDetail.ideaCount = await idea.find({reqCode:url}).count()
         if(dataDetail)
             res.status(200).json({data:dataDetail,message:"اطلاعات پیدا شد"})
         else
