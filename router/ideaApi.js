@@ -348,7 +348,8 @@ router.post('/data-req-list',jsonParser, async (req,res)=>{
 })
 router.get('/get-req/:id',jsonParser, async (req,res)=>{
     //const userReq = req.headers['userid']
-    const userId = req.headers['userid']//userReq?userReq.user_id:''
+    var userId = ''
+    userId = req.headers&&req.headers['userid']//userReq?userReq.user_id:''
     const url = req.url.split('/').pop()
     try{
         const dataDetail = await ReqSchema.findOne({_id:ObjectID(url)}).lean()
