@@ -8,6 +8,7 @@ const TransactionSchema = new mongoose.Schema({
   status:{type:String},
   success:{ type: String},
   verify:{type:Object},
+  verifyBody:{type:Object},
   date:{type:Date, default:Date.now()}
 });
 
