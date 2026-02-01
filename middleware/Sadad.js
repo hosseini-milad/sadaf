@@ -97,13 +97,11 @@ exports.callBack=async (req,res)=>{
     try{
     verifyBody = {Token:trackId,SignData:CreateTokenEnc(trackId)}
         var header = {"Content-Type":"application/json"}
-        verifyResponse = await fetch(SADAD_VERIFY,
+        response = await fetch(SADAD_VERIFY,
             {method: 'POST' ,headers:header,
         body:JSON.stringify(verifyBody)});
-        verifyResponse.body = verifyBody
 
-        result = await response.json();
-        Token = result.Token
+        verifyResponse = await response.json();
         } catch{}
 
     const payMessage = findError(payCode)
