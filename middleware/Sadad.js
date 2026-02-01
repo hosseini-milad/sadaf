@@ -99,9 +99,9 @@ exports.callBack=async (req,res)=>{
         verifyResponse = await fetch(SADAD_VERIFY,
             {method: 'POST' ,headers:header,
         body:JSON.stringify(verifyBody)});
-            
+        verifyResponse.body = verifyBody
+        
         result = await response.json();
-        console.log(result)
         Token = result.Token
         } catch{}
 
