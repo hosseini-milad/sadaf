@@ -10,6 +10,7 @@ const User = require("../models/auth/users");
 var Kavenegar = require('kavenegar');
 const clients = require('../models/auth/clients');
 const SMSSend = require('../middleware/SMSSend');
+const CreateTokenEnc = require('../middleware/CreateTokenEnc');
 var api = Kavenegar.KavenegarApi({
   apikey: process.env.SMS_API
 });
@@ -224,5 +225,16 @@ router.post('/change-password',jsonParser,auth, async (req,res)=>{
   } catch (err) {
     //console.log((err);
   }
+})
+
+router.get('/encrypt',jsonParser, async (req,res)=>{
+  const token = req.query.token
+  try {
+    // Validate user input
+    var signToken = await CreateTokenEnc("0001C0E149486D7BD40C9798CC39C6836617DF5C15D8AB36F7BB")
+    return res.json(signToken)
+    //console.log((err);
+  }
+  catch{}
 })
 module.exports = router;

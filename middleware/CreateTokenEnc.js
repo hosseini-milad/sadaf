@@ -11,7 +11,9 @@ async function CreateTokenEnc(token) {
     const cipher = crypto.createCipheriv('des-ede3', key24, ''); // IV is not used in ECB
     let encrypted = cipher.update(`${token}`);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return(encrypted.toString('base64'))
+    var signToken = encrypted.toString('base64')
+    console.log(signToken)
+    return(signToken)
     
 }
 module.exports =CreateTokenEnc

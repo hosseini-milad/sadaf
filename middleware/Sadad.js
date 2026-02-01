@@ -95,7 +95,7 @@ exports.callBack=async (req,res)=>{
     var verifyResponse = ''
     var verifyBody = ''
     try{
-    verifyBody = {Token:trackId,SignData:CreateTokenEnc(trackId)}
+    verifyBody = {Token:trackId,SignData:await CreateTokenEnc(trackId)}
         var header = {"Content-Type":"application/json"}
         response = await fetch(SADAD_VERIFY,
             {method: 'POST' ,headers:header,
