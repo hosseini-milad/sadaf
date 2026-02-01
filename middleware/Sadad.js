@@ -6,10 +6,11 @@ const ReserveNow = require('./Seat/reserveNow');
 const cowork = require('../models/cowork');
 const transactions = require('../models/transactions');
 const SMSSend = require('./SMSSend');
+const CreateTokenEnc = require('./CreateTokenEnc');
 moment.locale('en'); 
 
 
-const {SADAD_URL,SADAD_PAY_URL,SMS_PHONE} = process.env
+const {SADAD_URL,SADAD_VERIFY,SADAD_PAY_URL,SMS_PHONE} = process.env
 
 exports.pay = async (req, res) => {
     const reserveId = req.query.reserveid
@@ -91,6 +92,19 @@ exports.callBack=async (req,res)=>{
     const trackId = req.body.token
     const payCode = req.body.ResCode
     const success = payCode=="0"?1:0
+    var verifyResponse = ''
+    try{
+    var verifyBody = {Token:trackId,SignData:CreateTokenEnc(trackId)}
+        var header = {"Content-Type":"application/json"}
+        verifyResponse = await fetch(SADAD_VERIFY,
+            {method: 'POST' ,headers:header,
+        body:JSON.stringify(verifyBody)});
+            
+        result = await response.json();
+        console.log(result)
+        Token = result.Token
+        } catch{}
+
     const payMessage = findError(payCode)
     const orderData = await cowork.findOne({reserveid:reserveId})
     await transactions.create({
@@ -99,6 +113,7 @@ exports.callBack=async (req,res)=>{
         payMessage:payMessage,
         trackId:trackId,
         status:payCode,
+        verify:verifyResponse,
         success:success,
         date:Date.now()
     }) 

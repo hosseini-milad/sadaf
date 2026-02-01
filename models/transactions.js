@@ -7,6 +7,7 @@ const TransactionSchema = new mongoose.Schema({
   payMessage:{ type: String},
   status:{type:String},
   success:{ type: String},
+  verify:{type:Object},
   date:{type:Date, default:Date.now()}
 });
 
