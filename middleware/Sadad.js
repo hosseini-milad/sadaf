@@ -21,7 +21,7 @@ exports.pay = async (req, res) => {
         var Token = "123456"
           var header = {"Content-Type":"application/json"}
     const body = {...query}
-        var result =''
+        var result ='' 
     try{const response = await fetch(SADAD_URL,
             {method: 'POST' ,headers:header,
         body:JSON.stringify(body)});

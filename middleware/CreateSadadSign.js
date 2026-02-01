@@ -18,13 +18,14 @@ async function CreateSadadSign(orderNo,price) {
         "SignData" : encrypted.toString('base64'),
         "ReturnUrl" : RETURN_URL,
         "OrderId" : orderNo,
-        "MultiIdentityData":{
+        "PaymentIdentity":SADAD_SHENASE
+        /*"MultiIdentityData":{
             MultiIdentityRows:[{
                 IbanNumber:SADAD_SHABA,
                 Amount:price,
                 PaymentIdentity:SADAD_SHENASE
             }]
-        }
+        }*/
         }
         return query
 }
