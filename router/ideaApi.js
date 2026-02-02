@@ -157,6 +157,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
         for(var i=0;i<pageData.length;i++){
             const userData = await clients.findOne({_id:ObjectID(pageData[i].userId)})
             const ideaData = await idea.find({reqCode:pageData[i]._id}).lean()
+            console.log(ideaData.length)
             for(var i=0;i<ideaData.length;i++){
                 const ideaUser = ideaData[i].userId
                 if(!ideaUser) continue
