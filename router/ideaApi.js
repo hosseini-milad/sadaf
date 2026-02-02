@@ -160,6 +160,7 @@ router.post('/req-list',jsonParser, async (req,res)=>{
             for(var i=0;i<ideaData.length;i++){
                 const ideaUser = ideaData[i].userId
                 if(!ideaUser) continue
+                console.log(ideaUser)
                 var ideaUserData = await clients.findOne({_id:ObjectID(ideaUser)})
                 if(!ideaUserData) continue
                 ideaData[i].userData = ideaUserData
