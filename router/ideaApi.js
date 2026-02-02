@@ -156,7 +156,14 @@ router.post('/req-list',jsonParser, async (req,res)=>{
             (parseInt(offset)+parseInt(pageSize)))  
         for(var i=0;i<pageData.length;i++){
             const userData = await clients.findOne({_id:ObjectID(pageData[i].userId)})
-            const ideaData = await idea.find({reqCode:pageData[i]._id})
+            const ideaData = await idea.find({reqCode:pageData[i]._id}).lean()
+            for(var i=0;i<ideaData.length;i++){
+                const ideaUser = ideaData[i].userId
+                if(!ideaUser) continue
+                var ideaUserData = await clients.findOne({_id:ObjectID(ideaUser)})
+                if(!ideaUserData) continue
+                ideaData[i].userData = ideaUserData
+            }
             pageData[i].userData = userData
             pageData[i].ideaData = ideaData
             pageData[i].ideaCount = ideaData&&ideaData.length
