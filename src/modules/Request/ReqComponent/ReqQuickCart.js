@@ -20,6 +20,11 @@ function ReqQuickCart(props){
                         <li key={i}>
                             <div>
                                 <h6>{idea.title}</h6>
+                                <i>{idea.userData&&idea.userData.phone}</i>
+                                
+                                <i>{(idea.userData&&idea.userData.sName)?
+                                `(${idea.userData.sName})`:<></>}</i>
+                                <hr/>
                                 <small>{idea.description}</small>
                                 <br/>
                                 <i>{idea.ideaBenefit}</i>
